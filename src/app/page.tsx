@@ -1,744 +1,690 @@
 "use client";
 
+/* eslint-disable @next/next/no-img-element */
+
+import { useEffect, useState, type ReactNode } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef, useState, useEffect } from "react";
 
-export default function Home() {
-  const heroRef = useRef(null);
-  const { scrollY } = useScroll();
-  const parallaxY = useTransform(scrollY, [0, 500], [0, 150]);
+const BRAND_BLUE = "#104B9C";
 
-  // Stagger children animation
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15
-      }
-    }
-  };
+const assets = {
+  heroBanner: "/images/hero-banner.png",
+  heroTeam: "/images/platinum-hero-team.png",
+  staffGroup: "/images/platinum-staff-group.png",
+  hospital: "/images/hospital-staff.png",
+  hotel: "/images/hotel-staff.png",
+  mall: "/images/mall-staff.png",
+  airport: "/images/airport-staff.png",
+  workforce: "/images/workforce-team.png",
+  contact: "/images/contact-team.png",
+};
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0 }
-  };
+const aboutSlides = [
+  {
+    image: assets.staffGroup,
+    title: "Verified Workforce",
+    text: "Reliable manpower selected for workplace discipline and responsibility.",
+  },
+  {
+    image: assets.hospital,
+    title: "Healthcare Support",
+    text: "Nurses, ward boys, housekeeping, and patient care support staff.",
+  },
+  {
+    image: assets.hotel,
+    title: "Hospitality Staff",
+    text: "Trained staff for hotels, restaurants, rooms, and service operations.",
+  },
+  {
+    image: assets.airport,
+    title: "Facility Support",
+    text: "Disciplined manpower for high-standard commercial environments.",
+  },
+];
 
-  // Stagger animation for Why Choose Platinum features
-  const staggerFeatures = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.12
-      }
-    }
-  };
+const services = [
+  {
+    title: "Skilled Manpower Supply",
+    text: "Trained manpower for specialized business operations, ensuring quality support and dependable performance.",
+  },
+  {
+    title: "Unskilled Manpower Supply",
+    text: "Reliable workforce support for day-to-day operational needs, housekeeping, maintenance, and support activities.",
+  },
+  {
+    title: "Nurses & Healthcare Staff",
+    text: "Professional healthcare manpower for hospitals, clinics, and medical facilities, selected with care and responsibility.",
+  },
+  {
+    title: "Hotel & Hospitality Staff",
+    text: "Staffing support for hotels, restaurants, banquets, and hospitality operations, focused on service and guest experience.",
+  },
+  {
+    title: "Housekeeping Staff",
+    text: "Well-managed housekeeping manpower for hospitals, hotels, shopping malls, airports, offices, and commercial spaces.",
+  },
+];
 
-  const featureItemVariants = {
-    hidden: { opacity: 0, x: -30 },
-    visible: { opacity: 1, x: 0 }
-  };
+const whyChoose = [
+  {
+    title: "Trained Workers",
+    text: "Our manpower is guided to understand workplace discipline, hygiene, grooming, and service expectations.",
+  },
+  {
+    title: "Quick Replacement Support",
+    text: "We understand that operations cannot stop. Replacement support is provided whenever required.",
+  },
+  {
+    title: "Verified Manpower",
+    text: "We follow a basic screening and verification process before staff deployment.",
+  },
+  {
+    title: "Professional Management",
+    text: "From selection to deployment and coordination, we maintain a structured and responsible approach.",
+  },
+  {
+    title: "24/7 Support",
+    text: "Our team remains available to assist clients with staffing requirements, coordination, and urgent support.",
+  },
+  {
+    title: "Affordable Staffing Solutions",
+    text: "We offer practical manpower solutions designed to suit your business needs and budget.",
+  },
+];
 
-  // Animated Counter Component
-  const Counter = ({ target, suffix = "" }: { target: number; suffix?: string }) => {
-    const [count, setCount] = useState(0);
-    const ref = useRef(null);
+const approach = [
+  {
+    step: "01",
+    title: "Understand Your Requirement",
+    text: "We discuss your staffing needs, work timing, location, role expectations, and manpower quantity.",
+  },
+  {
+    step: "02",
+    title: "Screen & Shortlist Staff",
+    text: "Suitable manpower is shortlisted based on the role, availability, basic experience, and service expectations.",
+  },
+  {
+    step: "03",
+    title: "Staff Deployment",
+    text: "Selected staff is deployed at your site with proper coordination and basic role understanding.",
+  },
+  {
+    step: "04",
+    title: "Ongoing Support",
+    text: "We support clients with attendance coordination, replacements, supervision, and issue resolution.",
+  },
+];
 
-    useEffect(() => {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          if (entries[0].isIntersecting) {
-            let start = 0;
-            const duration = 2000;
-            const increment = target / (duration / 16);
-            const timer = setInterval(() => {
-              start += increment;
-              if (start >= target) {
-                setCount(target);
-                clearInterval(timer);
-              } else {
-                setCount(Math.floor(start));
-              }
-            }, 16);
-            observer.disconnect();
-          }
-        },
-        { threshold: 0.5 }
-      );
+const industries = [
+  {
+    title: "Hospitals",
+    image: assets.hospital,
+    text: "We provide dependable manpower support for hospitals and healthcare facilities where discipline, hygiene, and responsibility matter the most.",
+    points: [
+      "Nurses",
+      "Ward boys",
+      "Patient care support staff",
+      "Housekeeping staff",
+      "Support manpower",
+    ],
+  },
+  {
+    title: "Hotels",
+    image: assets.hotel,
+    text: "We help hotels maintain smooth daily operations with trained and reliable staff for service, cleaning, and guest support functions.",
+    points: [
+      "Housekeeping staff",
+      "Room attendants",
+      "Kitchen helpers",
+      "Service staff",
+      "Support manpower",
+    ],
+  },
+  {
+    title: "Shopping Malls",
+    image: assets.mall,
+    text: "We provide reliable manpower support for shopping malls to help maintain cleanliness, customer assistance, and smooth facility operations.",
+    points: [
+      "Housekeeping staff",
+      "Customer assistance staff",
+      "Facility support staff",
+      "Maintenance helpers",
+      "Support manpower",
+    ],
+  },
+  {
+    title: "Airports",
+    image: assets.airport,
+    text: "We support airport-related service operations with disciplined, trained, and professionally managed manpower for high-standard facility environments.",
+    points: [
+      "Housekeeping staff",
+      "Customer assistance staff",
+      "Facility support manpower",
+      "Operational helpers",
+      "Support staff",
+    ],
+  },
+];
 
-      if (ref.current) observer.observe(ref.current);
-      return () => observer.disconnect();
-    }, [target]);
+const companyTeam = [
+  {
+    name: "Shalu Sansare",
+    role: "Proprietor",
+    phone: "93251 58710",
+    email: "contact@platinummanpowerservices.com",
+    initials: "SS",
+  },
+  {
+    name: "Sonali Pagare",
+    role: "HR Manager",
+    phone: "91463 81803 | 93251 58710",
+    email: "platinummanpower.sonali@gmail.com",
+    initials: "SP",
+  },
+];
 
-    return <span ref={ref}>{count}{suffix}</span>;
-  };
+function Button({
+  children,
+  href = "#contact",
+  dark = false,
+}: {
+  children: ReactNode;
+  href?: string;
+  dark?: boolean;
+}) {
+  return (
+    <a
+      href={href}
+      className={`mt-7 inline-flex items-stretch font-semibold outline-none transition ${
+        dark ? "text-white" : "text-black"
+      }`}
+    >
+      <span className="flex h-12 w-12 items-center justify-center rounded-[4px] bg-[#d6eaff] text-black">
+        ↳
+      </span>
+
+      <span
+        className={`ml-1 flex h-12 items-center justify-center rounded-[4px] border px-5 transition ${
+          dark
+            ? "border-white/35 hover:border-white/70"
+            : "border-black/25 hover:border-black/60"
+        }`}
+      >
+        {children}
+      </span>
+    </a>
+  );
+}
+
+function SectionHeading({
+  children,
+  light = false,
+}: {
+  children: ReactNode;
+  light?: boolean;
+}) {
+  return (
+    <h2
+      className={`text-[42px] font-light leading-[0.98] tracking-[-0.065em] md:text-[56px] xl:text-[74px] ${
+        light ? "text-white" : "text-black"
+      }`}
+    >
+      {children}
+    </h2>
+  );
+}
+
+function AboutCarousel() {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setActiveIndex((current) => (current + 1) % aboutSlides.length);
+    }, 3000);
+
+    return () => window.clearInterval(timer);
+  }, []);
 
   return (
-    <main className="min-h-screen overflow-x-hidden" style={{ backgroundColor: "#FFFFFF" }}>
-      <Navbar />
-
-      {/* HERO SECTION - Minimal Premium */}
-      <section className="px-8 pt-32 pb-6" style={{ backgroundColor: "#FFFFFF" }}>
-        <div className="relative overflow-hidden h-[820px]">
-
-          {/* Parallax Background */}
-          <motion.img
-            style={{ y: parallaxY }}
-            initial={{ scale: 1.15 }}
-            animate={{ scale: 1 }}
-            transition={{ duration: 2 }}
-            src="/hero.jpg"
-            alt="Platinum Manpower - Hospital, Hotel, Mall & Airport Staff"
-            className="absolute inset-0 h-full w-full object-cover"
+    <div className="relative h-[420px] overflow-hidden rounded-[6px] bg-[#104B9C] shadow-[0_30px_80px_rgba(16,75,156,0.20)] lg:h-[460px]">
+      {aboutSlides.map((slide, index) => (
+        <div
+          key={slide.title}
+          className={`absolute inset-0 transition-all duration-700 ease-out ${
+            activeIndex === index
+              ? "scale-100 opacity-100"
+              : "scale-105 opacity-0"
+          }`}
+        >
+          <img
+            src={slide.image}
+            alt={slide.title}
+            className="h-full w-full object-cover"
           />
 
-          {/* Overlay - lighter for modern look */}
-          <div className="absolute inset-0 bg-black/30" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#104B9C]/95 via-[#104B9C]/35 to-transparent" />
 
-          {/* Animated Content Box - updated typography */}
-          <motion.div
-            initial={{ opacity: 0, x: -80 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1 }}
-            className="absolute left-[12%] top-1/2 -translate-y-1/2"
-          >
-            <div className="border-[5px] border-[#2563EB] w-[330px] h-[620px] p-12 flex flex-col justify-between bg-white/5 backdrop-blur-sm">
+          <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
+            <p className="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-white/70">
+              Platinum Manpower
+            </p>
 
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3, duration: 0.8 }}
-              >
-                <p className="uppercase tracking-[0.25em] text-white text-sm font-semibold" style={{ fontFamily: "'Inter', sans-serif" }}>
-                  Platinum Manpower
-                </p>
+            <h3 className="text-[34px] font-light leading-none tracking-[-0.05em]">
+              {slide.title}
+            </h3>
 
-                <h1 className="text-white font-bold text-7xl leading-[0.9] mt-8" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 800 }}>
-                  Skilled.
-                  <br />
-                  Verified.
-                  <br />
-                  Managed.
-                </h1>
-
-                <p className="text-white/85 mt-8 text-lg leading-8 max-w-[220px]" style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400 }}>
-                  Specialized manpower solutions for Hospitals, Hotels, Shopping Malls & Airports.
-                </p>
-              </motion.div>
-
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="group text-white text-2xl flex items-center gap-4"
-                style={{ fontFamily: "'Inter', sans-serif", fontWeight: 500 }}
-              >
-                Explore
-                <motion.span
-                  initial={{ x: 0 }}
-                  whileHover={{ x: 10 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  →
-                </motion.span>
-              </motion.button>
-
-            </div>
-          </motion.div>
-
-          {/* Slider Indicators */}
-          <div className="absolute bottom-32 right-16 flex gap-5">
-            <div className="w-12 h-[4px] bg-white/30" />
-            <div className="w-12 h-[4px] bg-white/30" />
-            <motion.div
-              initial={{ width: 0 }}
-              animate={{ width: 48 }}
-              transition={{ duration: 1.5, delay: 0.5 }}
-              className="h-[4px] bg-[#2563EB]"
-            />
+            <p className="mt-4 max-w-[460px] text-[17px] leading-[1.35] text-white/75">
+              {slide.text}
+            </p>
           </div>
+        </div>
+      ))}
 
+      <div className="absolute right-6 top-6 z-20 flex gap-2">
+        {aboutSlides.map((slide, index) => (
+          <button
+            key={slide.title}
+            type="button"
+            aria-label={`Show ${slide.title}`}
+            onClick={() => setActiveIndex(index)}
+            className={`h-2.5 rounded-full transition-all ${
+              activeIndex === index ? "w-8 bg-white" : "w-2.5 bg-white/45"
+            }`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export default function Page() {
+  return (
+    <main className="min-h-screen overflow-hidden bg-[#104B9C] font-sans text-[#524f4b]">
+      <Navbar />
+
+      {/* Hero Banner */}
+      <section className="relative min-h-screen w-full overflow-hidden bg-[#104B9C]">
+        <img
+          src={assets.heroBanner}
+          alt="Platinum Manpower banner"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+
+        <div className="absolute inset-0 bg-gradient-to-t from-[#104B9C]/70 via-[#104B9C]/10 to-transparent" />
+
+        <div className="absolute bottom-[7vw] left-[9vw] z-10 max-w-[560px]">
+          <p className="text-[22px] leading-[1.2] text-white drop-shadow-md md:text-[26px]">
+            Skilled, verified, and professionally managed manpower for hospitals,
+            hotels, shopping malls, airports, offices, and commercial spaces.
+          </p>
+
+          <a
+            href="/contact"
+            className="mt-8 inline-flex rounded-[4px] bg-[#d6eaff] px-7 py-3.5 text-[15px] font-semibold text-black transition hover:bg-white"
+          >
+            Request Workforce
+          </a>
         </div>
       </section>
 
-      {/* WHY CHOOSE US / ABOUT US - Updated typography */}
-      <motion.section
-        initial={{ opacity: 0, y: 80 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-        style={{ backgroundColor: "#F8FAFC" }}
-        className="py-32 overflow-hidden"
-      >
-        <div className="max-w-[1600px] mx-auto px-8 lg:px-14">
-          <div className="grid lg:grid-cols-2 gap-20 items-start">
+      {/* About */}
+      <section id="about" className="bg-white px-[9vw] py-28 text-black">
+        <p className="max-w-[280px] font-semibold text-[#104B9C]">
+          About Platinum
+        </p>
 
-            {/* LEFT - About Us Content */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7 }}
-              className="flex flex-col justify-between h-full"
+        <div className="mt-16 grid items-start gap-20 lg:grid-cols-[0.92fr_1.08fr]">
+          <div>
+            <SectionHeading>
+              We help businesses grow stronger with the right people behind
+              their operations.
+            </SectionHeading>
+
+            <Button href="/contact">Contact Our Team</Button>
+          </div>
+
+          <div className="grid gap-8">
+            <AboutCarousel />
+
+            <p className="max-w-[620px] text-[24px] leading-[1.22] text-[#4d4d4d]">
+              At{" "}
+              <strong>
+                PLATINUM MANPOWER AND FACILITY MANAGEMENT SERVICES
+              </strong>
+              , we provide skilled and unskilled manpower solutions for
+              hospitals, hotels, shopping malls, and airports with a focus on
+              reliability, professionalism, and long-term support.
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-20 grid gap-5 lg:grid-cols-[0.9fr_1.1fr]">
+          <div className="rounded-[6px] bg-[#104B9C] p-9 text-white shadow-[0_30px_80px_rgba(16,75,156,0.18)]">
+            <h3 className="mb-4 text-[34px] font-medium tracking-[-0.04em]">
+              Our Promise
+            </h3>
+
+            <p className="text-[22px] leading-[1.25] text-white/80">
+              Reliable staff. Smooth operations. People-first service.
+            </p>
+          </div>
+
+          <div className="rounded-[6px] border border-[#104B9C]/15 bg-[#f7fbff] p-9">
+            <p className="text-[20px] leading-[1.35] text-[#4f4f4f]">
+              Our team works closely with clients to understand staffing needs
+              and provide verified manpower that fits their operational
+              requirements.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Services */}
+      <section id="services" className="bg-[#104B9C] px-[9vw] py-28 text-white">
+        <div className="grid gap-20 lg:grid-cols-[1fr_0.78fr] lg:gap-28">
+          <SectionHeading light>Our Services</SectionHeading>
+
+          <div>
+            <p className="max-w-[520px] text-[20px] leading-[1.24] text-white/75">
+              We provide dependable manpower and facility support services for
+              daily operations, specialized staffing, housekeeping, and
+              long-term workforce management.
+            </p>
+
+            <Button href="/services" dark>
+              Explore Services
+            </Button>
+          </div>
+        </div>
+
+        <div className="mt-24 grid gap-5 md:grid-cols-2 xl:grid-cols-5">
+          {services.map((service, index) => (
+            <article
+              key={service.title}
+              className="group flex min-h-[330px] flex-col justify-between rounded-[6px] border border-white/15 bg-white p-7 text-black shadow-[0_30px_80px_rgba(0,0,0,0.12)] transition duration-300 hover:-translate-y-2"
             >
               <div>
-                <p className="uppercase tracking-[0.25em] text-sm font-medium mb-8" style={{ color: "#2563EB", fontFamily: "'Inter', sans-serif" }}>
-                  About Us
-                </p>
+                <div className="mb-8 flex h-12 w-12 items-center justify-center rounded-full bg-[#104B9C] text-sm font-bold text-white">
+                  {String(index + 1).padStart(2, "0")}
+                </div>
 
-                <h2 className="text-5xl lg:text-7xl leading-[1] max-w-[700px] mb-12" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700, color: "#111827" }}>
-                  Every business grows stronger with the right people behind it.
-                </h2>
-
-                <p className="text-lg leading-[2] max-w-[650px]" style={{ color: "#4B5563", fontFamily: "'Inter', sans-serif", fontWeight: 400 }}>
-                  At Platinum Manpower and Facility Management Services, we provide skilled and unskilled manpower solutions for hospitals, hotels, shopping malls, and airports with a focus on reliability, professionalism, and long-term support.
-                </p>
-                <p className="text-lg leading-[2] max-w-[650px] mt-6" style={{ color: "#4B5563", fontFamily: "'Inter', sans-serif", fontWeight: 400 }}>
-                  Our team works closely with clients to understand staffing requirements and provide verified manpower suited to operational needs.
-                </p>
+                <h3 className="text-[24px] font-semibold leading-[1.1] tracking-[-0.04em]">
+                  {service.title}
+                </h3>
               </div>
-            </motion.div>
 
-            {/* RIGHT - Image */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7 }}
-              className="relative flex justify-center"
-            >
-              <div className="absolute -bottom-14 -left-14 w-[500px] h-[350px] opacity-15" style={{ backgroundImage: "radial-gradient(#2563EB 1px, transparent 1px)", backgroundSize: "12px 12px" }} />
-
-              <motion.img
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.4 }}
-                src="/why-choose-us.jpg"
-                alt="Workforce Management & Team Supervision"
-                className="relative z-10 w-full max-w-[650px] h-[900px] object-cover"
-              />
-
-              <div className="absolute top-10 -right-10 w-3 h-48" style={{ backgroundColor: "#2563EB" }} />
-            </motion.div>
-
-          </div>
-        </div>
-      </motion.section>
-
-      {/* INDUSTRIES WE SERVE - Updated typography */}
-      <motion.section
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-        className="py-36" style={{ backgroundColor: "#FFFFFF" }}
-      >
-        <div className="max-w-[1600px] mx-auto px-8 lg:px-14">
-
-          {/* Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="mb-24"
-          >
-            <div className="w-20 h-[3px] mb-8" style={{ backgroundColor: "#2563EB" }} />
-            <p className="uppercase tracking-[0.25em] text-sm font-medium mb-6" style={{ color: "#2563EB", fontFamily: "'Inter', sans-serif" }}>
-              Industries We Serve
-            </p>
-            <h2 className="text-5xl lg:text-7xl leading-[1] max-w-[900px]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700, color: "#111827" }}>
-              Specialized manpower for critical industries.
-            </h2>
-          </motion.div>
-
-          {/* Industries Grid with Images */}
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid lg:grid-cols-2 gap-8"
-          >
-            {[
-              { 
-                id: "01", 
-                title: "Hospitals", 
-                desc: "Nurses | Ward Boys | Patient Care Staff | Housekeeping Staff | Support Manpower",
-                image: "/industry-hospital.jpg",
-                roles: ["Nurses", "Ward Boys", "Patient Care Staff", "Housekeeping Staff", "Support Manpower"]
-              },
-              { 
-                id: "02", 
-                title: "Hotels", 
-                desc: "Housekeeping Staff | Room Attendants | Kitchen Helpers | Service Staff | Support Manpower",
-                image: "/industry-hotel.jpg",
-                roles: ["Housekeeping Staff", "Room Attendants", "Kitchen Helpers", "Service Staff", "Support Manpower"]
-              },
-              { 
-                id: "03", 
-                title: "Shopping Malls", 
-                desc: "Customer Assistance Staff | Housekeeping Staff | Facility Support Staff | Maintenance Helpers",
-                image: "/industry-mall.jpg",
-                roles: ["Customer Assistance Staff", "Housekeeping Staff", "Facility Support Staff", "Maintenance Helpers", "Support Manpower"]
-              },
-              { 
-                id: "04", 
-                title: "Airports", 
-                desc: "Housekeeping Staff | Customer Assistance Staff | Facility Support Staff | Operational Helpers",
-                image: "/industry-airport.jpg",
-                roles: ["Housekeeping Staff", "Customer Assistance Staff", "Facility Support Staff", "Operational Helpers", "Support Staff"]
-              }
-            ].map((industry) => (
-              <motion.div
-                key={industry.id}
-                variants={itemVariants}
-                whileHover={{ y: -5 }}
-                className="group relative overflow-hidden cursor-pointer" style={{ backgroundColor: "#111827" }}
-              >
-                <img 
-                  src={industry.image} 
-                  alt={industry.title}
-                  className="w-full h-[500px] object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-10 text-white">
-                  <span className="text-neutral-300 text-sm tracking-wider" style={{ fontFamily: "'Inter', sans-serif" }}>{industry.id}</span>
-                  <h3 className="text-4xl font-bold mt-2 mb-4" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700 }}>{industry.title}</h3>
-                  <div className="flex flex-wrap gap-2 mt-3">
-                    {industry.roles.map((role, idx) => (
-                      <span key={idx} className="text-sm text-white/70 border border-white/20 rounded-full px-3 py-1" style={{ fontFamily: "'Inter', sans-serif" }}>
-                        {role}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-
-        </div>
-      </motion.section>
-
-      {/* SERVICES - Updated typography */}
-      <motion.section
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-        className="py-36" style={{ backgroundColor: "#F8FAFC" }}
-      >
-        <div className="max-w-[1600px] mx-auto px-8 lg:px-14">
-
-          {/* Heading */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="mb-24"
-          >
-            <div className="w-20 h-[3px] mb-8" style={{ backgroundColor: "#2563EB" }} />
-            <p className="uppercase tracking-[0.25em] text-sm font-medium mb-6" style={{ color: "#2563EB", fontFamily: "'Inter', sans-serif" }}>
-              Our Services
-            </p>
-            <h2 className="text-5xl lg:text-7xl leading-[1] max-w-[900px]" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700, color: "#111827" }}>
-              Comprehensive staffing solutions for every need.
-            </h2>
-          </motion.div>
-
-          {/* Service Cards with Images */}
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid lg:grid-cols-3 gap-8"
-          >
-            {[
-              { number: "01", title: "Skilled Manpower Supply", description: "Trained manpower for specialized business operations, ensuring quality support and dependable performance.", image: "/service-skilled.jpg" },
-              { number: "02", title: "Unskilled Manpower Supply", description: "Reliable workforce support for daily operational needs, housekeeping, maintenance, and support activities.", image: "/service-unskilled.jpg" },
-              { number: "03", title: "Nurses & Healthcare Staff", description: "Professional healthcare manpower for hospitals, clinics, and medical facilities, selected with care and responsibility.", image: "/service-healthcare.jpg" },
-              { number: "04", title: "Hotel & Hospitality Staff", description: "Staffing support for hotels, restaurants, banquets, and hospitality operations, focused on service and guest experience.", image: "/service-hospitality.jpg" },
-              { number: "05", title: "Housekeeping Staff", description: "Well-managed housekeeping manpower for hospitals, hotels, shopping malls, airports, offices, and commercial spaces.", image: "/service-housekeeping.jpg" },
-              { number: "06", title: "Facility Support Staff", description: "Professional facility management support for smooth day-to-day operations across all industry verticals.", image: "/service-facility.jpg" }
-            ].map((service) => (
-              <motion.div
-                key={service.number}
-                variants={itemVariants}
-                whileHover={{ y: -10 }}
-                className="group transition-all duration-500 overflow-hidden" style={{ backgroundColor: "#FFFFFF", border: "1px solid #E5E7EB", borderColor: "#E5E7EB" }}
-              >
-                <div className="h-56 overflow-hidden">
-                  <img 
-                    src={service.image} 
-                    alt={service.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                </div>
-                <div className="p-8">
-                  <span className="text-5xl font-semibold transition-all duration-500" style={{ color: "#E5E7EB" }}>
-                    {service.number}
-                  </span>
-                  <h3 className="text-2xl font-medium mt-4 mb-3" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 600, color: "#111827" }}>{service.title}</h3>
-                  <p className="leading-7 text-sm" style={{ color: "#6B7280", fontFamily: "'Inter', sans-serif", fontWeight: 400 }}>{service.description}</p>
-                  <motion.div
-                    initial={{ x: 0 }}
-                    whileHover={{ x: 10 }}
-                    className="flex justify-end mt-6"
-                  >
-                    <span className="text-2xl" style={{ color: "#2563EB" }}>→</span>
-                  </motion.div>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-
-        </div>
-      </motion.section>
-
-      {/* WHY CHOOSE PLATINUM - Updated typography */}
-      <section className="py-40" style={{ backgroundColor: "#FFFFFF" }}>
-        <div className="max-w-[1600px] mx-auto px-8 lg:px-14">
-          <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-24">
-
-            {/* Left Side */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7 }}
-              className="sticky top-40 self-start"
-            >
-              <p className="uppercase tracking-[0.3em] text-sm mb-8" style={{ color: "#2563EB", fontFamily: "'Inter', sans-serif" }}>
-                Why Choose Platinum
+              <p className="mt-8 text-[16px] leading-[1.35] text-[#4f4f4f]">
+                {service.text}
               </p>
-
-              <h2 className="text-7xl lg:text-[120px] leading-[0.9] font-light" style={{ color: "#111827", fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-                Built
-                <br />
-                on Trust.
-              </h2>
-
-              <p className="mt-10 max-w-sm text-lg leading-8" style={{ color: "#6B7280", fontFamily: "'Inter', sans-serif", fontWeight: 400 }}>
-                Reliable manpower solutions designed for hospitals,
-                hotels, malls and airports.
-              </p>
-            </motion.div>
-
-            {/* Right Side */}
-            <motion.div
-              variants={staggerFeatures}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-            >
-              {[
-                {
-                  no: "01",
-                  title: "Trained Workers",
-                  desc: "Workplace discipline, hygiene, grooming and service standards."
-                },
-                {
-                  no: "02",
-                  title: "Quick Replacement",
-                  desc: "Immediate staffing support when operations require continuity."
-                },
-                {
-                  no: "03",
-                  title: "Verified Manpower",
-                  desc: "Screened and verified workforce before deployment."
-                },
-                {
-                  no: "04",
-                  title: "Professional Management",
-                  desc: "Structured coordination from selection to deployment."
-                },
-                {
-                  no: "05",
-                  title: "24/7 Support",
-                  desc: "Always available for urgent staffing requirements."
-                },
-                {
-                  no: "06",
-                  title: "Affordable Solutions",
-                  desc: "Practical workforce solutions for every scale of business."
-                }
-              ].map((item) => (
-                <motion.div
-                  key={item.no}
-                  variants={featureItemVariants}
-                  whileHover={{
-                    x: 10,
-                    transition: { duration: 0.3 }
-                  }}
-                  className="group border-b cursor-pointer py-14" style={{ borderColor: "#E5E7EB" }}
-                >
-                  <div className="flex items-start gap-10">
-
-                    <span className="text-xl font-medium min-w-[60px]" style={{ color: "#2563EB", fontFamily: "'Inter', sans-serif" }}>
-                      {item.no}
-                    </span>
-
-                    <div className="flex-1">
-
-                      <h3 className="text-4xl lg:text-5xl font-light transition-all duration-500 group-hover:translate-x-4" style={{ color: "#111827", fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-                        {item.title}
-                      </h3>
-
-                      <p className="mt-4 max-w-xl text-lg leading-8" style={{ color: "#6B7280", fontFamily: "'Inter', sans-serif", fontWeight: 400 }}>
-                        {item.desc}
-                      </p>
-
-                    </div>
-
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
-
-          </div>
+            </article>
+          ))}
         </div>
       </section>
 
-      {/* GALLERY SECTION - Updated typography */}
-      <motion.section
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-        className="py-36" style={{ backgroundColor: "#F8FAFC" }}
-      >
-        <div className="max-w-[1600px] mx-auto px-8 lg:px-14">
+      {/* Staffing Approach */}
+      <section className="bg-white px-[9vw] py-28 text-[#104B9C]">
+        <div className="grid gap-20 lg:grid-cols-[0.32fr_0.68fr]">
+          <p className="font-semibold">
+            Our Staffing Approach
+            <br />
+            Structured. Simple. Reliable.
+          </p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
-            <div className="w-20 h-[3px] mx-auto mb-8" style={{ backgroundColor: "#2563EB" }} />
-            <p className="uppercase tracking-[0.25em] text-sm font-medium mb-6" style={{ color: "#2563EB", fontFamily: "'Inter', sans-serif" }}>
-              Our Workforce
-            </p>
-            <h2 className="text-5xl lg:text-7xl leading-[1] max-w-[800px] mx-auto" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700, color: "#111827" }}>
-              Behind every smooth operation, there's a dedicated team.
-            </h2>
-          </motion.div>
-
-          <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-5">
-            {[
-              { title: "Nurses", image: "/gallery-nurses.jpg", category: "Healthcare" },
-              { title: "Ward Boys", image: "/gallery-ward.jpg", category: "Healthcare" },
-              { title: "Hotel Staff", image: "/gallery-hotel-staff.jpg", category: "Hospitality" },
-              { title: "Housekeeping Teams", image: "/gallery-housekeeping.jpg", category: "Facility" },
-              { title: "Customer Assistance Staff", image: "/gallery-customer-assist.jpg", category: "Retail" },
-              { title: "Airport Operations Staff", image: "/gallery-airport.jpg", category: "Aviation" },
-              { title: "Facility Support Teams", image: "/gallery-facility.jpg", category: "Facility" },
-              { title: "Workforce Coordination", image: "/gallery-coordination.jpg", category: "Management" }
-            ].map((item, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: idx * 0.05 }}
-                whileHover={{ y: -5 }}
-                className="group relative overflow-hidden rounded-lg cursor-pointer"
-              >
-                <img 
-                  src={item.image} 
-                  alt={item.title}
-                  className="w-full h-72 object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className="absolute bottom-0 left-0 right-0 p-4 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                  <p className="text-xs uppercase tracking-wider" style={{ color: "#2563EB", fontFamily: "'Inter', sans-serif" }}>{item.category}</p>
-                  <h4 className="font-semibold" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>{item.title}</h4>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
+          <SectionHeading>
+            From requirement understanding to ongoing support, our process is
+            built for smooth manpower deployment.
+          </SectionHeading>
         </div>
-      </motion.section>
 
-      {/* STATISTICS - Updated typography */}
-      <motion.section
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-        className="py-36" style={{ backgroundColor: "#FFFFFF" }}
-      >
-        <div className="max-w-[1600px] mx-auto px-8 lg:px-14">
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
-            <div className="w-20 h-[3px] mx-auto mb-8" style={{ backgroundColor: "#2563EB" }} />
-            <p className="uppercase tracking-[0.25em] text-sm font-medium mb-6" style={{ color: "#2563EB", fontFamily: "'Inter', sans-serif" }}>
-              Our Impact in Numbers
-            </p>
-            <h2 className="text-5xl lg:text-7xl leading-[1] max-w-[900px] mx-auto" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700, color: "#111827" }}>
-              Trusted by businesses across industries.
-            </h2>
-          </motion.div>
-
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              { label: "Verified Workforce", target: 2500, suffix: "+" },
-              { label: "24/7 Support", target: 365, suffix: " Days" },
-              { label: "Industries Served", target: 4, suffix: "+" },
-              { label: "Commitment to Service", target: 100, suffix: "%" }
-            ].map((stat, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className="text-center p-8" style={{ backgroundColor: "#F8FAFC", border: "1px solid #E5E7EB" }}
-              >
-                <h3 className="text-5xl lg:text-6xl font-bold" style={{ color: "#2563EB", fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 800 }}>
-                  <Counter target={stat.target} suffix={stat.suffix} />
-                </h3>
-                <p className="mt-4 uppercase tracking-wider text-sm font-medium" style={{ color: "#4B5563", fontFamily: "'Inter', sans-serif" }}>{stat.label}</p>
-              </motion.div>
-            ))}
-          </div>
-
-        </div>
-      </motion.section>
-
-      {/* TESTIMONIALS - Updated typography */}
-      <motion.section
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-        className="py-36 relative overflow-hidden" style={{ backgroundColor: "#F8FAFC" }}
-      >
-        <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: "radial-gradient(#2563EB 1px, transparent 1px)", backgroundSize: "16px 16px" }} />
-
-        <div className="relative max-w-[1600px] mx-auto px-8 lg:px-14">
-
-          {/* Heading */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="flex justify-between items-center mb-24"
-          >
-            <div>
-              <div className="w-20 h-[3px] mb-8" style={{ backgroundColor: "#2563EB" }} />
-              <p className="uppercase tracking-[0.25em] text-sm font-medium mb-6" style={{ color: "#2563EB", fontFamily: "'Inter', sans-serif" }}>Testimonials</p>
-              <h2 className="text-5xl lg:text-7xl leading-none" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700, color: "#111827" }}>What Our Clients Say</h2>
-            </div>
-          </motion.div>
-
-          {/* Testimonials */}
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid lg:grid-cols-2 gap-10"
-          >
-            {[
-              { name: "Dr. Meera Desai", title: "Operations Head • Multi-Specialty Hospital", text: "Platinum Manpower has been a reliable partner for our hospital staffing needs. Their nurses and healthcare staff are professional, well-trained, and demonstrate genuine care for patients. The quick replacement support has been invaluable for our 24/7 operations." },
-              { name: "Vikram Singh", title: "General Manager • Luxury Hotel Chain", text: "We've partnered with Platinum Manpower for over two years now. Their hospitality staff maintains our service standards perfectly. The team is responsive, professional, and truly understands the demands of the hotel industry." }
-            ].map((testimonial, idx) => (
-              <motion.div
-                key={idx}
-                variants={itemVariants}
-                whileHover={{ y: -5 }}
-                className="p-14 relative" style={{ backgroundColor: "#FFFFFF" }}
-              >
-                <div className="flex items-center gap-5 mb-10">
-                  <img src={`/client${idx + 1}.jpg`} alt="" className="w-20 h-20 rounded-full object-cover" />
-                  <div>
-                    <h3 className="text-2xl" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 600, color: "#111827" }}>{testimonial.name}</h3>
-                    <p style={{ color: "#6B7280", fontFamily: "'Inter', sans-serif" }}>{testimonial.title}</p>
-                  </div>
-                </div>
-                <div className="absolute top-10 right-10 text-[120px] leading-none opacity-20" style={{ color: "#2563EB" }}>"</div>
-                <p className="text-xl leading-[2] max-w-[600px]" style={{ color: "#4B5563", fontFamily: "'Inter', sans-serif", fontWeight: 400 }}>{testimonial.text}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-
-        </div>
-      </motion.section>
-
-      {/* CTA - Updated typography */}
-      <motion.section
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-        className="py-36 overflow-hidden" style={{ backgroundColor: "#FFFFFF" }}
-      >
-        <div className="max-w-[1600px] mx-auto px-8 lg:px-14">
-          <div className="relative">
-            <div className="relative h-[700px] overflow-hidden">
-              <motion.img
-                initial={{ scale: 1.1 }}
-                whileInView={{ scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 1.5 }}
-                src="/cta-banner.jpg"
-                alt="Workforce Solutions"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-black/40" />
-            </div>
-
-            {/* Floating Card with Contact Info */}
-            <motion.div
-              initial={{ opacity: 0, x: -50, y: 50 }}
-              whileInView={{ opacity: 1, x: 0, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="relative lg:absolute lg:left-20 lg:bottom-[-80px] max-w-[700px]" style={{ backgroundColor: "#FFFFFF", boxShadow: "0 30px 100px rgba(0,0,0,0.08)" }}
+        <div className="mt-24 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+          {approach.map((item) => (
+            <article
+              key={item.step}
+              className="rounded-[6px] border border-[#104B9C]/15 bg-[#f7fbff] p-8 transition duration-300 hover:-translate-y-2 hover:shadow-[0_25px_70px_rgba(16,75,156,0.16)]"
             >
-              <div className="absolute top-0 left-0 w-2 h-full" style={{ backgroundColor: "#2563EB" }} />
-              <div className="p-12 lg:p-16">
-                <p className="uppercase tracking-[0.25em] text-sm font-medium mb-6" style={{ color: "#2563EB", fontFamily: "'Inter', sans-serif" }}>Get In Touch</p>
-                <h2 className="text-5xl lg:text-7xl leading-[1] mb-8" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700, color: "#111827" }}>Ready to build your workforce?</h2>
-                <p className="text-lg leading-8 mb-6" style={{ color: "#6B7280", fontFamily: "'Inter', sans-serif", fontWeight: 400 }}>
-                  Call us at <strong style={{ color: "#2563EB" }}>93251 58710</strong> or email <strong style={{ color: "#2563EB" }}>contact@platinummanpowerservices.com</strong>
-                </p>
-                <p className="text-lg leading-8 mb-10" style={{ color: "#6B7280", fontFamily: "'Inter', sans-serif", fontWeight: 400 }}>
-                  Row House No. 2, Jai Maa Ashapura Society, Sinnar Phata, Nashik - 422101
-                </p>
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="group flex items-center gap-4 text-lg font-medium transition-all duration-300" style={{ color: "#111827" }}
-                >
-                  Contact Us
-                  <motion.span
-                    initial={{ x: 0 }}
-                    whileHover={{ x: 10 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    →
-                  </motion.span>
-                </motion.button>
-              </div>
-            </motion.div>
-          </div>
-          <div className="h-[180px] hidden lg:block" />
+              <span className="mb-14 flex h-14 w-14 items-center justify-center rounded-full bg-[#104B9C] text-sm font-bold text-white">
+                {item.step}
+              </span>
+
+              <h3 className="text-[28px] font-semibold leading-[1.08] tracking-[-0.05em] text-black">
+                {item.title}
+              </h3>
+
+              <p className="mt-8 text-[17px] leading-[1.35] text-[#4f4f4f]">
+                {item.text}
+              </p>
+            </article>
+          ))}
         </div>
-      </motion.section>
+      </section>
+
+      {/* Why Choose */}
+      <section className="bg-[#104B9C] px-[9vw] py-28 text-white">
+        <div className="mb-20 grid gap-20 lg:grid-cols-[0.7fr_1.3fr]">
+          <p className="font-semibold">
+            Why Choose Platinum?
+            <br />
+            Skilled. Verified. Managed.
+          </p>
+
+          <SectionHeading light>
+            We support businesses with trained manpower, quick replacement,
+            verified staff, and professional coordination.
+          </SectionHeading>
+        </div>
+
+        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+          {whyChoose.map((item, index) => (
+            <article
+              key={item.title}
+              className="flex min-h-[280px] flex-col justify-between rounded-[6px] border border-white/15 bg-white/10 p-8 backdrop-blur-sm transition duration-300 hover:-translate-y-2 hover:bg-white hover:text-black"
+            >
+              <div>
+                <p className="mb-12 flex items-center gap-3 text-lg">
+                  <span className="h-3 w-3 rounded-full bg-[#d6eaff]" />
+                  {String(index + 1).padStart(2, "0")}
+                </p>
+
+                <h3 className="text-[30px] font-light leading-[1.08] tracking-[-0.05em]">
+                  {item.title}
+                </h3>
+              </div>
+
+              <p className="mt-10 text-[18px] leading-[1.32] opacity-75">
+                {item.text}
+              </p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      {/* Industries */}
+      <section id="industries" className="bg-white px-[9vw] py-28 text-black">
+        <div className="grid gap-20 lg:grid-cols-[1fr_0.78fr] lg:gap-28">
+          <SectionHeading>Industries We Serve</SectionHeading>
+
+          <p className="max-w-[520px] text-[20px] leading-[1.24] text-[#4f4f4f]">
+            We provide reliable manpower support for industries where
+            cleanliness, discipline, responsibility, and operational continuity
+            matter every day.
+          </p>
+        </div>
+
+        <div className="mt-24 grid gap-5 lg:grid-cols-2">
+          {industries.map((industry) => (
+            <article
+              key={industry.title}
+              className="grid overflow-hidden rounded-[6px] border border-[#104B9C]/10 bg-[#f7fbff] shadow-[0_24px_70px_rgba(16,75,156,0.10)] lg:grid-cols-[0.92fr_1.08fr]"
+            >
+              <img
+                src={industry.image}
+                alt={`${industry.title} manpower support`}
+                className="h-full min-h-[360px] w-full object-cover"
+              />
+
+              <div className="p-8">
+                <h3 className="text-[42px] font-light leading-[1] tracking-[-0.06em] text-black">
+                  {industry.title}
+                </h3>
+
+                <div className="my-6 h-[3px] w-16 bg-[#104B9C]" />
+
+                <p className="text-[18px] font-medium leading-[1.34] text-[#1f2937]">
+                  {industry.text}
+                </p>
+
+                <ul className="mt-8 grid gap-3 text-[17px] text-[#4f4f4f]">
+                  {industry.points.map((point) => (
+                    <li key={point} className="flex gap-3">
+                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#104B9C]" />
+                      <span>{point}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      {/* Workforce Support */}
+      <section className="bg-[#104B9C] px-[9vw] py-28 text-white">
+        <div className="grid items-center gap-20 lg:grid-cols-[0.4fr_0.6fr]">
+          <div>
+            <SectionHeading light>
+              Manpower support designed for daily business operations.
+            </SectionHeading>
+
+            <p className="mt-12 max-w-[520px] text-[20px] leading-[1.28] text-white/75">
+              Whether you need healthcare support staff, housekeeping manpower,
+              hospitality staff, operational helpers, or facility support teams,
+              Platinum helps you manage workforce requirements with better
+              coordination and dependable service.
+            </p>
+
+            <Button href="/contact" dark>
+              Request Workforce
+            </Button>
+          </div>
+
+          <img
+            src={assets.workforce}
+            alt="Verified workforce team"
+            className="h-[640px] w-full rounded-[6px] object-cover shadow-[0_35px_90px_rgba(0,0,0,0.24)]"
+          />
+        </div>
+      </section>
+
+      {/* Company Team */}
+      <section id="team" className="bg-white px-[9vw] py-28 text-black">
+        <div className="grid gap-20 lg:grid-cols-[0.32fr_0.68fr]">
+          <p className="font-semibold text-[#104B9C]">
+            Our Team
+            <br />
+            People Behind Platinum
+          </p>
+
+          <SectionHeading>
+            A dedicated team managing client coordination, staffing
+            requirements, and reliable manpower deployment.
+          </SectionHeading>
+        </div>
+
+        <div className="mt-24 grid gap-5 md:grid-cols-2">
+          {companyTeam.map((member) => (
+            <article
+              key={member.name}
+              className="rounded-[6px] border border-[#104B9C]/15 bg-[#f7fbff] p-10 transition duration-300 hover:-translate-y-2 hover:shadow-[0_25px_70px_rgba(16,75,156,0.16)]"
+            >
+              <div className="mb-14 flex h-20 w-20 items-center justify-center rounded-full bg-[#104B9C] text-[24px] font-semibold text-white">
+                {member.initials}
+              </div>
+
+              <h3 className="text-[42px] font-light uppercase leading-[1] tracking-[-0.06em] text-black">
+                {member.name}
+              </h3>
+
+              <p className="mt-3 text-[22px] font-medium text-[#104B9C]">
+                {member.role}
+              </p>
+
+              <div className="mt-10 space-y-5">
+                <a
+                  href={`tel:+91${member.phone.replaceAll(" ", "").split("|")[0]}`}
+                  className="block text-[24px] font-semibold text-black transition hover:text-[#104B9C]"
+                >
+                  {member.phone}
+                </a>
+
+                <a
+                  href={`mailto:${member.email}`}
+                  className="block break-words text-[20px] font-medium text-[#4f4f4f] transition hover:text-[#104B9C]"
+                >
+                  {member.email}
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      {/* Contact */}
+      <section id="contact" className="bg-[#104B9C] px-[9vw] py-28 text-white">
+        <div className="grid items-start gap-20 lg:grid-cols-[0.38fr_0.62fr]">
+          <div>
+            <p className="mb-10 font-semibold text-[#d6eaff]">
+              Contact Platinum
+            </p>
+
+            <h2 className="max-w-[520px] text-[44px] font-light leading-[1.08] tracking-[-0.06em] md:text-[56px]">
+              Need reliable manpower for your workplace?
+            </h2>
+
+            <p className="mt-8 max-w-[440px] text-[20px] leading-[1.35] text-white/70">
+              Share your staffing requirement with us. Our team will guide you
+              with the right manpower solution for your business operations.
+            </p>
+
+            <Button href="tel:+919325158710" dark>
+              Call Now
+            </Button>
+          </div>
+
+          <div className="grid gap-5">
+            <article className="rounded-[6px] border border-white/15 bg-white/10 p-8 backdrop-blur-sm">
+              <h3 className="text-[30px] font-semibold leading-[1.08] tracking-[-0.04em] text-white">
+                Contact Details
+              </h3>
+
+              <div className="mt-8 space-y-5">
+                <a
+                  href="tel:+919325158710"
+                  className="block text-[24px] font-semibold text-white transition hover:opacity-70"
+                >
+                  93251 58710
+                </a>
+
+                <a
+                  href="mailto:contact@platinummanpowerservices.com"
+                  className="block break-words text-[20px] font-medium text-white/75 transition hover:text-white"
+                >
+                  contact@platinummanpowerservices.com
+                </a>
+              </div>
+            </article>
+
+            <article className="rounded-[6px] border border-white/15 bg-white p-8 text-black">
+              <h3 className="text-[24px] font-semibold">Office Address</h3>
+
+              <p className="mt-5 max-w-[640px] text-[20px] leading-[1.35] text-[#4f4f4f]">
+                Row House no 2, Jai Maa Ashapura Society, Sinnar Phata, Nashik,
+                422101
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
 
       <Footer />
     </main>
