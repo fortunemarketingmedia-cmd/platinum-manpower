@@ -2,11 +2,24 @@
 
 /* eslint-disable @next/next/no-img-element */
 
+import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState, type ReactNode } from "react";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 
-const BRAND_BLUE = "#104B9C";
+import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
+
+import {
+  ClipReveal,
+  FloatingShape,
+  Magnetic,
+  ParallaxMedia,
+  Reveal,
+  ScaleReveal,
+  ScrollProgress,
+  StaggerGroup,
+  StaggerItem,
+  StretchCard,
+} from "@/components/motion/MotionEffects";
 
 const assets = {
   heroBanner: "/images/hero-banner.png",
@@ -194,26 +207,28 @@ function Button({
   dark?: boolean;
 }) {
   return (
-    <a
-      href={href}
-      className={`mt-7 inline-flex items-stretch font-semibold outline-none transition ${
-        dark ? "text-white" : "text-black"
-      }`}
-    >
-      <span className="flex h-12 w-12 items-center justify-center rounded-[4px] bg-[#d6eaff] text-black">
-        ↳
-      </span>
-
-      <span
-        className={`ml-1 flex h-12 items-center justify-center rounded-[4px] border px-5 transition ${
-          dark
-            ? "border-white/35 hover:border-white/70"
-            : "border-black/25 hover:border-black/60"
+    <Magnetic className="mt-7 w-fit" strength={14}>
+      <a
+        href={href}
+        className={`group inline-flex items-stretch font-semibold outline-none ${
+          dark ? "text-white" : "text-black"
         }`}
       >
-        {children}
-      </span>
-    </a>
+        <span className="flex h-12 w-12 items-center justify-center rounded-[4px] bg-[#d6eaff] text-black transition-all duration-500 group-hover:rotate-[-10deg] group-hover:scale-105">
+          ↳
+        </span>
+
+        <span
+          className={`ml-1 flex h-12 items-center justify-center rounded-[4px] border px-5 transition-all duration-500 group-hover:px-7 ${
+            dark
+              ? "border-white/35 group-hover:border-white/75 group-hover:bg-white/10"
+              : "border-black/25 group-hover:border-black/60 group-hover:bg-black/[0.03]"
+          }`}
+        >
+          {children}
+        </span>
+      </a>
+    </Magnetic>
   );
 }
 
@@ -237,59 +252,92 @@ function SectionHeading({
 
 function AboutCarousel() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const activeSlide = aboutSlides[activeIndex];
 
   useEffect(() => {
     const timer = window.setInterval(() => {
       setActiveIndex((current) => (current + 1) % aboutSlides.length);
-    }, 3000);
+    }, 4200);
 
     return () => window.clearInterval(timer);
   }, []);
 
   return (
-    <div className="relative h-[420px] overflow-hidden rounded-[6px] bg-[#104B9C] shadow-[0_30px_80px_rgba(16,75,156,0.20)] lg:h-[460px]">
-      {aboutSlides.map((slide, index) => (
-        <div
-          key={slide.title}
-          className={`absolute inset-0 transition-all duration-700 ease-out ${
-            activeIndex === index
-              ? "scale-100 opacity-100"
-              : "scale-105 opacity-0"
-          }`}
+    <div className="relative h-[420px] overflow-hidden rounded-[10px] bg-[#104B9C] shadow-[0_30px_80px_rgba(16,75,156,0.20)] lg:h-[460px]">
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={activeSlide.title}
+          className="absolute inset-0"
+          initial={{
+            opacity: 0,
+            scale: 1.08,
+            clipPath: "inset(0 0 100% 0)",
+          }}
+          animate={{
+            opacity: 1,
+            scale: 1,
+            clipPath: "inset(0 0 0% 0)",
+          }}
+          exit={{
+            opacity: 0,
+            scale: 1.03,
+            clipPath: "inset(100% 0 0 0)",
+          }}
+          transition={{
+            duration: 0.85,
+            ease: [0.22, 1, 0.36, 1],
+          }}
         >
-          <img
-            src={slide.image}
-            alt={slide.title}
+          <motion.img
+            src={activeSlide.image}
+            alt={activeSlide.title}
             className="h-full w-full object-cover"
+            initial={{ scale: 1.1 }}
+            animate={{ scale: 1 }}
+            transition={{
+              duration: 4.2,
+              ease: "linear",
+            }}
           />
 
           <div className="absolute inset-0 bg-gradient-to-t from-[#104B9C]/95 via-[#104B9C]/35 to-transparent" />
 
-          <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
+          <motion.div
+            className="absolute bottom-0 left-0 right-0 p-8 text-white"
+            initial={{ opacity: 0, y: 28 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              delay: 0.18,
+              duration: 0.65,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+          >
             <p className="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-white/70">
               Platinum Manpower
             </p>
 
             <h3 className="text-[34px] font-light leading-none tracking-[-0.05em]">
-              {slide.title}
+              {activeSlide.title}
             </h3>
 
             <p className="mt-4 max-w-[460px] text-[17px] leading-[1.35] text-white/75">
-              {slide.text}
+              {activeSlide.text}
             </p>
-          </div>
-        </div>
-      ))}
+          </motion.div>
+        </motion.div>
+      </AnimatePresence>
 
       <div className="absolute right-6 top-6 z-20 flex gap-2">
         {aboutSlides.map((slide, index) => (
           <button
             key={slide.title}
             type="button"
-            aria-label={`Show ${slide.title}`}
+            aria-label={"Show " + slide.title}
             onClick={() => setActiveIndex(index)}
-            className={`h-2.5 rounded-full transition-all ${
-              activeIndex === index ? "w-8 bg-white" : "w-2.5 bg-white/45"
+            className={`h-2.5 rounded-full transition-all duration-500 ${
+              activeIndex === index
+                ? "w-9 bg-white"
+                : "w-2.5 bg-white/45 hover:bg-white/75"
             }`}
           />
         ))}
@@ -302,90 +350,200 @@ export default function Page() {
   return (
     <main className="min-h-screen overflow-hidden bg-[#104B9C] font-sans text-[#524f4b]">
       <Navbar />
+      <ScrollProgress />
 
       {/* Hero Banner */}
       <section className="relative min-h-screen w-full overflow-hidden bg-[#104B9C]">
-        <img
+        <motion.img
           src={assets.heroBanner}
           alt="Platinum Manpower banner"
           className="absolute inset-0 h-full w-full object-cover"
+          initial={{ scale: 1.08 }}
+          animate={{ scale: 1 }}
+          transition={{
+            duration: 1.8,
+            ease: [0.22, 1, 0.36, 1],
+          }}
         />
 
-        <div className="absolute inset-0 bg-gradient-to-t from-[#104B9C]/70 via-[#104B9C]/10 to-transparent" />
+        <motion.div
+          className="absolute inset-0 bg-gradient-to-t from-[#104B9C]/80 via-[#104B9C]/10 to-transparent"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.2 }}
+        />
 
-        <div className="absolute bottom-[7vw] left-[9vw] z-10 max-w-[560px]">
-          <p className="text-[22px] leading-[1.2] text-white drop-shadow-md md:text-[26px]">
+        <FloatingShape
+          duration={9}
+          distance={18}
+          className="absolute -right-32 top-[13%] h-[420px] w-[420px] rounded-full border border-white/20"
+        />
+
+        <FloatingShape
+          duration={7}
+          distance={12}
+          delay={0.7}
+          className="absolute -right-16 top-[19%] h-[290px] w-[290px] rounded-full border border-white/15"
+        />
+
+        <div className="absolute bottom-[7vw] left-[9vw] z-10 max-w-[620px]">
+          <motion.p
+            className="text-[22px] leading-[1.2] text-white drop-shadow-md md:text-[26px]"
+            initial={{ opacity: 0, y: 48 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              delay: 0.35,
+              duration: 0.9,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+          >
             Skilled, verified, and professionally managed manpower for hospitals,
             hotels, shopping malls, airports, offices, and commercial spaces.
-          </p>
+          </motion.p>
 
-          <a
-            href="/contact"
-            className="mt-8 inline-flex rounded-[4px] bg-[#d6eaff] px-7 py-3.5 text-[15px] font-semibold text-black transition hover:bg-white"
+          <motion.div
+            initial={{ opacity: 0, y: 32 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              delay: 0.55,
+              duration: 0.75,
+              ease: [0.22, 1, 0.36, 1],
+            }}
           >
-            Request Workforce
-          </a>
+            <Magnetic className="mt-8 w-fit" strength={16}>
+              <a
+                href="/contact"
+                className="group inline-flex items-center gap-4 rounded-[4px] bg-[#d6eaff] px-7 py-3.5 text-[15px] font-semibold text-black transition-all duration-500 hover:bg-white hover:px-9"
+              >
+                Request Workforce
+                <span className="transition-transform duration-500 group-hover:translate-x-2">
+                  →
+                </span>
+              </a>
+            </Magnetic>
+          </motion.div>
         </div>
+
+        <motion.div
+          aria-hidden="true"
+          className="absolute bottom-7 right-[9vw] z-10 hidden items-center gap-3 text-white/70 md:flex"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1 }}
+        >
+          <span className="text-[11px] font-semibold uppercase tracking-[0.18em]">
+            Scroll
+          </span>
+          <span className="relative h-14 w-px overflow-hidden bg-white/25">
+            <motion.span
+              className="absolute left-0 top-0 h-5 w-px bg-white"
+              animate={{ y: [-20, 56] }}
+              transition={{
+                duration: 1.7,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+          </span>
+        </motion.div>
       </section>
 
       {/* About */}
-      <section id="about" className="bg-white px-[9vw] py-28 text-black">
-        <p className="max-w-[280px] font-semibold text-[#104B9C]">
-          About Platinum
-        </p>
+      <section id="about" className="relative bg-white px-[9vw] py-28 text-black">
+        <FloatingShape
+          duration={10}
+          distance={14}
+          className="absolute -left-36 top-28 h-72 w-72 rounded-full bg-[#104B9C]/[0.035]"
+        />
 
-        <div className="mt-16 grid items-start gap-20 lg:grid-cols-[0.92fr_1.08fr]">
-          <div>
+        <Reveal>
+          <p className="max-w-[280px] font-semibold text-[#104B9C]">
+            About Platinum
+          </p>
+        </Reveal>
+
+        <div className="relative mt-16 grid items-start gap-20 lg:grid-cols-[0.92fr_1.08fr]">
+          <Reveal direction="right">
             <SectionHeading>
               We help businesses grow stronger with the right people behind
               their operations.
             </SectionHeading>
 
             <Button href="/contact">Contact Our Team</Button>
-          </div>
+          </Reveal>
 
           <div className="grid gap-8">
-            <AboutCarousel />
+            <ScaleReveal delay={0.08}>
+              <AboutCarousel />
+            </ScaleReveal>
 
-            <p className="max-w-[620px] text-[24px] leading-[1.22] text-[#4d4d4d]">
-              At{" "}
-              <strong>
-                PLATINUM MANPOWER AND FACILITY MANAGEMENT SERVICES
-              </strong>
-              , we provide skilled and unskilled manpower solutions for
-              hospitals, hotels, shopping malls, and airports with a focus on
-              reliability, professionalism, and long-term support.
-            </p>
+            <Reveal delay={0.12}>
+              <p className="max-w-[620px] text-[24px] leading-[1.22] text-[#4d4d4d]">
+                At{" "}
+                <strong>
+                  PLATINUM MANPOWER AND FACILITY MANAGEMENT SERVICES
+                </strong>
+                , we provide skilled and unskilled manpower solutions for
+                hospitals, hotels, shopping malls, and airports with a focus on
+                reliability, professionalism, and long-term support.
+              </p>
+            </Reveal>
           </div>
         </div>
 
-        <div className="mt-20 grid gap-5 lg:grid-cols-[0.9fr_1.1fr]">
-          <div className="rounded-[6px] bg-[#104B9C] p-9 text-white shadow-[0_30px_80px_rgba(16,75,156,0.18)]">
-            <h3 className="mb-4 text-[34px] font-medium tracking-[-0.04em]">
-              Our Promise
-            </h3>
+        <StaggerGroup
+          className="relative mt-20 grid gap-5 lg:grid-cols-[0.9fr_1.1fr]"
+          stagger={0.14}
+        >
+          <StaggerItem>
+            <StretchCard className="h-full">
+              <div className="group h-full rounded-[8px] bg-[#104B9C] p-9 text-white shadow-[0_30px_80px_rgba(16,75,156,0.18)]">
+                <h3 className="mb-4 text-[34px] font-medium tracking-[-0.04em]">
+                  Our Promise
+                </h3>
 
-            <p className="text-[22px] leading-[1.25] text-white/80">
-              Reliable staff. Smooth operations. People-first service.
-            </p>
-          </div>
+                <p className="text-[22px] leading-[1.25] text-white/80">
+                  Reliable staff. Smooth operations. People-first service.
+                </p>
 
-          <div className="rounded-[6px] border border-[#104B9C]/15 bg-[#f7fbff] p-9">
-            <p className="text-[20px] leading-[1.35] text-[#4f4f4f]">
-              Our team works closely with clients to understand staffing needs
-              and provide verified manpower that fits their operational
-              requirements.
-            </p>
-          </div>
-        </div>
+                <div className="mt-10 h-px w-16 bg-white/40 transition-all duration-500 group-hover:w-full" />
+              </div>
+            </StretchCard>
+          </StaggerItem>
+
+          <StaggerItem>
+            <StretchCard className="h-full">
+              <div className="group h-full rounded-[8px] border border-[#104B9C]/15 bg-[#f7fbff] p-9">
+                <p className="text-[20px] leading-[1.35] text-[#4f4f4f]">
+                  Our team works closely with clients to understand staffing
+                  needs and provide verified manpower that fits their operational
+                  requirements.
+                </p>
+
+                <div className="mt-10 h-px w-16 bg-[#104B9C]/30 transition-all duration-500 group-hover:w-full" />
+              </div>
+            </StretchCard>
+          </StaggerItem>
+        </StaggerGroup>
       </section>
 
       {/* Services */}
-      <section id="services" className="bg-[#104B9C] px-[9vw] py-28 text-white">
-        <div className="grid gap-20 lg:grid-cols-[1fr_0.78fr] lg:gap-28">
-          <SectionHeading light>Our Services</SectionHeading>
+      <section
+        id="services"
+        className="relative overflow-hidden bg-[#104B9C] px-[9vw] py-28 text-white"
+      >
+        <FloatingShape
+          duration={8}
+          distance={20}
+          className="absolute -right-40 -top-32 h-[460px] w-[460px] rounded-full border border-white/10"
+        />
 
-          <div>
+        <div className="relative grid gap-20 lg:grid-cols-[1fr_0.78fr] lg:gap-28">
+          <ClipReveal>
+            <SectionHeading light>Our Services</SectionHeading>
+          </ClipReveal>
+
+          <Reveal direction="left" delay={0.08}>
             <p className="max-w-[520px] text-[20px] leading-[1.24] text-white/75">
               We provide dependable manpower and facility support services for
               daily operations, specialized staffing, housekeeping, and
@@ -395,163 +553,247 @@ export default function Page() {
             <Button href="/services" dark>
               Explore Services
             </Button>
-          </div>
+          </Reveal>
         </div>
 
-        <div className="mt-24 grid gap-5 md:grid-cols-2 xl:grid-cols-5">
+        <StaggerGroup
+          className="relative mt-24 grid gap-5 md:grid-cols-2 xl:grid-cols-5"
+          delayChildren={0.1}
+          stagger={0.08}
+        >
           {services.map((service, index) => (
-            <article
-              key={service.title}
-              className="group flex min-h-[330px] flex-col justify-between rounded-[6px] border border-white/15 bg-white p-7 text-black shadow-[0_30px_80px_rgba(0,0,0,0.12)] transition duration-300 hover:-translate-y-2"
-            >
-              <div>
-                <div className="mb-8 flex h-12 w-12 items-center justify-center rounded-full bg-[#104B9C] text-sm font-bold text-white">
-                  {String(index + 1).padStart(2, "0")}
-                </div>
+            <StaggerItem key={service.title} className="h-full">
+              <StretchCard className="h-full">
+                <article className="group flex min-h-[330px] h-full flex-col justify-between overflow-hidden rounded-[8px] border border-white/15 bg-white p-7 text-black shadow-[0_30px_80px_rgba(0,0,0,0.12)]">
+                  <div>
+                    <div className="mb-8 flex h-12 w-12 items-center justify-center rounded-full bg-[#104B9C] text-sm font-bold text-white transition-all duration-500 group-hover:rotate-[-10deg] group-hover:scale-110">
+                      {String(index + 1).padStart(2, "0")}
+                    </div>
 
-                <h3 className="text-[24px] font-semibold leading-[1.1] tracking-[-0.04em]">
-                  {service.title}
-                </h3>
-              </div>
+                    <h3 className="text-[24px] font-semibold leading-[1.1] tracking-[-0.04em] transition-colors duration-300 group-hover:text-[#104B9C]">
+                      {service.title}
+                    </h3>
+                  </div>
 
-              <p className="mt-8 text-[16px] leading-[1.35] text-[#4f4f4f]">
-                {service.text}
-              </p>
-            </article>
+                  <div>
+                    <p className="mt-8 text-[16px] leading-[1.35] text-[#4f4f4f]">
+                      {service.text}
+                    </p>
+
+                    <div className="mt-7 h-[2px] w-10 bg-[#104B9C]/30 transition-all duration-500 group-hover:w-full group-hover:bg-[#104B9C]" />
+                  </div>
+                </article>
+              </StretchCard>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerGroup>
       </section>
 
       {/* Staffing Approach */}
-      <section className="bg-white px-[9vw] py-28 text-[#104B9C]">
-        <div className="grid gap-20 lg:grid-cols-[0.32fr_0.68fr]">
-          <p className="font-semibold">
-            Our Staffing Approach
-            <br />
-            Structured. Simple. Reliable.
-          </p>
+      <section className="relative overflow-hidden bg-white px-[9vw] py-28 text-[#104B9C]">
+        <FloatingShape
+          duration={9}
+          distance={16}
+          className="absolute -bottom-28 -left-28 h-80 w-80 rounded-full bg-[#104B9C]/[0.035]"
+        />
 
-          <SectionHeading>
-            From requirement understanding to ongoing support, our process is
-            built for smooth manpower deployment.
-          </SectionHeading>
+        <div className="relative grid gap-20 lg:grid-cols-[0.32fr_0.68fr]">
+          <Reveal direction="right">
+            <p className="font-semibold">
+              Our Staffing Approach
+              <br />
+              Structured. Simple. Reliable.
+            </p>
+          </Reveal>
+
+          <ClipReveal delay={0.06}>
+            <SectionHeading>
+              From requirement understanding to ongoing support, our process is
+              built for smooth manpower deployment.
+            </SectionHeading>
+          </ClipReveal>
         </div>
 
-        <div className="mt-24 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-          {approach.map((item) => (
-            <article
-              key={item.step}
-              className="rounded-[6px] border border-[#104B9C]/15 bg-[#f7fbff] p-8 transition duration-300 hover:-translate-y-2 hover:shadow-[0_25px_70px_rgba(16,75,156,0.16)]"
-            >
-              <span className="mb-14 flex h-14 w-14 items-center justify-center rounded-full bg-[#104B9C] text-sm font-bold text-white">
-                {item.step}
-              </span>
+        <StaggerGroup
+          className="relative mt-24 grid gap-5 md:grid-cols-2 xl:grid-cols-4"
+          stagger={0.12}
+        >
+          {approach.map((item, index) => (
+            <StaggerItem key={item.step} className="h-full">
+              <StretchCard className="h-full">
+                <article className="group relative h-full overflow-hidden rounded-[8px] border border-[#104B9C]/15 bg-[#f7fbff] p-8">
+                  <span className="mb-14 flex h-14 w-14 items-center justify-center rounded-full bg-[#104B9C] text-sm font-bold text-white transition-all duration-500 group-hover:scale-110">
+                    {item.step}
+                  </span>
 
-              <h3 className="text-[28px] font-semibold leading-[1.08] tracking-[-0.05em] text-black">
-                {item.title}
-              </h3>
+                  <h3 className="text-[28px] font-semibold leading-[1.08] tracking-[-0.05em] text-black">
+                    {item.title}
+                  </h3>
 
-              <p className="mt-8 text-[17px] leading-[1.35] text-[#4f4f4f]">
-                {item.text}
-              </p>
-            </article>
+                  <p className="mt-8 text-[17px] leading-[1.35] text-[#4f4f4f]">
+                    {item.text}
+                  </p>
+
+                  {index < approach.length - 1 ? (
+                    <span className="absolute right-6 top-9 hidden text-[25px] text-[#104B9C]/25 transition-transform duration-500 group-hover:translate-x-2 xl:block">
+                      →
+                    </span>
+                  ) : null}
+
+                  <span className="absolute bottom-0 left-0 h-[4px] w-0 bg-[#104B9C] transition-all duration-500 group-hover:w-full" />
+                </article>
+              </StretchCard>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerGroup>
       </section>
 
       {/* Why Choose */}
-      <section className="bg-[#104B9C] px-[9vw] py-28 text-white">
-        <div className="mb-20 grid gap-20 lg:grid-cols-[0.7fr_1.3fr]">
-          <p className="font-semibold">
-            Why Choose Platinum?
-            <br />
-            Skilled. Verified. Managed.
-          </p>
+      <section className="relative overflow-hidden bg-[#104B9C] px-[9vw] py-28 text-white">
+        <FloatingShape
+          duration={11}
+          distance={22}
+          className="absolute -right-32 bottom-10 h-[360px] w-[360px] rounded-full border border-white/10"
+        />
 
-          <SectionHeading light>
-            We support businesses with trained manpower, quick replacement,
-            verified staff, and professional coordination.
-          </SectionHeading>
+        <div className="relative mb-20 grid gap-20 lg:grid-cols-[0.7fr_1.3fr]">
+          <Reveal direction="right">
+            <p className="font-semibold">
+              Why Choose Platinum?
+              <br />
+              Skilled. Verified. Managed.
+            </p>
+          </Reveal>
+
+          <ClipReveal delay={0.08}>
+            <SectionHeading light>
+              We support businesses with trained manpower, quick replacement,
+              verified staff, and professional coordination.
+            </SectionHeading>
+          </ClipReveal>
         </div>
 
-        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+        <StaggerGroup
+          className="relative grid gap-5 md:grid-cols-2 xl:grid-cols-3"
+          stagger={0.09}
+        >
           {whyChoose.map((item, index) => (
-            <article
-              key={item.title}
-              className="flex min-h-[280px] flex-col justify-between rounded-[6px] border border-white/15 bg-white/10 p-8 backdrop-blur-sm transition duration-300 hover:-translate-y-2 hover:bg-white hover:text-black"
-            >
-              <div>
-                <p className="mb-12 flex items-center gap-3 text-lg">
-                  <span className="h-3 w-3 rounded-full bg-[#d6eaff]" />
-                  {String(index + 1).padStart(2, "0")}
-                </p>
+            <StaggerItem key={item.title} className="h-full">
+              <StretchCard className="h-full" activeScale={1.012}>
+                <article className="group flex min-h-[280px] h-full flex-col justify-between overflow-hidden rounded-[8px] border border-white/15 bg-white/10 p-8 backdrop-blur-sm transition-colors duration-500 hover:bg-white hover:text-black">
+                  <div>
+                    <p className="mb-12 flex items-center gap-3 text-lg">
+                      <span className="h-3 w-3 rounded-full bg-[#d6eaff] transition-all duration-500 group-hover:scale-[1.8] group-hover:bg-[#104B9C]" />
+                      {String(index + 1).padStart(2, "0")}
+                    </p>
 
-                <h3 className="text-[30px] font-light leading-[1.08] tracking-[-0.05em]">
-                  {item.title}
-                </h3>
-              </div>
+                    <h3 className="text-[30px] font-light leading-[1.08] tracking-[-0.05em]">
+                      {item.title}
+                    </h3>
+                  </div>
 
-              <p className="mt-10 text-[18px] leading-[1.32] opacity-75">
-                {item.text}
-              </p>
-            </article>
+                  <p className="mt-10 text-[18px] leading-[1.32] opacity-75">
+                    {item.text}
+                  </p>
+
+                  <span className="absolute bottom-0 left-0 h-[4px] w-0 bg-[#d6eaff] transition-all duration-500 group-hover:w-full group-hover:bg-[#104B9C]" />
+                </article>
+              </StretchCard>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerGroup>
       </section>
 
       {/* Industries */}
-      <section id="industries" className="bg-white px-[9vw] py-28 text-black">
+      <section
+        id="industries"
+        className="relative overflow-hidden bg-white px-[9vw] py-28 text-black"
+      >
         <div className="grid gap-20 lg:grid-cols-[1fr_0.78fr] lg:gap-28">
-          <SectionHeading>Industries We Serve</SectionHeading>
+          <ClipReveal>
+            <SectionHeading>Industries We Serve</SectionHeading>
+          </ClipReveal>
 
-          <p className="max-w-[520px] text-[20px] leading-[1.24] text-[#4f4f4f]">
-            We provide reliable manpower support for industries where
-            cleanliness, discipline, responsibility, and operational continuity
-            matter every day.
-          </p>
+          <Reveal direction="left" delay={0.08}>
+            <p className="max-w-[520px] text-[20px] leading-[1.24] text-[#4f4f4f]">
+              We provide reliable manpower support for industries where
+              cleanliness, discipline, responsibility, and operational
+              continuity matter every day.
+            </p>
+          </Reveal>
         </div>
 
-        <div className="mt-24 grid gap-5 lg:grid-cols-2">
+        <StaggerGroup
+          className="mt-24 grid gap-5 lg:grid-cols-2"
+          delayChildren={0.08}
+          stagger={0.12}
+        >
           {industries.map((industry) => (
-            <article
-              key={industry.title}
-              className="grid overflow-hidden rounded-[6px] border border-[#104B9C]/10 bg-[#f7fbff] shadow-[0_24px_70px_rgba(16,75,156,0.10)] lg:grid-cols-[0.92fr_1.08fr]"
-            >
-              <img
-                src={industry.image}
-                alt={`${industry.title} manpower support`}
-                className="h-full min-h-[360px] w-full object-cover"
-              />
+            <StaggerItem key={industry.title} className="h-full">
+              <StretchCard className="h-full" activeScale={1.008}>
+                <article className="group grid h-full overflow-hidden rounded-[8px] border border-[#104B9C]/10 bg-[#f7fbff] shadow-[0_24px_70px_rgba(16,75,156,0.10)] lg:grid-cols-[0.92fr_1.08fr]">
+                  <div className="relative min-h-[360px] overflow-hidden">
+                    <motion.img
+                      src={industry.image}
+                      alt={industry.title + " manpower support"}
+                      className="absolute inset-0 h-full w-full object-cover"
+                      whileHover={{ scale: 1.07 }}
+                      transition={{
+                        duration: 0.75,
+                        ease: [0.22, 1, 0.36, 1],
+                      }}
+                    />
 
-              <div className="p-8">
-                <h3 className="text-[42px] font-light leading-[1] tracking-[-0.06em] text-black">
-                  {industry.title}
-                </h3>
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#061b38]/25 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                  </div>
 
-                <div className="my-6 h-[3px] w-16 bg-[#104B9C]" />
+                  <div className="p-8">
+                    <h3 className="text-[42px] font-light leading-[1] tracking-[-0.06em] text-black transition-colors duration-300 group-hover:text-[#104B9C]">
+                      {industry.title}
+                    </h3>
 
-                <p className="text-[18px] font-medium leading-[1.34] text-[#1f2937]">
-                  {industry.text}
-                </p>
+                    <div className="my-6 h-[3px] w-16 bg-[#104B9C] transition-all duration-500 group-hover:w-full" />
 
-                <ul className="mt-8 grid gap-3 text-[17px] text-[#4f4f4f]">
-                  {industry.points.map((point) => (
-                    <li key={point} className="flex gap-3">
-                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#104B9C]" />
-                      <span>{point}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </article>
+                    <p className="text-[18px] font-medium leading-[1.34] text-[#1f2937]">
+                      {industry.text}
+                    </p>
+
+                    <ul className="mt-8 grid gap-3 text-[17px] text-[#4f4f4f]">
+                      {industry.points.map((point, pointIndex) => (
+                        <motion.li
+                          key={point}
+                          className="flex gap-3"
+                          initial={{ opacity: 0, x: 12 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          viewport={{ once: true }}
+                          transition={{
+                            delay: pointIndex * 0.06,
+                            duration: 0.45,
+                          }}
+                        >
+                          <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#104B9C]" />
+                          <span>{point}</span>
+                        </motion.li>
+                      ))}
+                    </ul>
+                  </div>
+                </article>
+              </StretchCard>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerGroup>
       </section>
 
       {/* Workforce Support */}
-      <section className="bg-[#104B9C] px-[9vw] py-28 text-white">
-        <div className="grid items-center gap-20 lg:grid-cols-[0.4fr_0.6fr]">
-          <div>
+      <section className="relative overflow-hidden bg-[#104B9C] px-[9vw] py-28 text-white">
+        <FloatingShape
+          duration={8}
+          distance={18}
+          className="absolute -left-32 top-12 h-80 w-80 rounded-full border border-white/10"
+        />
+
+        <div className="relative grid items-center gap-20 lg:grid-cols-[0.4fr_0.6fr]">
+          <Reveal direction="right">
             <SectionHeading light>
               Manpower support designed for daily business operations.
             </SectionHeading>
@@ -566,73 +808,109 @@ export default function Page() {
             <Button href="/contact" dark>
               Request Workforce
             </Button>
-          </div>
+          </Reveal>
 
-          <img
-            src={assets.workforce}
-            alt="Verified workforce team"
-            className="h-[640px] w-full rounded-[6px] object-cover shadow-[0_35px_90px_rgba(0,0,0,0.24)]"
-          />
+          <ScaleReveal delay={0.1}>
+            <ParallaxMedia
+              src={assets.workforce}
+              alt="Verified workforce team"
+              distance={55}
+              className="h-[560px] rounded-[10px] shadow-[0_35px_90px_rgba(0,0,0,0.24)] md:h-[640px]"
+              overlayClassName="bg-gradient-to-t from-[#061b38]/20 to-transparent"
+            >
+              <div className="absolute bottom-6 right-6 z-10 rounded-[6px] border border-white/20 bg-white/10 px-5 py-4 text-white backdrop-blur-md">
+                <p className="text-[12px] font-semibold uppercase tracking-[0.14em] text-[#d6eaff]">
+                  Workforce Support
+                </p>
+                <p className="mt-1 text-[18px] font-medium">
+                  Reliable. Managed. Ready.
+                </p>
+              </div>
+            </ParallaxMedia>
+          </ScaleReveal>
         </div>
       </section>
 
       {/* Company Team */}
-      <section id="team" className="bg-white px-[9vw] py-28 text-black">
+      <section id="team" className="relative bg-white px-[9vw] py-28 text-black">
         <div className="grid gap-20 lg:grid-cols-[0.32fr_0.68fr]">
-          <p className="font-semibold text-[#104B9C]">
-            Our Team
-            <br />
-            People Behind Platinum
-          </p>
+          <Reveal direction="right">
+            <p className="font-semibold text-[#104B9C]">
+              Our Team
+              <br />
+              People Behind Platinum
+            </p>
+          </Reveal>
 
-          <SectionHeading>
-            A dedicated team managing client coordination, staffing
-            requirements, and reliable manpower deployment.
-          </SectionHeading>
+          <ClipReveal delay={0.08}>
+            <SectionHeading>
+              A dedicated team managing client coordination, staffing
+              requirements, and reliable manpower deployment.
+            </SectionHeading>
+          </ClipReveal>
         </div>
 
-        <div className="mt-24 grid gap-5 md:grid-cols-2">
+        <StaggerGroup
+          className="mt-24 grid gap-5 md:grid-cols-2"
+          delayChildren={0.08}
+          stagger={0.14}
+        >
           {companyTeam.map((member) => (
-            <article
-              key={member.name}
-              className="rounded-[6px] border border-[#104B9C]/15 bg-[#f7fbff] p-10 transition duration-300 hover:-translate-y-2 hover:shadow-[0_25px_70px_rgba(16,75,156,0.16)]"
-            >
-              <div className="mb-14 flex h-20 w-20 items-center justify-center rounded-full bg-[#104B9C] text-[24px] font-semibold text-white">
-                {member.initials}
-              </div>
+            <StaggerItem key={member.name} className="h-full">
+              <StretchCard className="h-full">
+                <article className="group relative h-full overflow-hidden rounded-[8px] border border-[#104B9C]/15 bg-[#f7fbff] p-10">
+                  <div className="mb-14 flex h-20 w-20 items-center justify-center rounded-full bg-[#104B9C] text-[24px] font-semibold text-white transition-all duration-500 group-hover:rotate-[-8deg] group-hover:scale-110">
+                    {member.initials}
+                  </div>
 
-              <h3 className="text-[42px] font-light uppercase leading-[1] tracking-[-0.06em] text-black">
-                {member.name}
-              </h3>
+                  <h3 className="text-[42px] font-light uppercase leading-[1] tracking-[-0.06em] text-black transition-colors duration-300 group-hover:text-[#104B9C]">
+                    {member.name}
+                  </h3>
 
-              <p className="mt-3 text-[22px] font-medium text-[#104B9C]">
-                {member.role}
-              </p>
+                  <p className="mt-3 text-[22px] font-medium text-[#104B9C]">
+                    {member.role}
+                  </p>
 
-              <div className="mt-10 space-y-5">
-                <a
-                  href={`tel:+91${member.phone.replaceAll(" ", "").split("|")[0]}`}
-                  className="block text-[24px] font-semibold text-black transition hover:text-[#104B9C]"
-                >
-                  {member.phone}
-                </a>
+                  <div className="mt-10 space-y-5">
+                    <a
+                      href={
+                        "tel:+91" +
+                        member.phone.replaceAll(" ", "").split("|")[0]
+                      }
+                      className="block text-[24px] font-semibold text-black transition hover:text-[#104B9C]"
+                    >
+                      {member.phone}
+                    </a>
 
-                <a
-                  href={`mailto:${member.email}`}
-                  className="block break-words text-[20px] font-medium text-[#4f4f4f] transition hover:text-[#104B9C]"
-                >
-                  {member.email}
-                </a>
-              </div>
-            </article>
+                    <a
+                      href={"mailto:" + member.email}
+                      className="block break-words text-[20px] font-medium text-[#4f4f4f] transition hover:text-[#104B9C]"
+                    >
+                      {member.email}
+                    </a>
+                  </div>
+
+                  <span className="absolute bottom-0 left-0 h-[5px] w-0 bg-[#104B9C] transition-all duration-500 group-hover:w-full" />
+                </article>
+              </StretchCard>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerGroup>
       </section>
 
       {/* Contact */}
-      <section id="contact" className="bg-[#104B9C] px-[9vw] py-28 text-white">
-        <div className="grid items-start gap-20 lg:grid-cols-[0.38fr_0.62fr]">
-          <div>
+      <section
+        id="contact"
+        className="relative overflow-hidden bg-[#104B9C] px-[9vw] py-28 text-white"
+      >
+        <FloatingShape
+          duration={10}
+          distance={20}
+          className="absolute -right-24 top-10 h-80 w-80 rounded-full border border-white/10"
+        />
+
+        <div className="relative grid items-start gap-20 lg:grid-cols-[0.38fr_0.62fr]">
+          <Reveal direction="right">
             <p className="mb-10 font-semibold text-[#d6eaff]">
               Contact Platinum
             </p>
@@ -649,40 +927,52 @@ export default function Page() {
             <Button href="tel:+919325158710" dark>
               Call Now
             </Button>
-          </div>
+          </Reveal>
 
-          <div className="grid gap-5">
-            <article className="rounded-[6px] border border-white/15 bg-white/10 p-8 backdrop-blur-sm">
-              <h3 className="text-[30px] font-semibold leading-[1.08] tracking-[-0.04em] text-white">
-                Contact Details
-              </h3>
+          <StaggerGroup className="grid gap-5" stagger={0.14}>
+            <StaggerItem>
+              <StretchCard>
+                <article className="group rounded-[8px] border border-white/15 bg-white/10 p-8 backdrop-blur-sm transition-colors duration-500 hover:bg-white/15">
+                  <h3 className="text-[30px] font-semibold leading-[1.08] tracking-[-0.04em] text-white">
+                    Contact Details
+                  </h3>
 
-              <div className="mt-8 space-y-5">
-                <a
-                  href="tel:+919325158710"
-                  className="block text-[24px] font-semibold text-white transition hover:opacity-70"
-                >
-                  93251 58710
-                </a>
+                  <div className="mt-8 space-y-5">
+                    <a
+                      href="tel:+919325158710"
+                      className="block text-[24px] font-semibold text-white transition-all duration-300 hover:translate-x-2 hover:opacity-75"
+                    >
+                      93251 58710
+                    </a>
 
-                <a
-                  href="mailto:contact@platinummanpowerservices.com"
-                  className="block break-words text-[20px] font-medium text-white/75 transition hover:text-white"
-                >
-                  contact@platinummanpowerservices.com
-                </a>
-              </div>
-            </article>
+                    <a
+                      href="mailto:contact@platinummanpowerservices.com"
+                      className="block break-words text-[18px] font-medium text-white/75 transition-all duration-300 hover:translate-x-2 hover:text-white sm:text-[20px]"
+                    >
+                      contact@platinummanpowerservices.com
+                    </a>
+                  </div>
+                </article>
+              </StretchCard>
+            </StaggerItem>
 
-            <article className="rounded-[6px] border border-white/15 bg-white p-8 text-black">
-              <h3 className="text-[24px] font-semibold">Office Address</h3>
+            <StaggerItem>
+              <StretchCard>
+                <article className="group rounded-[8px] border border-white/15 bg-white p-8 text-black">
+                  <h3 className="text-[24px] font-semibold transition-colors duration-300 group-hover:text-[#104B9C]">
+                    Office Address
+                  </h3>
 
-              <p className="mt-5 max-w-[640px] text-[20px] leading-[1.35] text-[#4f4f4f]">
-                Row House no 2, Jai Maa Ashapura Society, Sinnar Phata, Nashik,
-                422101
-              </p>
-            </article>
-          </div>
+                  <p className="mt-5 max-w-[640px] text-[20px] leading-[1.35] text-[#4f4f4f]">
+                    Row House no 2, Jai Maa Ashapura Society, Sinnar Phata,
+                    Nashik, 422101
+                  </p>
+
+                  <div className="mt-8 h-[2px] w-12 bg-[#104B9C]/30 transition-all duration-500 group-hover:w-full group-hover:bg-[#104B9C]" />
+                </article>
+              </StretchCard>
+            </StaggerItem>
+          </StaggerGroup>
         </div>
       </section>
 

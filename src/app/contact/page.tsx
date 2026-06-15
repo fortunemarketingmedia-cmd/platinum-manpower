@@ -5,6 +5,18 @@
 import { useMemo, useState, type FormEvent, type ReactNode } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import {
+  ClipReveal,
+  FloatingShape,
+  Magnetic,
+  ParallaxMedia,
+  Reveal,
+  ScaleReveal,
+  ScrollProgress,
+  StaggerGroup,
+  StaggerItem,
+  StretchCard,
+} from "@/components/motion/MotionEffects";
 
 const assets = {
   hero: "/images/contact-team.png",
@@ -302,75 +314,107 @@ export default function ContactPage() {
   return (
     <main className="min-h-screen overflow-hidden bg-white font-sans text-[#524f4b]">
       <Navbar />
+      <ScrollProgress />
+      {/* Hero Section */}
+<section className="relative overflow-hidden bg-[#D9EAFD] px-[9vw] pb-24 pt-[140px] text-black">
+  <FloatingShape
+    duration={9}
+    distance={22}
+    className="absolute -right-24 top-20 h-[520px] w-[520px] rounded-full border border-[#104B9C]/10"
+  />
 
-      {/* Hero */}
-      <section className="relative overflow-hidden bg-[#D9EAFD] px-[9vw] pb-24 pt-[140px] text-black">
-        <div className="absolute -right-24 top-20 h-[520px] w-[520px] rounded-full border border-[#104B9C]/10" />
-        <div className="absolute -right-8 top-36 h-[390px] w-[390px] rounded-full border border-[#104B9C]/10" />
+  <FloatingShape
+    duration={7}
+    distance={14}
+    delay={0.6}
+    className="absolute -right-8 top-36 h-[390px] w-[390px] rounded-full border border-[#104B9C]/10"
+  />
 
-        <div className="relative grid items-end gap-16 lg:grid-cols-[0.9fr_1.1fr]">
-          <div className="pb-4">
-            <p className="mb-8 text-[14px] font-semibold uppercase tracking-[0.16em] text-[#104B9C]">
-              Contact Platinum Manpower
+  <div className="relative grid items-end gap-16 lg:grid-cols-[0.9fr_1.1fr]">
+    <Reveal direction="right" className="pb-4">
+      <p className="mb-8 text-[14px] font-semibold uppercase tracking-[0.16em] text-[#104B9C]">
+        Contact Platinum Manpower
+      </p>
+
+      <h1 className="max-w-[780px] text-[52px] font-light leading-[0.94] tracking-[-0.07em] md:text-[74px] xl:text-[96px]">
+        Let&apos;s discuss your workforce requirement.
+      </h1>
+
+      <Reveal delay={0.12}>
+        <p className="mt-10 max-w-[600px] text-[20px] leading-[1.42] text-black/65">
+          Tell us the roles, quantity, location, and shift requirements.
+          Our team will help you identify a practical manpower solution
+          for your workplace.
+        </p>
+      </Reveal>
+
+      <div className="mt-10 flex flex-wrap gap-4">
+        <Magnetic>
+          <ArrowButton href="tel:+919325158710">
+            Call Our Team
+          </ArrowButton>
+        </Magnetic>
+
+        <Magnetic strength={14}>
+          <ArrowButton
+            href="https://wa.me/919325158710"
+            external
+          >
+            WhatsApp Us
+          </ArrowButton>
+        </Magnetic>
+      </div>
+    </Reveal>
+
+    <ScaleReveal delay={0.12}>
+      <ParallaxMedia
+        src={assets.hero}
+        alt="Platinum manpower contact team"
+        distance={55}
+        className="min-h-[590px] rounded-[12px] bg-[#104B9C] shadow-[0_35px_100px_rgba(16,75,156,0.22)]"
+        overlayClassName="bg-gradient-to-t from-[#061b38]/95 via-[#104B9C]/20 to-transparent"
+      >
+        <div className="absolute bottom-0 left-0 right-0 z-10 p-8 text-white md:p-12">
+          <Reveal delay={0.2}>
+            <p className="text-[13px] font-semibold uppercase tracking-[0.16em] text-[#d6eaff]">
+              Response-focused support
             </p>
 
-            <h1 className="max-w-[780px] text-[52px] font-light leading-[0.94] tracking-[-0.07em] md:text-[74px] xl:text-[96px]">
-              Let&apos;s discuss your workforce requirement.
-            </h1>
+            <h2 className="mt-4 max-w-[560px] text-[38px] font-light leading-[1.02] tracking-[-0.055em] md:text-[52px]">
+              Clear coordination from the first conversation.
+            </h2>
+          </Reveal>
 
-            <p className="mt-10 max-w-[600px] text-[20px] leading-[1.42] text-black/65">
-              Tell us the roles, quantity, location, and shift requirements. Our
-              team will help you identify a practical manpower solution for your
-              workplace.
-            </p>
-
-            <div className="mt-10 flex flex-wrap gap-4">
-              <ArrowButton href="tel:+919325158710">Call Our Team</ArrowButton>
-              <ArrowButton
-                href="https://wa.me/919325158710"
-                external
-              >
-                WhatsApp Us
-              </ArrowButton>
-            </div>
-          </div>
-
-          <div className="relative min-h-[590px] overflow-hidden rounded-[12px] bg-[#104B9C] shadow-[0_35px_100px_rgba(16,75,156,0.22)]">
-            <img
-              src={assets.hero}
-              alt="Platinum manpower contact team"
-              className="absolute inset-0 h-full w-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#061b38]/95 via-[#104B9C]/20 to-transparent" />
-
-            <div className="absolute bottom-0 left-0 right-0 p-8 text-white md:p-12">
-              <p className="text-[13px] font-semibold uppercase tracking-[0.16em] text-[#d6eaff]">
-                Response-focused support
-              </p>
-              <h2 className="mt-4 max-w-[560px] text-[38px] font-light leading-[1.02] tracking-[-0.055em] md:text-[52px]">
-                Clear coordination from the first conversation.
-              </h2>
-              <div className="mt-8 grid gap-4 sm:grid-cols-3">
-                {[
-                  ["01", "Requirement"],
-                  ["02", "Coordination"],
-                  ["03", "Deployment"],
-                ].map(([number, label]) => (
-                  <div
-                    key={number}
-                    className="rounded-[6px] border border-white/20 bg-white/10 px-4 py-4 backdrop-blur-sm"
-                  >
+          <StaggerGroup
+            className="mt-8 grid gap-4 sm:grid-cols-3"
+            delayChildren={0.25}
+            stagger={0.1}
+          >
+            {[
+              ["01", "Requirement"],
+              ["02", "Coordination"],
+              ["03", "Deployment"],
+            ].map(([number, label]) => (
+              <StaggerItem key={number}>
+                <StretchCard>
+                  <div className="rounded-[6px] border border-white/20 bg-white/10 px-4 py-4 backdrop-blur-sm">
                     <p className="text-[13px] font-semibold text-[#d6eaff]">
                       {number}
                     </p>
-                    <p className="mt-2 text-[16px] font-medium">{label}</p>
+
+                    <p className="mt-2 text-[16px] font-medium">
+                      {label}
+                    </p>
                   </div>
-                ))}
-              </div>
-            </div>
-          </div>
+                </StretchCard>
+              </StaggerItem>
+            ))}
+          </StaggerGroup>
         </div>
-      </section>
+      </ParallaxMedia>
+    </ScaleReveal>
+  </div>
+</section>
 
 {/* Contact Methods */}
 <section className="bg-white px-[9vw] py-20 text-black">
