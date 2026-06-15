@@ -348,12 +348,24 @@ function AboutCarousel() {
 
 export default function Page() {
   return (
-    <main className="min-h-screen overflow-hidden bg-[#104B9C] font-sans text-[#524f4b]">
+    <main className="relative isolate min-h-screen overflow-x-clip bg-[#082d5c] font-sans text-[#524f4b]">
       <Navbar />
       <ScrollProgress />
 
-      {/* Hero Banner */}
-      <section className="relative min-h-screen w-full overflow-hidden bg-[#104B9C]">
+      {/* Fixed page background. All rounded section cards scroll above this layer. */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none fixed inset-0 z-0 overflow-hidden bg-[#082d5c]"
+      >
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_16%_14%,rgba(214,234,255,0.18),transparent_28%),radial-gradient(circle_at_88%_34%,rgba(255,255,255,0.10),transparent_24%),linear-gradient(145deg,#082d5c_0%,#0b3c78_48%,#061f43_100%)]" />
+        <div className="absolute -left-40 top-[12%] h-[520px] w-[520px] rounded-full border border-white/10" />
+        <div className="absolute -right-44 top-[48%] h-[620px] w-[620px] rounded-full border border-white/[0.08]" />
+        <div className="absolute inset-0 opacity-[0.055] [background-image:linear-gradient(rgba(255,255,255,0.65)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.65)_1px,transparent_1px)] [background-size:72px_72px]" />
+      </div>
+
+      <div className="relative z-10 pb-2 pt-2 sm:pb-3 sm:pt-3 lg:pb-5 lg:pt-5">
+        {/* Hero Banner */}
+        <section className="relative mx-2 min-h-[calc(100svh-1rem)] w-auto overflow-hidden rounded-[26px] bg-[#104B9C] shadow-[0_32px_100px_rgba(2,18,43,0.32)] sm:mx-3 sm:min-h-[calc(100svh-1.5rem)] md:rounded-[34px] lg:mx-5 lg:min-h-[calc(100svh-2.5rem)]">
         <motion.img
           src={assets.heroBanner}
           alt="Platinum Manpower banner"
@@ -446,10 +458,13 @@ export default function Page() {
             />
           </span>
         </motion.div>
-      </section>
+        </section>
 
-      {/* About */}
-      <section id="about" className="relative bg-white px-[9vw] py-28 text-black">
+        {/* About */}
+        <section
+          id="about"
+          className="relative mx-2 mb-3 mt-3 overflow-hidden rounded-[26px] bg-white px-[9vw] py-28 text-black shadow-[0_32px_100px_rgba(2,18,43,0.24)] scroll-mt-24 sm:mx-3 sm:mb-4 sm:mt-4 md:rounded-[34px] lg:mx-5"
+        >
         <FloatingShape
           duration={10}
           distance={14}
@@ -527,11 +542,11 @@ export default function Page() {
         </StaggerGroup>
       </section>
 
-      {/* Services */}
-      <section
-        id="services"
-        className="relative overflow-hidden bg-[#104B9C] px-[9vw] py-28 text-white"
-      >
+        {/* Services */}
+        <section
+          id="services"
+          className="relative mx-2 mb-3 overflow-hidden rounded-[26px] bg-[#104B9C] px-[9vw] py-28 text-white shadow-[0_32px_100px_rgba(2,18,43,0.24)] scroll-mt-24 sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5"
+        >
         <FloatingShape
           duration={8}
           distance={20}
@@ -589,8 +604,8 @@ export default function Page() {
         </StaggerGroup>
       </section>
 
-      {/* Staffing Approach */}
-      <section className="relative overflow-hidden bg-white px-[9vw] py-28 text-[#104B9C]">
+        {/* Staffing Approach */}
+        <section className="relative mx-2 mb-3 overflow-hidden rounded-[26px] bg-white px-[9vw] py-28 text-[#104B9C] shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5">
         <FloatingShape
           duration={9}
           distance={16}
@@ -648,8 +663,8 @@ export default function Page() {
         </StaggerGroup>
       </section>
 
-      {/* Why Choose */}
-      <section className="relative overflow-hidden bg-[#104B9C] px-[9vw] py-28 text-white">
+        {/* Why Choose */}
+        <section className="relative mx-2 mb-3 overflow-hidden rounded-[26px] bg-[#104B9C] px-[9vw] py-28 text-white shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5">
         <FloatingShape
           duration={11}
           distance={22}
@@ -704,11 +719,11 @@ export default function Page() {
         </StaggerGroup>
       </section>
 
-      {/* Industries */}
-      <section
-        id="industries"
-        className="relative overflow-hidden bg-white px-[9vw] py-28 text-black"
-      >
+        {/* Industries */}
+        <section
+          id="industries"
+          className="relative mx-2 mb-3 overflow-hidden rounded-[26px] bg-white px-[9vw] py-28 text-black shadow-[0_32px_100px_rgba(2,18,43,0.24)] scroll-mt-24 sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5"
+        >
         <div className="grid gap-20 lg:grid-cols-[1fr_0.78fr] lg:gap-28">
           <ClipReveal>
             <SectionHeading>Industries We Serve</SectionHeading>
@@ -784,8 +799,8 @@ export default function Page() {
         </StaggerGroup>
       </section>
 
-      {/* Workforce Support */}
-      <section className="relative overflow-hidden bg-[#104B9C] px-[9vw] py-28 text-white">
+        {/* Workforce Support */}
+        <section className="relative mx-2 mb-3 overflow-hidden rounded-[26px] bg-[#104B9C] px-[9vw] py-28 text-white shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5">
         <FloatingShape
           duration={8}
           distance={18}
@@ -831,8 +846,11 @@ export default function Page() {
         </div>
       </section>
 
-      {/* Company Team */}
-      <section id="team" className="relative bg-white px-[9vw] py-28 text-black">
+        {/* Company Team */}
+        <section
+          id="team"
+          className="relative mx-2 mb-3 overflow-hidden rounded-[26px] bg-white px-[9vw] py-28 text-black shadow-[0_32px_100px_rgba(2,18,43,0.24)] scroll-mt-24 sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5"
+        >
         <div className="grid gap-20 lg:grid-cols-[0.32fr_0.68fr]">
           <Reveal direction="right">
             <p className="font-semibold text-[#104B9C]">
@@ -898,11 +916,11 @@ export default function Page() {
         </StaggerGroup>
       </section>
 
-      {/* Contact */}
-      <section
-        id="contact"
-        className="relative overflow-hidden bg-[#104B9C] px-[9vw] py-28 text-white"
-      >
+        {/* Contact */}
+        <section
+          id="contact"
+          className="relative mx-2 mb-3 overflow-hidden rounded-[26px] bg-[#104B9C] px-[9vw] py-28 text-white shadow-[0_32px_100px_rgba(2,18,43,0.24)] scroll-mt-24 sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5"
+        >
         <FloatingShape
           duration={10}
           distance={20}
@@ -974,9 +992,12 @@ export default function Page() {
             </StaggerItem>
           </StaggerGroup>
         </div>
-      </section>
+        </section>
 
-      <Footer />
+        <div className="mx-2 overflow-hidden rounded-[26px] shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 md:rounded-[34px] lg:mx-5">
+          <Footer />
+        </div>
+      </div>
     </main>
   );
 }

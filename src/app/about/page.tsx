@@ -335,12 +335,24 @@ export default function AboutPage() {
   const selectedIndustry = industries[activeIndustry];
 
   return (
-    <main className="min-h-screen overflow-hidden bg-white font-sans text-[#524f4b]">
+    <main className="relative isolate min-h-screen overflow-x-clip bg-[#082d5c] font-sans text-[#524f4b]">
       <Navbar />
       <ScrollProgress />
 
+      {/* Fixed navy canvas. Rounded content cards scroll above this layer. */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none fixed inset-0 z-0 overflow-hidden bg-[#082d5c]"
+      >
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_16%_14%,rgba(214,234,255,0.18),transparent_28%),radial-gradient(circle_at_88%_34%,rgba(255,255,255,0.10),transparent_24%),linear-gradient(145deg,#082d5c_0%,#0b3c78_48%,#061f43_100%)]" />
+        <div className="absolute -left-40 top-[12%] h-[520px] w-[520px] rounded-full border border-white/10" />
+        <div className="absolute -right-44 top-[48%] h-[620px] w-[620px] rounded-full border border-white/[0.08]" />
+        <div className="absolute inset-0 opacity-[0.055] [background-image:linear-gradient(rgba(255,255,255,0.65)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.65)_1px,transparent_1px)] [background-size:72px_72px]" />
+      </div>
+
+      <div className="relative z-10 pb-2 pt-2 sm:pb-3 sm:pt-3 lg:pb-5 lg:pt-5">
       {/* Hero */}
-      <section className="relative overflow-hidden bg-[#D9EAFD] px-[9vw] pb-20 pt-[132px] text-white">
+      <section className="relative mx-2 overflow-hidden rounded-[26px] bg-[#D9EAFD] px-[9vw] pb-20 pt-[132px] text-white shadow-[0_32px_100px_rgba(2,18,43,0.32)] sm:mx-3 md:rounded-[34px] lg:mx-5">
         <FloatingShape
           duration={10}
           distance={18}
@@ -459,7 +471,7 @@ export default function AboutPage() {
       </section>
 
       {/* Intro Visual */}
-      <section className="relative overflow-hidden bg-[#f1f5f8] px-[9vw] py-28 text-black">
+      <section className="relative mx-2 mb-3 mt-3 overflow-hidden rounded-[26px] bg-[#f1f5f8] px-[9vw] py-28 text-black shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 sm:mb-4 sm:mt-4 md:rounded-[34px] lg:mx-5">
         <FloatingShape
           duration={9}
           distance={16}
@@ -518,7 +530,7 @@ export default function AboutPage() {
       </section>
 
       {/* Performance Standards */}
-      <section className="relative overflow-hidden bg-[#104B9C] px-[9vw] py-28 text-white">
+      <section className="relative mx-2 mb-3 overflow-hidden rounded-[26px] bg-[#104B9C] px-[9vw] py-28 text-white shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5">
         <FloatingShape
           duration={11}
           distance={20}
@@ -584,7 +596,7 @@ export default function AboutPage() {
       </section>
 
       {/* Strength Callouts */}
-      <section className="relative overflow-hidden bg-[#e9edf2] px-[9vw] py-28 text-black">
+      <section className="relative mx-2 mb-3 overflow-hidden rounded-[26px] bg-[#e9edf2] px-[9vw] py-28 text-black shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5">
         <FloatingShape
           duration={9}
           distance={15}
@@ -650,7 +662,7 @@ export default function AboutPage() {
       </section>
 
 {/* Service Cards */}
-<section className="relative overflow-hidden bg-white px-[9vw] py-28 text-black">
+      <section className="relative mx-2 mb-3 overflow-hidden rounded-[26px] bg-white px-[9vw] py-28 text-black shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5">
   <div className="grid gap-20 lg:grid-cols-[0.36fr_0.64fr]">
     <Reveal direction="right">
       <p className="font-semibold text-[#104B9C]">
@@ -711,10 +723,10 @@ export default function AboutPage() {
       </StaggerItem>
     ))}
   </StaggerGroup>
-</section>
+      </section>
 
       {/* Process Timeline */}
-      <section className="relative overflow-hidden bg-white px-[9vw] py-28 text-black">
+      <section className="relative mx-2 mb-3 overflow-hidden rounded-[26px] bg-white px-[9vw] py-28 text-black shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5">
         <FloatingShape
           duration={9}
           distance={14}
@@ -772,7 +784,7 @@ export default function AboutPage() {
       </section>
 
       {/* Industries Carousel */}
-      <section className="relative overflow-hidden bg-[#104B9C] px-[9vw] py-28 text-white">
+      <section className="relative mx-2 mb-3 overflow-hidden rounded-[26px] bg-[#104B9C] px-[9vw] py-28 text-white shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5">
         <FloatingShape
           duration={11}
           distance={20}
@@ -984,7 +996,7 @@ export default function AboutPage() {
       </section>
 
       {/* Team */}
-      <section className="relative overflow-hidden bg-white px-[9vw] py-28 text-black">
+      <section className="relative mx-2 mb-3 overflow-hidden rounded-[26px] bg-white px-[9vw] py-28 text-black shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5">
         <div className="grid gap-20 lg:grid-cols-[0.32fr_0.68fr]">
           <Reveal direction="right">
             <p className="font-semibold text-[#104B9C]">
@@ -1047,7 +1059,7 @@ export default function AboutPage() {
       </section>
 
       {/* FAQ */}
-      <section className="relative overflow-hidden bg-white px-[9vw] py-28 text-black">
+      <section className="relative mx-2 mb-3 overflow-hidden rounded-[26px] bg-white px-[9vw] py-28 text-black shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5">
         <FloatingShape
           duration={9}
           distance={14}
@@ -1079,7 +1091,7 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="relative overflow-hidden bg-[#104B9C] px-[9vw] py-28 text-white">
+      <section className="relative mx-2 mb-3 overflow-hidden rounded-[26px] bg-[#104B9C] px-[9vw] py-28 text-white shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5">
         <FloatingShape
           duration={10}
           distance={18}
@@ -1118,7 +1130,10 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <Footer />
+      <div className="mx-2 overflow-hidden rounded-[26px] shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 md:rounded-[34px] lg:mx-5">
+        <Footer />
+      </div>
+      </div>
     </main>
   );
 }

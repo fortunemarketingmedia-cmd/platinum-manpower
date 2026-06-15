@@ -1,4 +1,3 @@
-
 "use client";
 
 import Image from "next/image";
@@ -7,26 +6,11 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const navigation = [
-  {
-    label: "Home",
-    href: "/",
-  },
-  {
-    label: "About",
-    href: "/about",
-  },
-  {
-    label: "Services",
-    href: "/services",
-  },
-  {
-    label: "Industries",
-    href: "/industries",
-  },
-  {
-    label: "Contact",
-    href: "/contact",
-  },
+  { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
+  { label: "Services", href: "/services" },
+  { label: "Industries", href: "/industries" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export default function Navbar() {
@@ -35,18 +19,16 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const headerActive = scrolled || mobileMenuOpen;
+  const compact = scrolled || mobileMenuOpen;
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      setScrolled(window.scrollY > 42);
     };
 
     handleScroll();
 
-    window.addEventListener("scroll", handleScroll, {
-      passive: true,
-    });
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
@@ -89,23 +71,23 @@ export default function Navbar() {
 
   return (
     <>
-      <header
-        className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
-          headerActive
-            ? "border-b border-black/[0.06] bg-white/95 shadow-[0_8px_40px_rgba(15,23,42,0.08)] backdrop-blur-xl"
-            : "bg-white/10 backdrop-blur-[2px]"
-        }`}
-      >
+      <header className="pointer-events-none fixed inset-x-0 top-0 z-50">
         <div
-          className={`mx-auto grid max-w-[1600px] grid-cols-[1fr_auto] items-center gap-8 px-5 transition-all duration-500 sm:px-8 lg:grid-cols-[1fr_auto_1fr] lg:px-[5vw] xl:px-[7vw] 2xl:px-[9vw] ${
-            headerActive ? "h-[76px] lg:h-[80px]" : "h-[84px] lg:h-[96px]"
+          className={`pointer-events-auto mx-auto mt-2.5 grid grid-cols-[1fr_auto] items-center border border-white/15 bg-[#082d5c]/58 px-3 shadow-[0_22px_70px_rgba(2,18,43,0.30)] backdrop-blur-2xl transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] sm:mt-3 sm:px-4 lg:grid-cols-[1fr_auto_1fr] ${
+            compact
+              ? "h-[68px] w-[calc(100%-20px)] max-w-[1180px] rounded-full lg:h-[72px]"
+              : "h-[76px] w-[calc(100%-16px)] max-w-[1560px] rounded-[26px] sm:w-[calc(100%-24px)] lg:mt-4 lg:h-[88px] lg:w-[calc(100%-40px)] lg:rounded-[32px]"
           }`}
         >
           {/* Logo */}
           <Link
             href="/"
             aria-label="Platinum Manpower home"
-            className="relative z-20 flex w-fit items-center"
+            className={`relative z-20 flex w-fit items-center rounded-full border border-white/20 bg-white/92 shadow-[0_8px_24px_rgba(2,18,43,0.16)] transition-all duration-700 ${
+              compact
+                ? "h-[50px] px-3.5 lg:h-[54px] lg:px-4"
+                : "h-[56px] px-4 lg:h-[64px] lg:px-5"
+            }`}
           >
             <Image
               src="/logo.png"
@@ -113,10 +95,10 @@ export default function Navbar() {
               width={220}
               height={60}
               priority
-              className={`h-auto w-auto object-contain transition-all duration-500 ${
-                headerActive
-                  ? "max-h-[46px] max-w-[175px] sm:max-w-[205px]"
-                  : "max-h-[54px] max-w-[185px] sm:max-w-[220px]"
+              className={`h-auto w-auto object-contain transition-all duration-700 ${
+                compact
+                  ? "max-h-[38px] max-w-[160px] sm:max-w-[185px]"
+                  : "max-h-[44px] max-w-[175px] sm:max-w-[210px]"
               }`}
             />
           </Link>
@@ -124,7 +106,9 @@ export default function Navbar() {
           {/* Desktop Navigation */}
           <nav
             aria-label="Main navigation"
-            className="hidden items-center gap-7 lg:flex xl:gap-9"
+            className={`hidden items-center rounded-full border border-white/10 bg-white/[0.07] p-1.5 transition-all duration-700 lg:flex ${
+              compact ? "gap-0.5" : "gap-1"
+            }`}
           >
             {navigation.map((item) => {
               const active = isActiveRoute(item.href);
@@ -134,41 +118,48 @@ export default function Navbar() {
                   key={item.href}
                   href={item.href}
                   aria-current={active ? "page" : undefined}
-                  className={`group relative py-3 text-[15px] font-medium transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#104B9C] ${
+                  className={`rounded-full font-medium transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#d6eaff] ${
+                    compact
+                      ? "px-4 py-2 text-[14px]"
+                      : "px-5 py-2.5 text-[15px]"
+                  } ${
                     active
-                      ? "text-[#104B9C]"
-                      : "text-[#111827] hover:text-[#104B9C]"
+                      ? "bg-[#d6eaff] text-[#082d5c] shadow-[0_7px_18px_rgba(2,18,43,0.18)]"
+                      : "text-white/82 hover:bg-white/10 hover:text-white"
                   }`}
                 >
                   {item.label}
-
-                  <span
-                    className={`absolute bottom-1 left-0 h-[2px] bg-[#104B9C] transition-all duration-300 ${
-                      active
-                        ? "w-full"
-                        : "w-0 group-hover:w-full"
-                    }`}
-                  />
                 </Link>
               );
             })}
           </nav>
 
           {/* Desktop CTA */}
-          <div className="hidden items-center justify-self-end gap-3 lg:flex">
+          <div className="hidden items-center justify-self-end gap-2.5 lg:flex">
             <a
               href="tel:+919325158710"
               aria-label="Call Platinum Manpower"
-              className="inline-flex h-12 items-center justify-center rounded-[4px] border border-[#104B9C]/30 px-5 text-[15px] font-semibold text-[#104B9C] transition-all duration-300 hover:border-[#104B9C] hover:bg-[#104B9C]/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#104B9C]"
+              className={`inline-flex items-center justify-center rounded-full border border-white/20 bg-white/[0.08] font-semibold text-white transition-all duration-500 hover:border-white/35 hover:bg-white/14 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#d6eaff] ${
+                compact
+                  ? "h-11 px-4 text-[14px]"
+                  : "h-12 px-5 text-[15px]"
+              }`}
             >
               Call Now
             </a>
 
             <Link
               href="/contact"
-              className="inline-flex h-12 items-center justify-center rounded-[4px] bg-[#104B9C] px-6 text-[15px] font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#0A3F82] hover:shadow-[0_14px_32px_rgba(16,75,156,0.24)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#104B9C]"
+              className={`group inline-flex items-center justify-center gap-2 rounded-full bg-[#d6eaff] font-semibold text-[#082d5c] shadow-[0_10px_28px_rgba(2,18,43,0.22)] transition-all duration-500 hover:-translate-y-0.5 hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white ${
+                compact
+                  ? "h-11 px-5 text-[14px]"
+                  : "h-12 px-6 text-[15px]"
+              }`}
             >
               Request Workforce
+              <span className="transition-transform duration-300 group-hover:translate-x-1">
+                →
+              </span>
             </Link>
           </div>
 
@@ -183,11 +174,11 @@ export default function Navbar() {
             aria-expanded={mobileMenuOpen}
             aria-controls="mobile-navigation"
             onClick={() => setMobileMenuOpen((current) => !current)}
-            className="relative z-20 flex h-11 w-11 items-center justify-center justify-self-end rounded-full border border-[#104B9C]/15 bg-white text-black shadow-sm transition-all duration-300 hover:border-[#104B9C]/40 hover:bg-[#f5f9ff] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#104B9C] lg:hidden"
+            className="relative z-20 flex h-12 w-12 items-center justify-center justify-self-end rounded-full border border-white/20 bg-white/[0.10] text-white shadow-[0_8px_24px_rgba(2,18,43,0.18)] backdrop-blur-xl transition-all duration-300 hover:bg-white/16 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#d6eaff] lg:hidden"
           >
             <span className="relative block h-[18px] w-[22px]">
               <span
-                className={`absolute left-0 top-0 h-[2px] w-[22px] rounded-full bg-[#111827] transition-all duration-300 ${
+                className={`absolute left-0 top-0 h-[2px] w-[22px] rounded-full bg-white transition-all duration-300 ${
                   mobileMenuOpen
                     ? "translate-y-[8px] rotate-45"
                     : "translate-y-0 rotate-0"
@@ -195,7 +186,7 @@ export default function Navbar() {
               />
 
               <span
-                className={`absolute left-0 top-[8px] h-[2px] rounded-full bg-[#111827] transition-all duration-300 ${
+                className={`absolute left-0 top-[8px] h-[2px] rounded-full bg-white transition-all duration-300 ${
                   mobileMenuOpen
                     ? "w-0 opacity-0"
                     : "w-[22px] opacity-100"
@@ -203,7 +194,7 @@ export default function Navbar() {
               />
 
               <span
-                className={`absolute left-0 top-[16px] h-[2px] w-[22px] rounded-full bg-[#111827] transition-all duration-300 ${
+                className={`absolute left-0 top-[16px] h-[2px] w-[22px] rounded-full bg-white transition-all duration-300 ${
                   mobileMenuOpen
                     ? "-translate-y-[8px] -rotate-45"
                     : "translate-y-0 rotate-0"
@@ -212,105 +203,85 @@ export default function Navbar() {
             </span>
           </button>
         </div>
+      </header>
 
-        {/* Mobile Navigation Panel */}
-        <div
-          id="mobile-navigation"
-          className={`absolute left-0 right-0 top-full overflow-hidden border-t border-black/[0.06] bg-white shadow-[0_30px_70px_rgba(15,23,42,0.16)] transition-all duration-500 ease-out lg:hidden ${
-            mobileMenuOpen
-              ? "visible max-h-[720px] translate-y-0 opacity-100"
-              : "invisible max-h-0 -translate-y-3 opacity-0"
-          }`}
-        >
-          <div className="px-5 pb-8 pt-4 sm:px-8">
-            <nav
-              aria-label="Mobile navigation"
-              className="border-t border-black/[0.06]"
-            >
-              {navigation.map((item, index) => {
-                const active = isActiveRoute(item.href);
+      {/* Reserved top space for the expanded floating navbar */}
+      <div aria-hidden="true" className="h-[90px] shrink-0 sm:h-[96px] lg:h-[112px]" />
 
-                return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    aria-current={active ? "page" : undefined}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className={`group flex items-center justify-between border-b border-black/[0.08] py-5 transition-colors duration-300 ${
-                      active
-                        ? "text-[#104B9C]"
-                        : "text-[#111827] hover:text-[#104B9C]"
-                    }`}
-                  >
-                    <span className="flex items-center gap-4">
-                      <span
-                        className={`text-[12px] font-semibold ${
-                          active
-                            ? "text-[#104B9C]"
-                            : "text-black/35"
-                        }`}
-                      >
-                        {String(index + 1).padStart(2, "0")}
-                      </span>
+      {/* Mobile Navigation Card */}
+      <div
+        id="mobile-navigation"
+        className={`fixed inset-x-2.5 top-[86px] z-50 overflow-hidden rounded-[26px] border border-white/15 bg-[#082d5c]/88 shadow-[0_30px_90px_rgba(2,18,43,0.38)] backdrop-blur-2xl transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] sm:inset-x-3 sm:top-[92px] lg:hidden ${
+          mobileMenuOpen
+            ? "visible translate-y-0 opacity-100"
+            : "invisible -translate-y-4 opacity-0"
+        }`}
+      >
+        <div className="p-4 sm:p-5">
+          <nav aria-label="Mobile navigation" className="grid gap-2">
+            {navigation.map((item, index) => {
+              const active = isActiveRoute(item.href);
 
-                      <span className="text-[24px] font-medium tracking-[-0.04em]">
-                        {item.label}
-                      </span>
-                    </span>
-
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  aria-current={active ? "page" : undefined}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`group flex items-center justify-between rounded-[18px] px-4 py-4 transition-all duration-300 ${
+                    active
+                      ? "bg-[#d6eaff] text-[#082d5c]"
+                      : "border border-white/10 bg-white/[0.06] text-white hover:bg-white/[0.12]"
+                  }`}
+                >
+                  <span className="flex items-center gap-4">
                     <span
-                      className={`text-[23px] transition-transform duration-300 ${
-                        active
-                          ? "translate-x-0"
-                          : "group-hover:translate-x-1"
+                      className={`text-[12px] font-semibold ${
+                        active ? "text-[#104B9C]" : "text-white/40"
                       }`}
                     >
-                      →
+                      {String(index + 1).padStart(2, "0")}
                     </span>
-                  </Link>
-                );
-              })}
-            </nav>
 
-            <div className="mt-7 grid gap-3 sm:grid-cols-2">
-              <a
-                href="tel:+919325158710"
-                onClick={() => setMobileMenuOpen(false)}
-                className="inline-flex h-13 items-center justify-center rounded-[4px] border border-[#104B9C]/30 px-5 py-3.5 text-[15px] font-semibold text-[#104B9C] transition-all duration-300 hover:border-[#104B9C] hover:bg-[#104B9C]/5"
-              >
-                Call 93251 58710
-              </a>
+                    <span className="text-[22px] font-medium tracking-[-0.04em]">
+                      {item.label}
+                    </span>
+                  </span>
 
-              <Link
-                href="/contact"
-                onClick={() => setMobileMenuOpen(false)}
-                className="inline-flex h-13 items-center justify-center rounded-[4px] bg-[#104B9C] px-5 py-3.5 text-[15px] font-semibold text-white transition-all duration-300 hover:bg-[#0A3F82]"
-              >
-                Request Workforce
-              </Link>
-            </div>
+                  <span className="text-[22px] transition-transform duration-300 group-hover:translate-x-1">
+                    →
+                  </span>
+                </Link>
+              );
+            })}
+          </nav>
 
-            <div className="mt-7 rounded-[6px] bg-[#f1f7ff] p-5">
-              <p className="text-[12px] font-semibold uppercase tracking-[0.14em] text-[#104B9C]">
-                Platinum Manpower
-              </p>
+          <div className="mt-4 grid gap-3 sm:grid-cols-2">
+            <a
+              href="tel:+919325158710"
+              onClick={() => setMobileMenuOpen(false)}
+              className="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/[0.08] px-5 py-3.5 text-[15px] font-semibold text-white transition-all duration-300 hover:bg-white/[0.14]"
+            >
+              Call 93251 58710
+            </a>
 
-              <p className="mt-2 text-[15px] leading-[1.45] text-[#4f4f4f]">
-                Skilled, verified, and professionally managed manpower for
-                hospitals, hotels, malls, airports, offices, and commercial
-                spaces.
-              </p>
-            </div>
+            <Link
+              href="/contact"
+              onClick={() => setMobileMenuOpen(false)}
+              className="inline-flex items-center justify-center rounded-full bg-[#d6eaff] px-5 py-3.5 text-[15px] font-semibold text-[#082d5c] transition-all duration-300 hover:bg-white"
+            >
+              Request Workforce
+            </Link>
           </div>
         </div>
-      </header>
+      </div>
 
       {/* Mobile Menu Backdrop */}
       <button
         type="button"
         aria-label="Close navigation menu"
         onClick={() => setMobileMenuOpen(false)}
-        className={`fixed inset-0 z-40 bg-[#06152b]/45 backdrop-blur-[2px] transition-all duration-500 lg:hidden ${
+        className={`fixed inset-0 z-40 bg-[#03142d]/55 backdrop-blur-[3px] transition-all duration-500 lg:hidden ${
           mobileMenuOpen
             ? "visible opacity-100"
             : "invisible opacity-0"

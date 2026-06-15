@@ -387,11 +387,24 @@ export default function ServicesPage() {
   const selectedService = services[activeService];
 
   return (
-    <main className="min-h-screen overflow-hidden bg-white font-sans text-[#4f4f4f]">
+    <main className="relative isolate min-h-screen overflow-x-clip bg-[#082d5c] font-sans text-[#4f4f4f]">
       <Navbar />
 
+      {/* Fixed navy canvas. Rounded section cards scroll above this layer. */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none fixed inset-0 z-0 overflow-hidden bg-[#082d5c]"
+      >
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_16%_14%,rgba(214,234,255,0.18),transparent_28%),radial-gradient(circle_at_88%_34%,rgba(255,255,255,0.10),transparent_24%),linear-gradient(145deg,#082d5c_0%,#0b3c78_48%,#061f43_100%)]" />
+        <div className="absolute -left-40 top-[12%] h-[520px] w-[520px] rounded-full border border-white/10" />
+        <div className="absolute -right-44 top-[48%] h-[620px] w-[620px] rounded-full border border-white/[0.08]" />
+        <div className="absolute inset-0 opacity-[0.055] [background-image:linear-gradient(rgba(255,255,255,0.65)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.65)_1px,transparent_1px)] [background-size:72px_72px]" />
+      </div>
+
+      <div className="relative z-10 pb-2 pt-2 sm:pb-3 sm:pt-3 lg:pb-5 lg:pt-5">
+
       {/* Hero */}
-      <section className="relative overflow-hidden bg-[#D9EAFD] px-[6vw] pb-16 pt-[132px] lg:px-[9vw] lg:pb-24">
+      <section className="relative mx-2 overflow-hidden rounded-[26px] bg-[#D9EAFD] px-[6vw] pb-16 pt-[132px] shadow-[0_32px_100px_rgba(2,18,43,0.32)] sm:mx-3 md:rounded-[34px] lg:mx-5 lg:px-[9vw] lg:pb-24">
         <div className="pointer-events-none absolute -left-24 top-28 h-72 w-72 rounded-full border border-[#104B9C]/10" />
         <div className="pointer-events-none absolute -left-4 top-48 h-44 w-44 rounded-full border border-[#104B9C]/10" />
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(rgba(16,75,156,0.12)_1px,transparent_1px)] bg-[length:28px_28px] opacity-35" />
@@ -477,7 +490,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Highlight Strip */}
-      <section className="border-y border-black/10 bg-white px-[6vw] lg:px-[9vw]">
+      <section className="mx-2 mb-3 mt-3 overflow-hidden rounded-[26px] border-y border-black/10 bg-white px-[6vw] shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 sm:mb-4 sm:mt-4 md:rounded-[34px] lg:mx-5 lg:px-[9vw]">
         <div className="grid sm:grid-cols-2 xl:grid-cols-4">
           {highlights.map((item, index) => (
             <article
@@ -500,7 +513,7 @@ export default function ServicesPage() {
       {/* Service Explorer */}
       <section
         id="service-explorer"
-        className="scroll-mt-24 bg-[#f4f7fa] px-[6vw] py-24 lg:px-[9vw] lg:py-28"
+        className="relative mx-2 mb-3 scroll-mt-28 overflow-hidden rounded-[26px] bg-[#f4f7fa] px-[6vw] py-24 shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5 lg:px-[9vw] lg:py-28"
       >
         <div className="grid gap-16 lg:grid-cols-[0.32fr_0.68fr] lg:gap-24">
           <div>
@@ -644,7 +657,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Service Categories */}
-      <section className="bg-white px-[6vw] py-24 lg:px-[9vw] lg:py-28">
+      <section className="relative mx-2 mb-3 overflow-hidden rounded-[26px] bg-white px-[6vw] py-24 shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5 lg:px-[9vw] lg:py-28">
         <div className="grid gap-16 lg:grid-cols-[0.35fr_0.65fr] lg:gap-24">
           <div>
             <p className="font-semibold text-[#104B9C]">
@@ -750,7 +763,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Process */}
-      <section className="bg-[#104B9C] px-[6vw] py-24 text-white lg:px-[9vw] lg:py-28">
+      <section className="relative mx-2 mb-3 overflow-hidden rounded-[26px] bg-[#104B9C] px-[6vw] py-24 text-white shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5 lg:px-[9vw] lg:py-28">
         <div className="grid gap-16 lg:grid-cols-[0.32fr_0.68fr] lg:gap-24">
           <p className="font-semibold text-[#d6eaff]">
             Our Deployment Process
@@ -802,7 +815,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Standards */}
-      <section className="bg-[#eef2f5] px-[6vw] py-24 text-black lg:px-[9vw] lg:py-28">
+      <section className="relative mx-2 mb-3 overflow-hidden rounded-[26px] bg-[#eef2f5] px-[6vw] py-24 text-black shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5 lg:px-[9vw] lg:py-28">
         <div className="grid gap-16 xl:grid-cols-[0.38fr_0.62fr] xl:gap-24">
           <div className="xl:sticky xl:top-32 xl:self-start">
             <p className="font-semibold text-[#104B9C]">Service Standards</p>
@@ -838,7 +851,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Industries */}
-      <section className="bg-white px-[6vw] py-24 lg:px-[9vw] lg:py-28">
+      <section className="relative mx-2 mb-3 overflow-hidden rounded-[26px] bg-white px-[6vw] py-24 shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5 lg:px-[9vw] lg:py-28">
         <div className="grid gap-16 lg:grid-cols-[0.34fr_0.66fr] lg:gap-24">
           <p className="font-semibold text-[#104B9C]">Industries We Support</p>
           <SectionHeading>
@@ -883,7 +896,7 @@ export default function ServicesPage() {
       </section>
 
       {/* FAQ */}
-      <section className="bg-[#f7fbff] px-[6vw] py-24 text-black lg:px-[9vw] lg:py-28">
+      <section className="relative mx-2 mb-3 overflow-hidden rounded-[26px] bg-[#f7fbff] px-[6vw] py-24 text-black shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5 lg:px-[9vw] lg:py-28">
         <div className="grid gap-16 lg:grid-cols-[0.34fr_0.66fr] lg:gap-24">
           <div>
             <p className="font-semibold text-[#104B9C]">Service Questions</p>
@@ -909,7 +922,7 @@ export default function ServicesPage() {
       </section>
 
       {/* CTA */}
-      <section className="relative overflow-hidden bg-[#104B9C] px-[6vw] py-24 text-white lg:px-[9vw] lg:py-28">
+      <section className="relative mx-2 mb-3 overflow-hidden rounded-[26px] bg-[#104B9C] px-[6vw] py-24 text-white shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5 lg:px-[9vw] lg:py-28">
         <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.2)_1px,transparent_1px)] bg-[length:30px_30px] opacity-20" />
         <div className="absolute -bottom-40 -right-24 h-[520px] w-[520px] rounded-full border border-white/10" />
         <div className="absolute -bottom-20 right-16 h-[360px] w-[360px] rounded-full border border-white/10" />
@@ -962,7 +975,10 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <Footer />
+      <div className="mx-2 overflow-hidden rounded-[26px] shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 md:rounded-[34px] lg:mx-5">
+        <Footer />
+      </div>
+      </div>
     </main>
   );
 }

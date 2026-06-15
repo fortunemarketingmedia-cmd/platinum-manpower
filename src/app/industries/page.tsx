@@ -398,11 +398,24 @@ export default function IndustriesPage() {
   const selectedIndustry = industries[activeIndustry];
 
   return (
-    <main className="min-h-screen overflow-hidden bg-white font-sans text-[#4f4f4f]">
+    <main className="relative isolate min-h-screen overflow-x-clip bg-[#082d5c] font-sans text-[#4f4f4f]">
       <Navbar />
 
+      {/* Fixed navy canvas. Rounded section cards scroll above this layer. */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none fixed inset-0 z-0 overflow-hidden bg-[#082d5c]"
+      >
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_16%_14%,rgba(214,234,255,0.18),transparent_28%),radial-gradient(circle_at_88%_34%,rgba(255,255,255,0.10),transparent_24%),linear-gradient(145deg,#082d5c_0%,#0b3c78_48%,#061f43_100%)]" />
+        <div className="absolute -left-40 top-[12%] h-[520px] w-[520px] rounded-full border border-white/10" />
+        <div className="absolute -right-44 top-[48%] h-[620px] w-[620px] rounded-full border border-white/[0.08]" />
+        <div className="absolute inset-0 opacity-[0.055] [background-image:linear-gradient(rgba(255,255,255,0.65)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.65)_1px,transparent_1px)] [background-size:72px_72px]" />
+      </div>
+
+      <div className="relative z-10 pb-2 pt-2 sm:pb-3 sm:pt-3 lg:pb-5 lg:pt-5">
+
       {/* Hero */}
-      <section className="relative overflow-hidden bg-[#D9EAFD] px-[6vw] pb-20 pt-[132px] text-white lg:px-[9vw] lg:pb-28">
+      <section className="relative mx-2 overflow-hidden rounded-[26px] bg-[#D9EAFD] px-[6vw] pb-20 pt-[132px] text-white shadow-[0_32px_100px_rgba(2,18,43,0.32)] sm:mx-3 md:rounded-[34px] lg:mx-5 lg:px-[9vw] lg:pb-28">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.2)_1px,transparent_1px)] bg-[length:30px_30px] opacity-20" />
         <div className="pointer-events-none absolute -right-40 -top-24 h-[620px] w-[620px] rounded-full border border-white/10" />
         <div className="pointer-events-none absolute -right-10 top-20 h-[380px] w-[380px] rounded-full border border-white/10" />
@@ -491,7 +504,7 @@ export default function IndustriesPage() {
       </section>
 
       {/* Statistics */}
-      <section className="border-b border-black/10 bg-[#D9EAFD] px-[6vw] lg:px-[9vw]">
+      <section className="mx-2 mb-3 mt-3 overflow-hidden rounded-[26px] border-b border-black/10 bg-[#D9EAFD] px-[6vw] shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 sm:mb-4 sm:mt-4 md:rounded-[34px] lg:mx-5 lg:px-[9vw]">
         <div className="grid sm:grid-cols-2 xl:grid-cols-4">
           {industryStats.map((item, index) => (
             <article
@@ -514,7 +527,7 @@ export default function IndustriesPage() {
       {/* Industry Navigator */}
       <section
         id="industry-navigator"
-        className="scroll-mt-24 bg-white px-[6vw] py-24 lg:px-[9vw] lg:py-28"
+        className="relative mx-2 mb-3 scroll-mt-28 overflow-hidden rounded-[26px] bg-white px-[6vw] py-24 shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5 lg:px-[9vw] lg:py-28"
       >
         <div className="grid gap-16 lg:grid-cols-[0.3fr_0.7fr] lg:gap-24">
           <div>
@@ -671,7 +684,7 @@ export default function IndustriesPage() {
       </section>
 
       {/* Operational Priorities */}
-      <section className="bg-[#eef2f5] px-[6vw] py-24 text-black lg:px-[9vw] lg:py-28">
+      <section className="relative mx-2 mb-3 overflow-hidden rounded-[26px] bg-[#eef2f5] px-[6vw] py-24 text-black shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5 lg:px-[9vw] lg:py-28">
         <div className="grid items-end gap-16 xl:grid-cols-[0.54fr_0.46fr] xl:gap-24">
           <SectionHeading>
             Every industry needs people who understand the environment.
@@ -731,7 +744,7 @@ export default function IndustriesPage() {
       </section>
 
       {/* Coverage Matrix */}
-      <section className="bg-white px-[6vw] py-24 text-black lg:px-[9vw] lg:py-28">
+      <section className="relative mx-2 mb-3 overflow-hidden rounded-[26px] bg-white px-[6vw] py-24 text-black shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5 lg:px-[9vw] lg:py-28">
         <div className="grid gap-16 lg:grid-cols-[0.32fr_0.68fr] lg:gap-24">
           <div>
             <p className="font-semibold text-[#104B9C]">Workforce Coverage</p>
@@ -800,7 +813,7 @@ export default function IndustriesPage() {
       </section>
 
       {/* Visual Break */}
-      <section className="bg-[#104B9C] px-[6vw] py-16 text-white lg:px-[9vw] lg:py-20">
+      <section className="relative mx-2 mb-3 overflow-hidden rounded-[26px] bg-[#104B9C] px-[6vw] py-16 text-white shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5 lg:px-[9vw] lg:py-20">
         <div className="grid overflow-hidden rounded-[12px] border border-white/15 lg:grid-cols-[0.58fr_0.42fr]">
           <div className="relative min-h-[500px] overflow-hidden">
             <img
@@ -835,7 +848,7 @@ export default function IndustriesPage() {
       </section>
 
       {/* Deployment Process */}
-      <section className="bg-[#D9EAFD] px-[6vw] py-24 text-black lg:px-[9vw] lg:py-28">
+      <section className="relative mx-2 mb-3 overflow-hidden rounded-[26px] bg-[#D9EAFD] px-[6vw] py-24 text-black shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5 lg:px-[9vw] lg:py-28">
         <div className="grid gap-16 xl:grid-cols-[0.37fr_0.63fr] xl:gap-24">
           <div className="xl:sticky xl:top-32 xl:self-start">
             <p className="font-semibold text-[#104B9C]">Industry Deployment</p>
@@ -870,7 +883,7 @@ export default function IndustriesPage() {
       </section>
 
       {/* Advantages */}
-      <section className="bg-white px-[6vw] py-24 text-black lg:px-[9vw] lg:py-28">
+      <section className="relative mx-2 mb-3 overflow-hidden rounded-[26px] bg-white px-[6vw] py-24 text-black shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5 lg:px-[9vw] lg:py-28">
         <div className="grid items-center gap-16 lg:grid-cols-[0.56fr_0.44fr] lg:gap-20">
           <div>
             <p className="font-semibold text-[#104B9C]">Why Platinum</p>
@@ -918,7 +931,7 @@ export default function IndustriesPage() {
       </section>
 
       {/* FAQ */}
-      <section className="bg-[#104B9C] px-[6vw] py-24 text-white lg:px-[9vw] lg:py-28">
+      <section className="relative mx-2 mb-3 overflow-hidden rounded-[26px] bg-[#104B9C] px-[6vw] py-24 text-white shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5 lg:px-[9vw] lg:py-28">
         <div className="grid gap-16 lg:grid-cols-[0.33fr_0.67fr] lg:gap-24">
           <div>
             <p className="font-semibold text-[#d6eaff]">Industry Questions</p>
@@ -945,7 +958,7 @@ export default function IndustriesPage() {
       </section>
 
       {/* CTA */}
-      <section className="relative overflow-hidden bg-[#D9EAFD] px-[6vw] py-24 text-black lg:px-[9vw] lg:py-28">
+      <section className="relative mx-2 mb-3 overflow-hidden rounded-[26px] bg-[#D9EAFD] px-[6vw] py-24 text-black shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5 lg:px-[9vw] lg:py-28">
         <div className="pointer-events-none absolute -bottom-56 -right-32 h-[620px] w-[620px] rounded-full border border-[#104B9C]/10" />
         <div className="pointer-events-none absolute -bottom-24 right-20 h-[380px] w-[380px] rounded-full border border-[#104B9C]/10" />
 
@@ -1007,7 +1020,10 @@ export default function IndustriesPage() {
         </div>
       </section>
 
-      <Footer />
+      <div className="mx-2 overflow-hidden rounded-[26px] shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 md:rounded-[34px] lg:mx-5">
+        <Footer />
+      </div>
+      </div>
     </main>
   );
 }

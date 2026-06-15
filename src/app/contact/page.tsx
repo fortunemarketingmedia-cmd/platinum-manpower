@@ -312,11 +312,24 @@ export default function ContactPage() {
   }
 
   return (
-    <main className="min-h-screen overflow-hidden bg-white font-sans text-[#524f4b]">
+    <main className="relative isolate min-h-screen overflow-x-clip bg-[#082d5c] font-sans text-[#524f4b]">
       <Navbar />
       <ScrollProgress />
+
+      {/* Fixed navy canvas. Rounded section cards scroll above this layer. */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none fixed inset-0 z-0 overflow-hidden bg-[#082d5c]"
+      >
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_16%_14%,rgba(214,234,255,0.18),transparent_28%),radial-gradient(circle_at_88%_34%,rgba(255,255,255,0.10),transparent_24%),linear-gradient(145deg,#082d5c_0%,#0b3c78_48%,#061f43_100%)]" />
+        <div className="absolute -left-40 top-[12%] h-[520px] w-[520px] rounded-full border border-white/10" />
+        <div className="absolute -right-44 top-[48%] h-[620px] w-[620px] rounded-full border border-white/[0.08]" />
+        <div className="absolute inset-0 opacity-[0.055] [background-image:linear-gradient(rgba(255,255,255,0.65)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.65)_1px,transparent_1px)] [background-size:72px_72px]" />
+      </div>
+
+      <div className="relative z-10 pb-2 pt-2 sm:pb-3 sm:pt-3 lg:pb-5 lg:pt-5">
       {/* Hero Section */}
-<section className="relative overflow-hidden bg-[#D9EAFD] px-[9vw] pb-24 pt-[140px] text-black">
+<section className="relative mx-2 overflow-hidden rounded-[26px] bg-[#D9EAFD] px-[9vw] pb-24 pt-[140px] text-black shadow-[0_32px_100px_rgba(2,18,43,0.32)] sm:mx-3 md:rounded-[34px] lg:mx-5">
   <FloatingShape
     duration={9}
     distance={22}
@@ -417,7 +430,7 @@ export default function ContactPage() {
 </section>
 
 {/* Contact Methods */}
-<section className="bg-white px-[9vw] py-20 text-black">
+<section className="relative mx-2 mb-3 mt-3 overflow-hidden rounded-[26px] bg-white px-[9vw] py-20 text-black shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 sm:mb-4 sm:mt-4 md:rounded-[34px] lg:mx-5">
   <div className="grid items-stretch gap-5 lg:grid-cols-3">
     {contactMethods.map((method) => {
       const isEmail = method.label === "Email Us";
@@ -471,7 +484,7 @@ export default function ContactPage() {
 </section>
 
       {/* Enquiry Form */}
-      <section className="bg-[#104B9C] px-[9vw] py-28 text-white">
+      <section className="relative mx-2 mb-3 overflow-hidden rounded-[26px] bg-[#104B9C] px-[9vw] py-28 text-white shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5">
         <div className="grid gap-20 xl:grid-cols-[0.38fr_0.62fr]">
           <div className="xl:sticky xl:top-28 xl:self-start">
             <p className="mb-8 font-semibold text-[#d6eaff]">
@@ -664,7 +677,7 @@ export default function ContactPage() {
       </section>
 
       {/* Office and Coverage */}
-      <section className="bg-[#f1f5f8] px-[9vw] py-28 text-black">
+      <section className="relative mx-2 mb-3 overflow-hidden rounded-[26px] bg-[#f1f5f8] px-[9vw] py-28 text-black shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5">
         <div className="grid items-stretch gap-6 lg:grid-cols-[0.9fr_1.1fr]">
           <div className="flex flex-col justify-between rounded-[10px] bg-white p-9 shadow-[0_25px_70px_rgba(16,75,156,0.10)] md:p-12">
             <div>
@@ -706,48 +719,8 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Requirement Process */}
-      <section className="bg-white px-[9vw] py-28 text-black">
-        <div className="grid gap-20 lg:grid-cols-[0.32fr_0.68fr]">
-          <p className="font-semibold text-[#104B9C]">
-            After You Contact Us
-            <br />
-            What Happens Next
-          </p>
-
-          <SectionHeading>
-            A practical route from your first enquiry to workforce deployment.
-          </SectionHeading>
-        </div>
-
-        <div className="mt-24 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-          {requirementSteps.map((item) => (
-            <article
-              key={item.step}
-              className="group min-h-[360px] rounded-[8px] border border-[#104B9C]/15 bg-[#f7fbff] p-8 transition-all duration-500 hover:-translate-y-2 hover:bg-[#104B9C] hover:text-white hover:shadow-[0_25px_70px_rgba(16,75,156,0.18)]"
-            >
-              <div className="flex items-center justify-between">
-                <span className="flex h-14 w-14 items-center justify-center rounded-full bg-[#104B9C] text-[14px] font-semibold text-white transition-colors duration-500 group-hover:bg-white group-hover:text-[#104B9C]">
-                  {item.step}
-                </span>
-                <span className="text-[28px] font-light text-[#104B9C] transition-colors duration-500 group-hover:text-white">
-                  ↘
-                </span>
-              </div>
-
-              <h3 className="mt-20 text-[29px] font-light leading-[1.05] tracking-[-0.05em]">
-                {item.title}
-              </h3>
-              <p className="mt-6 text-[17px] leading-[1.45] text-[#555] transition-colors duration-500 group-hover:text-white/72">
-                {item.text}
-              </p>
-            </article>
-          ))}
-        </div>
-      </section>
-
       {/* Support Split */}
-      <section className="bg-[#104B9C] px-[9vw] py-28 text-white">
+      <section className="relative mx-2 mb-3 overflow-hidden rounded-[26px] bg-[#104B9C] px-[9vw] py-28 text-white shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5">
         <div className="grid items-center gap-20 lg:grid-cols-[0.52fr_0.48fr]">
           <div className="relative min-h-[650px] overflow-hidden rounded-[10px]">
             <img
@@ -793,7 +766,7 @@ export default function ContactPage() {
       </section>
 
       {/* Team Contacts */}
-      <section className="bg-white px-[9vw] py-28 text-black">
+      <section className="relative mx-2 mb-3 overflow-hidden rounded-[26px] bg-white px-[9vw] py-28 text-black shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5">
         <div className="grid gap-20 lg:grid-cols-[0.34fr_0.66fr]">
           <p className="font-semibold text-[#104B9C]">
             Direct Contacts
@@ -849,7 +822,7 @@ export default function ContactPage() {
       </section>
 
       {/* FAQ */}
-      <section className="bg-[#f1f5f8] px-[9vw] py-28 text-black">
+      <section className="relative mx-2 mb-3 overflow-hidden rounded-[26px] bg-[#f1f5f8] px-[9vw] py-28 text-black shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5">
         <div className="grid gap-20 lg:grid-cols-[0.32fr_0.68fr]">
           <p className="font-semibold text-[#104B9C]">Contact Questions</p>
 
@@ -873,7 +846,7 @@ export default function ContactPage() {
       </section>
 
       {/* Final CTA */}
-      <section className="relative overflow-hidden bg-[#104B9C] px-[9vw] py-28 text-white">
+      <section className="relative mx-2 mb-3 overflow-hidden rounded-[26px] bg-[#104B9C] px-[9vw] py-28 text-white shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5">
         <div className="absolute -bottom-52 -right-32 h-[520px] w-[520px] rounded-full border border-white/10" />
         <div className="absolute -bottom-36 -right-20 h-[370px] w-[370px] rounded-full border border-white/10" />
 
@@ -899,7 +872,10 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <Footer />
+      <div className="mx-2 overflow-hidden rounded-[26px] shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 md:rounded-[34px] lg:mx-5">
+        <Footer />
+      </div>
+      </div>
     </main>
   );
 }

@@ -137,7 +137,7 @@ export default function Footer() {
       <div className="grid items-end gap-12 text-white/60 lg:grid-cols-[1fr_1.45fr] lg:gap-28">
         <Link href="/" aria-label="Platinum Manpower home">
           <Image
-            src="/logo.png"
+            src="/logo1.png"
             alt="Platinum Manpower"
             width={320}
             height={90}
