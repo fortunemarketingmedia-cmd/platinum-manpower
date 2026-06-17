@@ -1,62 +1,51 @@
-
 "use client";
 
-import { usePathname } from "next/navigation";
-import { useLayoutEffect } from "react";
+import { usePathname, useSearchParams } from "next/navigation";
+import { useEffect } from "react";
 
 export default function ScrollToTop() {
   const pathname = usePathname();
+  const searchParams = useSearchParams();
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if ("scrollRestoration" in window.history) {
       window.history.scrollRestoration = "manual";
     }
 
     const resetScroll = () => {
-      const root = document.documentElement;
-      const previousScrollBehavior = root.style.scrollBehavior;
+      const html = document.documentElement;
+      const body = document.body;
 
-      root.style.scrollBehavior = "auto";
+      const previousHtmlBehavior = html.style.scrollBehavior;
+      const previousBodyBehavior = body.style.scrollBehavior;
 
-      window.scrollTo({
-        top: 0,
-        left: 0,
-        behavior: "auto",
+      html.style.scrollBehavior = "auto";
+      body.style.scrollBehavior = "auto";
+
+      window.scrollTo(0, 0);
+      html.scrollTop = 0;
+      body.scrollTop = 0;
+
+      requestAnimationFrame(() => {
+        window.scrollTo(0, 0);
+        html.scrollTop = 0;
+        body.scrollTop = 0;
+
+        html.style.scrollBehavior = previousHtmlBehavior;
+        body.style.scrollBehavior = previousBodyBehavior;
       });
-
-      document.documentElement.scrollTop = 0;
-      document.body.scrollTop = 0;
-
-      root.style.scrollBehavior = previousScrollBehavior;
     };
 
     resetScroll();
 
-    const firstFrame = window.requestAnimationFrame(() => {
-      resetScroll();
-    });
-
-    const secondFrame = window.requestAnimationFrame(() => {
-      window.requestAnimationFrame(() => {
-        resetScroll();
-      });
-    });
-
-    const firstTimeout = window.setTimeout(() => {
-      resetScroll();
-    }, 100);
-
-    const secondTimeout = window.setTimeout(() => {
-      resetScroll();
-    }, 300);
+    const firstFrame = requestAnimationFrame(resetScroll);
+    const timeout = window.setTimeout(resetScroll, 100);
 
     return () => {
-      window.cancelAnimationFrame(firstFrame);
-      window.cancelAnimationFrame(secondFrame);
-      window.clearTimeout(firstTimeout);
-      window.clearTimeout(secondTimeout);
+      cancelAnimationFrame(firstFrame);
+      window.clearTimeout(timeout);
     };
-  }, [pathname]);
+  }, [pathname, searchParams]);
 
   return null;
 }

@@ -21,274 +21,104 @@ const services = [
   {
     number: "01",
     shortTitle: "Skilled Manpower",
-    title: "Skilled Manpower Supply",
+    title: "Skilled Workforce Solutions",
     image: assets.workforce,
-    eyebrow: "Role-based workforce",
-    intro:
-      "Trained manpower for specialized operational roles where experience, discipline, and responsibility matter.",
-    description:
-      "We understand the role, work environment, shift timing, expected skills, and manpower quantity before shortlisting suitable workers for deployment.",
-    roles: [
-      "Machine operators",
-      "Technicians",
-      "Supervisors",
-      "Administrative staff",
-      "Operational support staff",
-      "Role-specific workers",
-    ],
-    support: [
-      "Requirement-based shortlisting",
-      "Basic experience screening",
-      "Deployment coordination",
-      "Replacement support",
-    ],
-    idealFor: "Hospitals, hotels, offices, facilities, and commercial operations",
+    eyebrow: "Service 01",
+    intro: "Professionally managed manpower for technical, operational, and role-specific business requirements.",
+    description: "We assess every requirement carefully, including role type, workplace environment, shift schedules, experience level, and workforce quantity, to ensure dependable staffing aligned with your operational needs.",
+    roles: ["Machine Operators", "Technicians", "Supervisors", "Administrative Staff", "Facility Support Teams", "Skilled Operational Workers"],
+    support: ["Requirement-Based Workforce Selection", "Candidate Screening & Verification", "Fast Deployment Coordination", "Replacement Support", "Ongoing Workforce Assistance"],
+    idealFor: "Hospitals, Hotels, Corporate Offices, Commercial Facilities, Industrial Operations, Warehouses, and Managed Service Environments.",
   },
   {
     number: "02",
     shortTitle: "Unskilled Manpower",
-    title: "Unskilled Manpower Supply",
+    title: "Unskilled Workforce Solutions",
     image: assets.staffGroup,
-    eyebrow: "Daily operational support",
-    intro:
-      "Dependable manpower for routine tasks, assistance work, cleaning support, movement, and day-to-day business operations.",
-    description:
-      "Our team helps clients maintain workforce availability for recurring operational activities that need punctuality, basic training, and responsible coordination.",
-    roles: [
-      "General helpers",
-      "Loaders and unloaders",
-      "Office helpers",
-      "Support workers",
-      "Cleaning assistants",
-      "Operational helpers",
-    ],
-    support: [
-      "Shift-based deployment",
-      "Workplace orientation",
-      "Attendance coordination",
-      "Quick replacement assistance",
-    ],
-    idealFor: "Warehouses, offices, malls, hospitality, and commercial spaces",
+    eyebrow: "Service 02",
+    intro: "Reliable manpower support for routine operations, daily workforce requirements, and operational assistance.",
+    description: "We carefully assess staffing needs, shift timing, workload expectations, and workplace conditions to provide dependable manpower for uninterrupted business operations.",
+    roles: ["Helpers & General Workers", "Loading & Unloading Staff", "Packing & Warehouse Staff", "Office Boys & Pantry Staff", "Housekeeping Assistants", "Maintenance Helpers", "Facility Support Staff", "Operational Workforce"],
+    support: ["Requirement-Based Workforce Selection", "Workforce Screening & Verification", "Fast Deployment Coordination", "Replacement Support", "Flexible Shift Staffing"],
+    idealFor: "Commercial Spaces, Warehouses, Manufacturing Units, Offices, Retail Businesses, Logistics, Shopping Malls, and Industrial Operations.",
   },
   {
     number: "03",
-    shortTitle: "Healthcare Staff",
-    title: "Nurses & Healthcare Support Staff",
+    shortTitle: "Healthcare Staffing",
+    title: "Healthcare Staffing Solutions",
     image: assets.hospital,
-    eyebrow: "Healthcare workforce",
-    intro:
-      "Responsible support staff for hospitals, clinics, care facilities, and healthcare environments.",
-    description:
-      "Healthcare operations need hygiene, sensitivity, punctuality, and clear role understanding. We coordinate manpower based on the facility's working requirements.",
-    roles: [
-      "Nurses",
-      "Ward boys",
-      "Patient care staff",
-      "Hospital attendants",
-      "Housekeeping staff",
-      "Healthcare support workers",
-    ],
-    support: [
-      "Basic profile screening",
-      "Role and shift coordination",
-      "Hygiene-focused orientation",
-      "Ongoing client support",
-    ],
-    idealFor: "Hospitals, clinics, diagnostic centres, and care facilities",
+    eyebrow: "Service 03",
+    intro: "Professional healthcare workforce support for hospitals, clinics, diagnostic centres, and patient-care environments.",
+    description: "We help healthcare institutions maintain operational continuity with trained support staff tailored to role-specific requirements where discipline, hygiene, and reliability are essential.",
+    roles: ["Ward Boys & Ward Assistants", "Patient Care Support Staff", "Hospital Housekeeping Staff", "Nursing Assistants", "Front Desk & Reception Staff", "Sanitization Teams", "Hospital Support Personnel"],
+    support: ["Healthcare Workforce Coordination", "Role-Based Candidate Selection", "Workplace Discipline & Hygiene Guidance", "Replacement Support", "Shift-Based Staffing Availability"],
+    idealFor: "Hospitals, Clinics, Diagnostic Centres, Rehabilitation Centres, Healthcare Facilities, and Medical Institutions.",
   },
   {
     number: "04",
-    shortTitle: "Hospitality Staff",
-    title: "Hotel & Hospitality Staff",
+    shortTitle: "Hospitality Staffing",
+    title: "Hospitality Staffing Solutions",
     image: assets.hotel,
-    eyebrow: "Guest-facing support",
-    intro:
-      "Service-oriented manpower for hotels, restaurants, banquets, kitchens, rooms, and hospitality operations.",
-    description:
-      "We support hospitality businesses with staff selected for grooming, service attitude, discipline, and the ability to work within structured operating standards.",
-    roles: [
-      "Room attendants",
-      "Service staff",
-      "Kitchen helpers",
-      "Banquet staff",
-      "Stewards",
-      "Housekeeping staff",
-    ],
-    support: [
-      "Grooming guidance",
-      "Shift-based staffing",
-      "Service role coordination",
-      "Replacement support",
-    ],
-    idealFor: "Hotels, resorts, restaurants, cafés, clubs, and banquet facilities",
+    eyebrow: "Service 04",
+    intro: "Professional staffing for hotels, restaurants, resorts, guest services, and customer-focused environments.",
+    description: "We provide hospitality workforce support designed to maintain smooth guest experiences, service quality, and consistent day-to-day operations.",
+    roles: ["Housekeeping Staff", "Room Attendants", "Kitchen Helpers", "Stewarding Staff", "Waiters & Service Staff", "Front Office Executives", "Guest Relations Support"],
+    support: ["Hospitality Workforce Planning", "Requirement-Based Candidate Selection", "Shift & Event Staffing Support", "Replacement Assistance", "Operational Workforce Coordination"],
+    idealFor: "Hotels, Restaurants, Resorts, Banquet Halls, Event Venues, Hospitality Businesses, and Guest-Service Operations.",
   },
   {
     number: "05",
-    shortTitle: "Housekeeping",
+    shortTitle: "Housekeeping Services",
     title: "Housekeeping & Facility Support",
     image: assets.mall,
-    eyebrow: "Clean and managed workplaces",
-    intro:
-      "Well-managed housekeeping and facility manpower for workplaces where hygiene and consistency influence daily operations.",
-    description:
-      "We provide staff for routine cleaning, common-area upkeep, washroom maintenance, support work, and facility assistance across different business environments.",
-    roles: [
-      "Housekeeping staff",
-      "Cleaning attendants",
-      "Pantry staff",
-      "Facility helpers",
-      "Common-area staff",
-      "Maintenance support workers",
-    ],
-    support: [
-      "Site requirement assessment",
-      "Task-based staff allocation",
-      "Basic hygiene guidance",
-      "Supervision and coordination",
-    ],
-    idealFor: "Hospitals, malls, airports, offices, hotels, and commercial spaces",
+    eyebrow: "Service 05",
+    intro: "Reliable housekeeping and facility workforce solutions for clean, organized, and efficient workplaces.",
+    description: "We provide trained housekeeping staff and support personnel to maintain cleanliness, hygiene, workplace standards, and smooth daily operations across commercial and institutional environments.",
+    roles: ["Housekeeping Staff", "Cleaning Personnel", "Janitorial Staff", "Office Maintenance Staff", "Washroom Attendants", "Facility Helpers", "Waste Management Support"],
+    support: ["Professional Housekeeping Staffing", "Shift-Based Workforce Deployment", "Replacement Support", "Workplace Hygiene Standards", "Ongoing Workforce Coordination"],
+    idealFor: "Corporate Offices, Hospitals, Hotels, Shopping Malls, Educational Institutions, Commercial Buildings, and Industrial Facilities.",
   },
 ];
 
 const highlights = [
-  {
-    value: "05",
-    label: "Core service categories",
-  },
-  {
-    value: "06+",
-    label: "Industries supported",
-  },
-  {
-    value: "01",
-    label: "Single coordination team",
-  },
-  {
-    value: "24/7",
-    label: "Client support availability",
-  },
+  { value: "08+", label: "Core Workforce & Business Services" },
+  { value: "12+", label: "Industries Supported Across Maharashtra" },
+  { value: "01", label: "Dedicated Client Coordination Team" },
+  { value: "24/7", label: "Responsive Workforce Support" },
 ];
 
 const process = [
-  {
-    step: "01",
-    title: "Requirement Discussion",
-    text: "We understand the role, quantity, shift, location, experience level, and expected joining timeline.",
-  },
-  {
-    step: "02",
-    title: "Profile Screening",
-    text: "Available candidates are checked for basic suitability, experience, availability, and workplace expectations.",
-  },
-  {
-    step: "03",
-    title: "Shortlisting & Approval",
-    text: "Suitable profiles are coordinated with the client before final selection and deployment planning.",
-  },
-  {
-    step: "04",
-    title: "Deployment",
-    text: "Selected manpower is assigned to the site with role, timing, reporting, and work expectations explained.",
-  },
-  {
-    step: "05",
-    title: "Ongoing Coordination",
-    text: "We assist with attendance concerns, replacements, communication, and operational workforce support.",
-  },
+  { step: "01", title: "Requirement Discussion", text: "We understand the role type, staffing quantity, shift structure, location, experience level, and operational expectations." },
+  { step: "02", title: "Candidate Screening", text: "Suitable candidates are reviewed for role fit, experience, availability, workplace suitability, and operational readiness." },
+  { step: "03", title: "Shortlisting & Approval", text: "Relevant candidate profiles are coordinated for client review and approval before final selection and deployment planning." },
+  { step: "04", title: "Workforce Deployment", text: "Selected manpower is assigned with clear guidance on responsibilities, reporting structure, shift timing, and workplace standards." },
+  { step: "05", title: "Ongoing Coordination", text: "Support continues through attendance coordination, replacement assistance, workforce communication, and operational support." },
 ];
 
 const standards = [
-  {
-    number: "01",
-    title: "Verified Workforce",
-    text: "Basic identity and profile screening before staff deployment, depending on role and client requirements.",
-  },
-  {
-    number: "02",
-    title: "Workplace Discipline",
-    text: "Staff are guided regarding reporting time, grooming, hygiene, conduct, and role responsibility.",
-  },
-  {
-    number: "03",
-    title: "Flexible Staffing",
-    text: "Support for recurring, shift-based, project-based, and ongoing manpower requirements.",
-  },
-  {
-    number: "04",
-    title: "Quick Replacement",
-    text: "Replacement coordination is provided when operational continuity is affected by manpower absence.",
-  },
-  {
-    number: "05",
-    title: "Client Coordination",
-    text: "A structured communication process helps resolve staffing issues and maintain clear responsibility.",
-  },
-  {
-    number: "06",
-    title: "Practical Pricing",
-    text: "Service planning is aligned with the manpower category, shift, work conditions, and deployment scope.",
-  },
+  { number: "01", title: "Verified Workforce", text: "Candidates undergo basic profile verification, identity checks, and suitability screening before deployment." },
+  { number: "02", title: "Professional Workplace Standards", text: "Staff are guided on reporting discipline, conduct, grooming, hygiene, professionalism, and role responsibilities." },
+  { number: "03", title: "Flexible Staffing Solutions", text: "Workforce support tailored for recurring, shift-based, project-specific, temporary, and long-term requirements." },
+  { number: "04", title: "Quick Replacement Support", text: "Fast replacement coordination helps maintain operational continuity and minimize disruption caused by staff shortages." },
+  { number: "05", title: "Dedicated Client Coordination", text: "A single point of contact supports staffing updates, attendance coordination, workforce concerns, and ongoing assistance." },
+  { number: "06", title: "Transparent Service Planning", text: "Practical workforce planning aligned with staffing category, workplace environment, deployment scope, and business needs." },
 ];
 
 const industries = [
-  {
-    title: "Hospitals",
-    image: assets.hospital,
-    text: "Healthcare and facility staff for sensitive, hygiene-focused work environments.",
-  },
-  {
-    title: "Hotels",
-    image: assets.hotel,
-    text: "Hospitality, room, kitchen, service, and housekeeping manpower.",
-  },
-  {
-    title: "Shopping Malls",
-    image: assets.mall,
-    text: "Housekeeping, customer assistance, facility, and operational support staff.",
-  },
-  {
-    title: "Airports",
-    image: assets.airport,
-    text: "Disciplined staff for high-standard facility and customer-support environments.",
-  },
-  {
-    title: "Offices",
-    image: assets.staffGroup,
-    text: "Office boys, pantry staff, housekeeping workers, and daily support manpower.",
-  },
-  {
-    title: "Commercial Spaces",
-    image: assets.workforce,
-    text: "Flexible workforce for routine operations, cleaning, maintenance, and support.",
-  },
+  { title: "Hospitals", image: assets.hospital, text: "Healthcare staffing, housekeeping, patient support, and facility workforce for disciplined, hygiene-focused environments." },
+  { title: "Hotels", image: assets.hotel, text: "Housekeeping, room attendants, kitchen support, and hospitality workforce for smooth guest experiences." },
+  { title: "Shopping Malls", image: assets.mall, text: "Housekeeping, customer assistance, facility support, and maintenance workforce for high-footfall environments." },
+  { title: "Airports", image: assets.airport, text: "Operational staff, facility support, customer assistance, and managed workforce for fast-paced environments." },
+  { title: "Offices", image: assets.staffGroup, text: "Pantry staff, office support, housekeeping, and administrative workforce for professional workspaces." },
+  { title: "Commercial Spaces", image: assets.workforce, text: "Scalable housekeeping, operational staff, maintenance support, and flexible manpower for daily continuity." },
 ];
 
 const faqs = [
-  {
-    question: "Can we request manpower for a specific shift?",
-    answer:
-      "Yes. Manpower requirements can be planned around day, night, rotational, or business-specific shifts, subject to role and staff availability.",
-  },
-  {
-    question: "Do you provide both skilled and unskilled staff?",
-    answer:
-      "Yes. Platinum provides skilled, semi-skilled, and unskilled manpower based on the job profile, work environment, and client requirement.",
-  },
-  {
-    question: "Is replacement support included?",
-    answer:
-      "Replacement coordination is available when required. The exact process depends on the category of manpower, urgency, location, and agreed service scope.",
-  },
-  {
-    question: "Which locations and industries do you support?",
-    answer:
-      "Our main service areas include hospitals, hotels, shopping malls, airports, offices, and commercial facilities. Deployment feasibility is confirmed after understanding the location and requirement.",
-  },
-  {
-    question: "How do we start a manpower requirement?",
-    answer:
-      "Share the role, number of workers, workplace location, shift timing, expected experience, and joining date. Our team will review the requirement and coordinate the next steps.",
-  },
+  { question: "Can we request workforce for specific shifts?", answer: "Yes. We provide staffing support for fixed, rotational, day, night, and customized shift structures based on your operational requirements." },
+  { question: "Do you provide both skilled and unskilled manpower?", answer: "Yes. We supply skilled and unskilled workforce solutions across healthcare, hospitality, corporate, commercial, retail, and industrial operations." },
+  { question: "Is replacement support included?", answer: "Yes. We provide quick replacement coordination to help maintain operational continuity whenever workforce availability is affected." },
+  { question: "Which locations and industries do you support?", answer: "We provide manpower, staffing, HR outsourcing, payroll, and facility management services across Maharashtra for hospitals, hotels, offices, retail businesses, industrial operations, and commercial spaces." },
+  { question: "How do we get started?", answer: "Share your workforce requirement, staffing quantity, location, shift timing, and role details. Our team will help plan the right staffing solution for your business." },
 ];
 
 function SectionHeading({
@@ -412,16 +242,15 @@ export default function ServicesPage() {
         <div className="relative grid items-end gap-16 xl:grid-cols-[0.9fr_1.1fr]">
           <div className="pb-4">
             <p className="mb-7 text-[14px] font-semibold uppercase tracking-[0.16em] text-[#104B9C]">
-              Platinum Manpower Services
+              Platinum Manpower & Facility Management Services
             </p>
 
             <h1 className="max-w-[760px] text-[50px] font-light leading-[0.94] tracking-[-0.068em] text-black md:text-[72px] xl:text-[96px]">
-              Workforce services built around real operations.
+              Workforce solutions built for real business operations.
             </h1>
 
             <p className="mt-9 max-w-[640px] text-[20px] leading-[1.42] text-black/65 md:text-[22px]">
-              Skilled, unskilled, healthcare, hospitality, housekeeping, and
-              facility manpower coordinated for dependable daily performance.
+              Trusted manpower, staffing, facility management, payroll, and HR solutions tailored to support businesses across Maharashtra with dependable workforce coordination and operational efficiency.
             </p>
 
             <div className="flex flex-wrap items-center gap-x-8 gap-y-2">
@@ -449,7 +278,7 @@ export default function ServicesPage() {
                   Managed Workforce
                 </p>
                 <p className="mt-3 max-w-[420px] text-[28px] font-light leading-[1.05] tracking-[-0.045em] md:text-[38px]">
-                  The right people, prepared for the right responsibility.
+                  The right workforce, prepared for the right responsibility.
                 </p>
               </div>
             </div>
@@ -475,11 +304,10 @@ export default function ServicesPage() {
                   </span>
                   <div>
                     <p className="text-[42px] font-light leading-none tracking-[-0.06em]">
-                      Reliable
+                      Trusted
                     </p>
                     <p className="mt-3 text-[16px] leading-[1.35] text-white/70">
-                      Screening, deployment, replacement, and ongoing support
-                      under one service structure.
+                      Workforce screening, deployment, replacement support, and ongoing coordination designed for reliable daily operations.
                     </p>
                   </div>
                 </div>
@@ -521,7 +349,7 @@ export default function ServicesPage() {
           </div>
 
           <SectionHeading>
-            Choose the workforce service your operation needs.
+            Workforce and business solutions designed around your operational needs.
           </SectionHeading>
         </div>
 
@@ -669,12 +497,10 @@ export default function ServicesPage() {
 
           <div>
             <SectionHeading>
-              Support that adapts to the role, shift, site, and workload.
+              Workforce support designed around your operations.
             </SectionHeading>
             <p className="mt-8 max-w-[720px] text-[20px] leading-[1.45] text-[#555]">
-              Every workplace has different staffing needs. We plan the manpower
-              category and coordination model around your operational setup
-              instead of forcing a fixed staffing format.
+              Every business operates differently. We align workforce planning with your role requirements, shift structures, site conditions, and operational workload, delivering staffing support that adapts to how your business actually runs.
             </p>
           </div>
         </div>
@@ -692,11 +518,10 @@ export default function ServicesPage() {
                 Ongoing Workforce
               </p>
               <h3 className="mt-4 max-w-[680px] text-[42px] font-light leading-[0.98] tracking-[-0.055em] md:text-[58px]">
-                Contract and recurring manpower support.
+                Contract & recurring workforce support
               </h3>
               <p className="mt-6 max-w-[620px] text-[18px] leading-[1.42] text-white/75">
-                Suitable for businesses that need dependable staff availability
-                across regular shifts and recurring operations.
+                Reliable staffing solutions for businesses that require consistent workforce availability across regular operations, recurring shifts, and long-term staffing requirements.
               </p>
             </div>
           </article>
@@ -714,8 +539,7 @@ export default function ServicesPage() {
                 Temporary staffing
               </h3>
               <p className="mt-6 text-[18px] leading-[1.45] text-black/65">
-                Additional staff for workload peaks, events, seasonal demand,
-                urgent support, or short-duration operational requirements.
+                Flexible manpower support for workload peaks, seasonal demand, urgent requirements, short-term projects, and event-based staffing needs.
               </p>
             </div>
           </article>
@@ -733,8 +557,7 @@ export default function ServicesPage() {
                 Shift-based support
               </h3>
               <p className="mt-6 text-[18px] leading-[1.45] text-black/60">
-                Staff planning for fixed, rotational, day, night, and
-                operation-specific shift structures.
+                Smart workforce planning for fixed, rotational, day, night, and operation-specific shift structures to ensure smooth daily operations.
               </p>
             </div>
           </article>
@@ -751,11 +574,10 @@ export default function ServicesPage() {
                 Managed Coordination
               </p>
               <h3 className="mt-4 text-[42px] font-light leading-[0.98] tracking-[-0.055em] md:text-[58px]">
-                One team supporting your workforce requirement.
+                One dedicated team for workforce coordination.
               </h3>
               <p className="mt-6 text-[18px] leading-[1.42] text-white/75">
-                Clear communication for staffing updates, attendance concerns,
-                replacement requests, and ongoing deployment support.
+                A streamlined communication process for staffing updates, attendance concerns, replacement requests, deployment coordination, and ongoing workforce support.
               </p>
             </div>
           </article>
@@ -770,7 +592,7 @@ export default function ServicesPage() {
           </p>
 
           <SectionHeading light>
-            A clear route from staffing request to on-site support.
+            A seamless path from workforce request to operational support.
           </SectionHeading>
         </div>
 
@@ -820,11 +642,10 @@ export default function ServicesPage() {
           <div className="xl:sticky xl:top-32 xl:self-start">
             <p className="font-semibold text-[#104B9C]">Service Standards</p>
             <h2 className="mt-8 max-w-[520px] text-[44px] font-light leading-[1] tracking-[-0.06em] md:text-[58px]">
-              More than supplying staff. We support continuity.
+              More than workforce supply. We deliver operational confidence.
             </h2>
             <p className="mt-8 max-w-[480px] text-[19px] leading-[1.45] text-black/60">
-              Our service structure is designed to reduce staffing confusion and
-              provide clients with a dependable point of coordination.
+              Our service approach is built to reduce workforce challenges, improve operational continuity, and give businesses a dependable staffing partner focused on long-term support.
             </p>
             <ActionButton href="/contact">Discuss Your Requirement</ActionButton>
           </div>
@@ -855,7 +676,7 @@ export default function ServicesPage() {
         <div className="grid gap-16 lg:grid-cols-[0.34fr_0.66fr] lg:gap-24">
           <p className="font-semibold text-[#104B9C]">Industries We Support</p>
           <SectionHeading>
-            Workforce solutions for service-driven workplaces.
+            Workforce solutions built for modern business environments.
           </SectionHeading>
         </div>
 
@@ -901,7 +722,7 @@ export default function ServicesPage() {
           <div>
             <p className="font-semibold text-[#104B9C]">Service Questions</p>
             <p className="mt-6 max-w-[300px] text-[17px] leading-[1.45] text-black/55">
-              Important information before you share a manpower requirement.
+              Important information before sharing your workforce requirement.
             </p>
           </div>
 
@@ -930,16 +751,14 @@ export default function ServicesPage() {
         <div className="relative grid items-center gap-16 lg:grid-cols-[0.58fr_0.42fr] lg:gap-20">
           <div>
             <p className="mb-8 font-semibold text-[#d6eaff]">
-              Start Your Requirement
+              Start Your Workforce Requirement
             </p>
             <SectionHeading light className="max-w-[850px]">
-              Tell us the role, quantity, shift, and location. We will help plan
-              the workforce.
+              Reliable workforce solutions designed around your business needs.
             </SectionHeading>
 
             <p className="mt-8 max-w-[650px] text-[20px] leading-[1.45] text-white/70">
-              Connect with Platinum Manpower and Facility Management Services
-              for practical staffing support designed around your workplace.
+              Tell us the role, quantity, shift timing, and location, and our team will help you build the right workforce strategy for smooth and dependable operations across Maharashtra.
             </p>
 
             <div className="flex flex-wrap gap-x-8 gap-y-2">
@@ -951,7 +770,7 @@ export default function ServicesPage() {
                 href="tel:+919325158710"
                 className="mt-8 inline-flex items-center border-b border-white/35 pb-1 text-[15px] font-semibold text-white transition-colors hover:border-white"
               >
-                Call 93251 58710
+                Call +91 93251 58710
               </a>
             </div>
           </div>
@@ -968,7 +787,7 @@ export default function ServicesPage() {
                 Platinum Support
               </p>
               <p className="mt-3 text-[28px] font-light leading-[1.08] tracking-[-0.04em] text-white">
-                Reliable coordination from requirement to deployment.
+                Trusted coordination from requirement to deployment.
               </p>
             </div>
           </div>

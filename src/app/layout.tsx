@@ -1,4 +1,3 @@
-
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 
@@ -23,11 +22,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${geist.className} bg-white text-black`}>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${geist.className} bg-white text-black antialiased`}>
+        <ScrollToTop />
+
         <MotionProvider>
           <SmoothScroll />
-          <ScrollToTop />
           {children}
         </MotionProvider>
       </body>

@@ -37,95 +37,95 @@ const aboutSlides = [
   {
     image: assets.staffGroup,
     title: "Verified Workforce",
-    text: "Reliable manpower selected for workplace discipline and responsibility.",
+    text: "Screened, workplace-ready professionals aligned with your operational requirements.",
   },
   {
     image: assets.hospital,
-    title: "Healthcare Support",
-    text: "Nurses, ward boys, housekeeping, and patient care support staff.",
+    title: "Healthcare Workforce Support",
+    text: "Reliable staffing for hospitals, clinics, patient care, housekeeping, and ward operations.",
   },
   {
     image: assets.hotel,
-    title: "Hospitality Staff",
-    text: "Trained staff for hotels, restaurants, rooms, and service operations.",
+    title: "Hospitality & Guest Services",
+    text: "Professional teams for hotels, restaurants, banquets, housekeeping, and guest support.",
   },
   {
     image: assets.airport,
-    title: "Facility Support",
-    text: "Disciplined manpower for high-standard commercial environments.",
+    title: "Facility & Operational Support",
+    text: "Disciplined manpower for commercial spaces, airports, offices, and high-standard facilities.",
   },
 ];
 
 const services = [
   {
-    title: "Skilled Manpower Supply",
-    text: "Trained manpower for specialized business operations, ensuring quality support and dependable performance.",
+    title: "Skilled Workforce Solutions",
+    text: "Professionally managed manpower for technical, operational, and role-specific requirements, supporting dependable performance and workplace efficiency.",
   },
   {
-    title: "Unskilled Manpower Supply",
-    text: "Reliable workforce support for day-to-day operational needs, housekeeping, maintenance, and support activities.",
+    title: "Unskilled Workforce Support",
+    text: "Reliable manpower for daily operations, maintenance, housekeeping, logistics, and essential support functions.",
   },
   {
-    title: "Nurses & Healthcare Staff",
-    text: "Professional healthcare manpower for hospitals, clinics, and medical facilities, selected with care and responsibility.",
+    title: "Healthcare & Medical Staffing",
+    text: "Trusted workforce support for hospitals, clinics, healthcare facilities, and patient-care environments.",
   },
   {
-    title: "Hotel & Hospitality Staff",
-    text: "Staffing support for hotels, restaurants, banquets, and hospitality operations, focused on service and guest experience.",
+    title: "Hospitality & Guest Services",
+    text: "Professional staffing for hotels, restaurants, banquets, and hospitality operations focused on consistent service quality.",
   },
   {
-    title: "Housekeeping Staff",
-    text: "Well-managed housekeeping manpower for hospitals, hotels, shopping malls, airports, offices, and commercial spaces.",
+    title: "Housekeeping & Facility Support",
+    text: "Dependable teams that help maintain cleanliness, hygiene, maintenance standards, and smooth daily operations.",
   },
 ];
 
 const whyChoose = [
   {
-    title: "Trained Workers",
-    text: "Our manpower is guided to understand workplace discipline, hygiene, grooming, and service expectations.",
+    title: "Trained & Workplace-Ready Staff",
+    text: "Our workforce is guided on professional conduct, workplace discipline, grooming, hygiene, and role expectations.",
   },
   {
-    title: "Quick Replacement Support",
-    text: "We understand that operations cannot stop. Replacement support is provided whenever required.",
+    title: "Quick Workforce Replacement",
+    text: "Fast replacement coordination helps your business maintain workforce continuity when staffing gaps arise.",
   },
   {
-    title: "Verified Manpower",
-    text: "We follow a basic screening and verification process before staff deployment.",
+    title: "Verified & Screened Workforce",
+    text: "Candidates undergo basic profile screening, identity verification, and suitability checks before deployment.",
   },
   {
-    title: "Professional Management",
-    text: "From selection to deployment and coordination, we maintain a structured and responsible approach.",
+    title: "Professional Workforce Management",
+    text: "A structured process covers candidate selection, deployment, coordination, and ongoing operational support.",
   },
   {
-    title: "24/7 Support",
-    text: "Our team remains available to assist clients with staffing requirements, coordination, and urgent support.",
+    title: "Responsive Client Support",
+    text: "Our coordination team supports staffing updates, attendance concerns, replacements, and operational communication.",
   },
   {
-    title: "Affordable Staffing Solutions",
-    text: "We offer practical manpower solutions designed to suit your business needs and budget.",
+    title: "Flexible & Scalable Staffing",
+    text: "Solutions adapt to temporary, recurring, shift-based, project-specific, and long-term workforce requirements.",
   },
 ];
 
 const approach = [
   {
     step: "01",
-    title: "Understand Your Requirement",
-    text: "We discuss your staffing needs, work timing, location, role expectations, and manpower quantity.",
+    title: "Understanding Your Requirement",
+    text: "We assess roles, workforce quantity, location, shift structure, expectations, and operational requirements.",
   },
   {
     step: "02",
-    title: "Screen & Shortlist Staff",
-    text: "Suitable manpower is shortlisted based on the role, availability, basic experience, and service expectations.",
+    title: "Screening & Workforce Selection",
+    text: "Suitable candidates are shortlisted based on role fit, experience, availability, and workplace suitability.",
   },
   {
     step: "03",
-    title: "Staff Deployment",
-    text: "Selected staff is deployed at your site with proper coordination and basic role understanding.",
+    title: "Workforce Deployment",
+    text: "Selected manpower is deployed with clear guidance on roles, reporting, standards, and shift responsibilities.",
   },
   {
     step: "04",
-    title: "Ongoing Support",
-    text: "We support clients with attendance coordination, replacements, supervision, and issue resolution.",
+    title: "Ongoing Workforce Support",
+    text: "We assist with attendance coordination, replacements, workforce communication, and day-to-day continuity.",
   },
 ];
 
@@ -133,49 +133,49 @@ const industries = [
   {
     title: "Hospitals",
     image: assets.hospital,
-    text: "We provide dependable manpower support for hospitals and healthcare facilities where discipline, hygiene, and responsibility matter the most.",
+    text: "Reliable healthcare workforce support for hospitals, clinics, and medical facilities requiring disciplined, hygiene-focused staffing.",
     points: [
-      "Nurses",
-      "Ward boys",
       "Patient care support staff",
+      "Ward assistants & support teams",
       "Housekeeping staff",
-      "Support manpower",
+      "Hospital facility workforce",
+      "Healthcare support personnel",
     ],
   },
   {
     title: "Hotels",
     image: assets.hotel,
-    text: "We help hotels maintain smooth daily operations with trained and reliable staff for service, cleaning, and guest support functions.",
+    text: "Professional hospitality staffing designed to support seamless guest experiences and smooth daily hotel operations.",
     points: [
       "Housekeeping staff",
       "Room attendants",
       "Kitchen helpers",
-      "Service staff",
-      "Support manpower",
+      "Guest service teams",
+      "Hospitality support staff",
     ],
   },
   {
     title: "Shopping Malls",
     image: assets.mall,
-    text: "We provide reliable manpower support for shopping malls to help maintain cleanliness, customer assistance, and smooth facility operations.",
+    text: "Dependable workforce support for high-footfall commercial environments focused on cleanliness, efficiency, and customer experience.",
     points: [
       "Housekeeping staff",
-      "Customer assistance staff",
-      "Facility support staff",
-      "Maintenance helpers",
-      "Support manpower",
+      "Customer assistance teams",
+      "Maintenance support",
+      "Facility workforce",
+      "Operational staff",
     ],
   },
   {
     title: "Airports",
     image: assets.airport,
-    text: "We support airport-related service operations with disciplined, trained, and professionally managed manpower for high-standard facility environments.",
+    text: "Professionally coordinated manpower for fast-paced environments where consistency, discipline, and service quality are essential.",
     points: [
-      "Housekeeping staff",
-      "Customer assistance staff",
-      "Facility support manpower",
-      "Operational helpers",
-      "Support staff",
+      "Facility support staff",
+      "Housekeeping teams",
+      "Customer assistance personnel",
+      "Operational workforce",
+      "Maintenance support",
     ],
   },
 ];
@@ -183,14 +183,14 @@ const industries = [
 const companyTeam = [
   {
     name: "Shalu Sansare",
-    role: "Proprietor",
+    role: "Founder & Proprietor",
     phone: "93251 58710",
     email: "contact@platinummanpowerservices.com",
     initials: "SS",
   },
   {
     name: "Sonali Pagare",
-    role: "HR Manager",
+    role: "HR & Workforce Manager",
     phone: "91463 81803 | 93251 58710",
     email: "platinummanpower.sonali@gmail.com",
     initials: "SP",
@@ -409,8 +409,9 @@ export default function Page() {
               ease: [0.22, 1, 0.36, 1],
             }}
           >
-            Skilled, verified, and professionally managed manpower for hospitals,
-            hotels, shopping malls, airports, offices, and commercial spaces.
+            Professionally managed manpower, staffing, facility management,
+            payroll, and HR solutions for hospitals, hotels, corporate offices,
+            commercial spaces, airports, and industrial operations across Maharashtra.
           </motion.p>
 
           <motion.div
@@ -480,8 +481,8 @@ export default function Page() {
         <div className="relative mt-16 grid items-start gap-20 lg:grid-cols-[0.92fr_1.08fr]">
           <Reveal direction="right">
             <SectionHeading>
-              We help businesses grow stronger with the right people behind
-              their operations.
+              Helping businesses build stronger operations with the right
+              workforce.
             </SectionHeading>
 
             <Button href="/contact">Contact Our Team</Button>
@@ -494,13 +495,10 @@ export default function Page() {
 
             <Reveal delay={0.12}>
               <p className="max-w-[620px] text-[24px] leading-[1.22] text-[#4d4d4d]">
-                At{" "}
-                <strong>
-                  PLATINUM MANPOWER AND FACILITY MANAGEMENT SERVICES
-                </strong>
-                , we provide skilled and unskilled manpower solutions for
-                hospitals, hotels, shopping malls, and airports with a focus on
-                reliability, professionalism, and long-term support.
+                <strong>Platinum Manpower & Facility Management Services</strong>{" "}
+                delivers skilled and unskilled manpower, recruitment, contract
+                staffing, payroll management, HR outsourcing, and facility support
+                solutions tailored to modern business operations across Maharashtra.
               </p>
             </Reveal>
           </div>
@@ -514,11 +512,11 @@ export default function Page() {
             <StretchCard className="h-full">
               <div className="group h-full rounded-[8px] bg-[#104B9C] p-9 text-white shadow-[0_30px_80px_rgba(16,75,156,0.18)]">
                 <h3 className="mb-4 text-[34px] font-medium tracking-[-0.04em]">
-                  Our Promise
+                  Our Commitment
                 </h3>
 
                 <p className="text-[22px] leading-[1.25] text-white/80">
-                  Reliable staff. Smooth operations. People-first service.
+                  Reliable workforce. Smooth operations. Long-term business support.
                 </p>
 
                 <div className="mt-10 h-px w-16 bg-white/40 transition-all duration-500 group-hover:w-full" />
@@ -530,9 +528,9 @@ export default function Page() {
             <StretchCard className="h-full">
               <div className="group h-full rounded-[8px] border border-[#104B9C]/15 bg-[#f7fbff] p-9">
                 <p className="text-[20px] leading-[1.35] text-[#4f4f4f]">
-                  Our team works closely with clients to understand staffing
-                  needs and provide verified manpower that fits their operational
-                  requirements.
+                  We understand workforce requirements, operational challenges,
+                  and staffing expectations to help businesses access the right
+                  people, at the right time, for the right responsibilities.
                 </p>
 
                 <div className="mt-10 h-px w-16 bg-[#104B9C]/30 transition-all duration-500 group-hover:w-full" />
@@ -560,9 +558,9 @@ export default function Page() {
 
           <Reveal direction="left" delay={0.08}>
             <p className="max-w-[520px] text-[20px] leading-[1.24] text-white/75">
-              We provide dependable manpower and facility support services for
-              daily operations, specialized staffing, housekeeping, and
-              long-term workforce management.
+              Reliable workforce, staffing, and facility management solutions
+              designed to support modern business operations across Maharashtra,
+              from contract staffing and payroll to healthcare and hospitality teams.
             </p>
 
             <Button href="/services" dark>
@@ -617,14 +615,14 @@ export default function Page() {
             <p className="font-semibold">
               Our Staffing Approach
               <br />
-              Structured. Simple. Reliable.
+              Structured. Efficient. Reliable.
             </p>
           </Reveal>
 
           <ClipReveal delay={0.06}>
             <SectionHeading>
-              From requirement understanding to ongoing support, our process is
-              built for smooth manpower deployment.
+              A streamlined staffing process built for smooth workforce
+              deployment and uninterrupted operations.
             </SectionHeading>
           </ClipReveal>
         </div>
@@ -676,14 +674,14 @@ export default function Page() {
             <p className="font-semibold">
               Why Choose Platinum?
               <br />
-              Skilled. Verified. Managed.
+              Reliable. Verified. Professionally Managed.
             </p>
           </Reveal>
 
           <ClipReveal delay={0.08}>
             <SectionHeading light>
-              We support businesses with trained manpower, quick replacement,
-              verified staff, and professional coordination.
+              Workforce solutions built around reliability, continuity, and
+              real business needs.
             </SectionHeading>
           </ClipReveal>
         </div>
@@ -731,9 +729,9 @@ export default function Page() {
 
           <Reveal direction="left" delay={0.08}>
             <p className="max-w-[520px] text-[20px] leading-[1.24] text-[#4f4f4f]">
-              We provide reliable manpower support for industries where
-              cleanliness, discipline, responsibility, and operational
-              continuity matter every day.
+              Reliable manpower, staffing, and facility support for industries
+              where discipline, operational continuity, professionalism, and
+              service standards matter every day.
             </p>
           </Reveal>
         </div>
@@ -810,14 +808,14 @@ export default function Page() {
         <div className="relative grid items-center gap-20 lg:grid-cols-[0.4fr_0.6fr]">
           <Reveal direction="right">
             <SectionHeading light>
-              Manpower support designed for daily business operations.
+              Workforce solutions designed for smooth daily operations.
             </SectionHeading>
 
             <p className="mt-12 max-w-[520px] text-[20px] leading-[1.28] text-white/75">
-              Whether you need healthcare support staff, housekeeping manpower,
-              hospitality staff, operational helpers, or facility support teams,
-              Platinum helps you manage workforce requirements with better
-              coordination and dependable service.
+              Whether you need healthcare staffing, housekeeping manpower,
+              hospitality teams, operational workforce, facility support, or
+              contract staffing, Platinum delivers professionally coordinated
+              solutions tailored to real business requirements across Maharashtra.
             </p>
 
             <Button href="/contact" dark>
@@ -838,7 +836,7 @@ export default function Page() {
                   Workforce Support
                 </p>
                 <p className="mt-1 text-[18px] font-medium">
-                  Reliable. Managed. Ready.
+                  Reliable. Managed. Workforce-Ready.
                 </p>
               </div>
             </ParallaxMedia>
@@ -862,8 +860,8 @@ export default function Page() {
 
           <ClipReveal delay={0.08}>
             <SectionHeading>
-              A dedicated team managing client coordination, staffing
-              requirements, and reliable manpower deployment.
+              Dedicated professionals committed to reliable workforce
+              solutions, responsive coordination, and client support.
             </SectionHeading>
           </ClipReveal>
         </div>
@@ -934,12 +932,12 @@ export default function Page() {
             </p>
 
             <h2 className="max-w-[520px] text-[44px] font-light leading-[1.08] tracking-[-0.06em] md:text-[56px]">
-              Need reliable manpower for your workplace?
+              Looking for reliable workforce solutions for your business?
             </h2>
 
             <p className="mt-8 max-w-[440px] text-[20px] leading-[1.35] text-white/70">
-              Share your staffing requirement with us. Our team will guide you
-              with the right manpower solution for your business operations.
+              Share your staffing requirement with our team. We will help you
+              identify the right workforce support for your operational needs.
             </p>
 
             <Button href="tel:+919325158710" dark>
@@ -982,8 +980,9 @@ export default function Page() {
                   </h3>
 
                   <p className="mt-5 max-w-[640px] text-[20px] leading-[1.35] text-[#4f4f4f]">
-                    Row House no 2, Jai Maa Ashapura Society, Sinnar Phata,
-                    Nashik, 422101
+                    Platinum Manpower & Facility Management Services, Row House No. 2,
+                    Jai Maa Ashapura Society, Sinnar Phata, Nashik – 422101,
+                    Maharashtra
                   </p>
 
                   <div className="mt-8 h-[2px] w-12 bg-[#104B9C]/30 transition-all duration-500 group-hover:w-full group-hover:bg-[#104B9C]" />

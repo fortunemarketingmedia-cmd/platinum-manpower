@@ -345,7 +345,7 @@ export default function ContactPage() {
 
   <div className="relative grid items-end gap-16 lg:grid-cols-[0.9fr_1.1fr]">
     <Reveal direction="right" className="pb-4">
-      <p className="mb-8 text-[14px] font-semibold uppercase tracking-[0.16em] text-[#104B9C]">
+      <p className="mb-8 text-[24px] font-semibold uppercase tracking-[0.16em] text-[#104B9C]">
         Contact Platinum Manpower
       </p>
 
@@ -487,7 +487,7 @@ export default function ContactPage() {
       <section className="relative mx-2 mb-3 overflow-hidden rounded-[26px] bg-[#104B9C] px-[9vw] py-28 text-white shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5">
         <div className="grid gap-20 xl:grid-cols-[0.38fr_0.62fr]">
           <div className="xl:sticky xl:top-28 xl:self-start">
-            <p className="mb-8 font-semibold text-[#d6eaff]">
+            <p className="mb-8 font-semibold text-[24px] text-[#d6eaff]">
               Workforce Enquiry
             </p>
 
@@ -741,7 +741,7 @@ export default function ContactPage() {
           </div>
 
           <div>
-            <p className="mb-8 font-semibold text-[#d6eaff]">
+            <p className="mb-8 font-semibold text-[24px] text-[#d6eaff]">
               What We Can Discuss
             </p>
             <SectionHeading light>
@@ -768,7 +768,7 @@ export default function ContactPage() {
       {/* Team Contacts */}
       <section className="relative mx-2 mb-3 overflow-hidden rounded-[26px] bg-white px-[9vw] py-28 text-black shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5">
         <div className="grid gap-20 lg:grid-cols-[0.34fr_0.66fr]">
-          <p className="font-semibold text-[#104B9C]">
+          <p className="font-semibold text-[24px] text-[#104B9C]">
             Direct Contacts
             <br />
             Platinum Team
@@ -824,7 +824,7 @@ export default function ContactPage() {
       {/* FAQ */}
       <section className="relative mx-2 mb-3 overflow-hidden rounded-[26px] bg-[#f1f5f8] px-[9vw] py-28 text-black shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5">
         <div className="grid gap-20 lg:grid-cols-[0.32fr_0.68fr]">
-          <p className="font-semibold text-[#104B9C]">Contact Questions</p>
+          <p className="font-semibold text-[24px] text-[#104B9C]">Contact Questions</p>
 
           <div>
             <SectionHeading>
@@ -852,7 +852,7 @@ export default function ContactPage() {
 
         <div className="relative grid items-end gap-16 lg:grid-cols-[0.7fr_0.3fr]">
           <div>
-            <p className="mb-8 font-semibold text-[#d6eaff]">
+            <p className="mb-8 text-[24px] font-semibold text-[#d6eaff]">
               Start the Conversation
             </p>
             <h2 className="max-w-[900px] text-[48px] font-light leading-[0.96] tracking-[-0.065em] md:text-[68px] xl:text-[84px]">
