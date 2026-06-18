@@ -241,7 +241,7 @@ export default function ServicesPage() {
 
         <div className="relative grid items-end gap-16 xl:grid-cols-[0.9fr_1.1fr]">
           <div className="pb-4">
-            <p className="mb-7 text-[14px] font-semibold uppercase tracking-[0.16em] text-[#104B9C]">
+            <p className="mb-7 text-[20px] font-semibold uppercase tracking-[0.16em] text-[#104B9C]">
               Platinum Manpower & Facility Management Services
             </p>
 
@@ -345,7 +345,7 @@ export default function ServicesPage() {
       >
         <div className="grid gap-16 lg:grid-cols-[0.32fr_0.68fr] lg:gap-24">
           <div>
-            <p className="font-semibold text-[#104B9C]">Service Explorer</p>
+            <p className="font-semibold text-[26px] text-[#104B9C]">Service Explorer</p>
           </div>
 
           <SectionHeading>
@@ -488,7 +488,7 @@ export default function ServicesPage() {
       <section className="relative mx-2 mb-3 overflow-hidden rounded-[26px] bg-white px-[6vw] py-24 shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5 lg:px-[9vw] lg:py-28">
         <div className="grid gap-16 lg:grid-cols-[0.35fr_0.65fr] lg:gap-24">
           <div>
-            <p className="font-semibold text-[#104B9C]">
+            <p className="font-semibold text-[26px] text-[#104B9C]">
               Service Coverage
               <br />
               Flexible Workforce Options
@@ -587,7 +587,7 @@ export default function ServicesPage() {
       {/* Process */}
       <section className="relative mx-2 mb-3 overflow-hidden rounded-[26px] bg-[#104B9C] px-[6vw] py-24 text-white shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5 lg:px-[9vw] lg:py-28">
         <div className="grid gap-16 lg:grid-cols-[0.32fr_0.68fr] lg:gap-24">
-          <p className="font-semibold text-[#d6eaff]">
+          <p className="font-semibold text-[26px] text-[#d6eaff]">
             Our Deployment Process
           </p>
 
@@ -640,7 +640,7 @@ export default function ServicesPage() {
       <section className="relative mx-2 mb-3 overflow-hidden rounded-[26px] bg-[#eef2f5] px-[6vw] py-24 text-black shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5 lg:px-[9vw] lg:py-28">
         <div className="grid gap-16 xl:grid-cols-[0.38fr_0.62fr] xl:gap-24">
           <div className="xl:sticky xl:top-32 xl:self-start">
-            <p className="font-semibold text-[#104B9C]">Service Standards</p>
+            <p className="font-semibold text-[26px] text-[#104B9C]">Service Standards</p>
             <h2 className="mt-8 max-w-[520px] text-[44px] font-light leading-[1] tracking-[-0.06em] md:text-[58px]">
               More than workforce supply. We deliver operational confidence.
             </h2>
@@ -674,7 +674,7 @@ export default function ServicesPage() {
       {/* Industries */}
       <section className="relative mx-2 mb-3 overflow-hidden rounded-[26px] bg-white px-[6vw] py-24 shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5 lg:px-[9vw] lg:py-28">
         <div className="grid gap-16 lg:grid-cols-[0.34fr_0.66fr] lg:gap-24">
-          <p className="font-semibold text-[#104B9C]">Industries We Support</p>
+          <p className="font-semibold text-[26px] text-[#104B9C]">Industries We Support</p>
           <SectionHeading>
             Workforce solutions built for modern business environments.
           </SectionHeading>
@@ -720,7 +720,7 @@ export default function ServicesPage() {
       <section className="relative mx-2 mb-3 overflow-hidden rounded-[26px] bg-[#f7fbff] px-[6vw] py-24 text-black shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5 lg:px-[9vw] lg:py-28">
         <div className="grid gap-16 lg:grid-cols-[0.34fr_0.66fr] lg:gap-24">
           <div>
-            <p className="font-semibold text-[#104B9C]">Service Questions</p>
+            <p className="font-semibold text-[26px] text-[#104B9C]">Service Questions</p>
             <p className="mt-6 max-w-[300px] text-[17px] leading-[1.45] text-black/55">
               Important information before sharing your workforce requirement.
             </p>
@@ -750,7 +750,7 @@ export default function ServicesPage() {
 
         <div className="relative grid items-center gap-16 lg:grid-cols-[0.58fr_0.42fr] lg:gap-20">
           <div>
-            <p className="mb-8 font-semibold text-[#d6eaff]">
+            <p className="mb-8 font-semibold text-[26px] text-[#d6eaff]">
               Start Your Workforce Requirement
             </p>
             <SectionHeading light className="max-w-[850px]">

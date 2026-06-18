@@ -405,7 +405,7 @@ export default function AboutPage() {
                 ease: [0.22, 1, 0.36, 1],
               }}
             >
-              <p className="mb-7 text-[15px] font-semibold uppercase tracking-[0.14em] text-[#104B9C]">
+              <p className="mb-7 text-[24px] font-semibold uppercase tracking-[0.14em] text-[#104B9C]">
                 About Platinum Manpower Services
               </p>
 
@@ -504,7 +504,7 @@ export default function AboutPage() {
 
           <div className="relative grid items-center gap-20 lg:grid-cols-[0.45fr_0.55fr]">
             <Reveal direction="right">
-              <p className="mb-8 font-semibold text-[#104B9C]">
+              <p className="mb-8 font-semibold text-[24px] text-[#104B9C]">
                 About Platinum
               </p>
 
@@ -698,7 +698,7 @@ export default function AboutPage() {
         <section className="relative mx-2 mb-3 overflow-hidden rounded-[26px] bg-white px-[9vw] py-28 text-black shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5">
           <div className="grid gap-20 lg:grid-cols-[0.36fr_0.64fr]">
             <Reveal direction="right">
-              <p className="font-semibold text-[#104B9C]">
+              <p className="font-semibold text-[24px] text-[#104B9C]">
                 Our Workforce Capabilities
               </p>
             </Reveal>
@@ -763,7 +763,7 @@ export default function AboutPage() {
 
           <div className="relative grid gap-20 lg:grid-cols-[0.32fr_0.68fr]">
             <Reveal direction="right">
-              <p className="font-semibold text-[#104B9C]">
+              <p className="font-semibold text-[24px] text-[#104B9C]">
                 Our Staffing Process
                 <br />
                 Structured Deployment
@@ -822,7 +822,7 @@ export default function AboutPage() {
 
           <div className="relative grid gap-20 lg:grid-cols-[0.34fr_0.66fr]">
             <Reveal direction="right">
-              <p className="font-semibold text-[#d6eaff]">
+              <p className="font-semibold text-[24px] text-[#d6eaff]">
                 Industries We Support
               </p>
             </Reveal>
@@ -1029,7 +1029,7 @@ export default function AboutPage() {
         <section className="relative mx-2 mb-3 overflow-hidden rounded-[26px] bg-white px-[9vw] py-28 text-black shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5">
           <div className="grid gap-20 lg:grid-cols-[0.32fr_0.68fr]">
             <Reveal direction="right">
-              <p className="font-semibold text-[#104B9C]">
+              <p className="font-semibold text-[24px] text-[#104B9C]">
                 Our Team
                 <br />
                 People Behind Platinum
@@ -1098,7 +1098,7 @@ export default function AboutPage() {
 
           <div className="relative grid gap-20 lg:grid-cols-[0.32fr_0.68fr]">
             <Reveal direction="right">
-              <p className="font-semibold text-[#104B9C]">About Our Services</p>
+              <p className="font-semibold text-[24px] text-[#104B9C]">About Our Services</p>
             </Reveal>
 
             <div>
@@ -1127,7 +1127,7 @@ export default function AboutPage() {
 
           <div className="relative grid items-center gap-20 lg:grid-cols-[0.45fr_0.55fr]">
             <Reveal direction="right">
-              <p className="mb-10 font-semibold text-[#d6eaff]">
+              <p className="mb-10 font-semibold text-[24px] text-[#d6eaff]">
                 Partner With Platinum
               </p>
 

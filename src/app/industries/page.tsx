@@ -142,7 +142,6 @@ const industries = [
     ],
     accent: "Time-critical operations",
   },
-
 ];
 
 const industryStats = [
@@ -274,12 +273,47 @@ function SectionHeading({
 }) {
   return (
     <h2
-      className={`text-[42px] font-light leading-[0.98] tracking-[-0.065em] md:text-[58px] xl:text-[76px] ${
+      className={`max-w-[900px] text-[38px] font-light leading-[1.02] tracking-[-0.055em] sm:text-[44px] md:text-[54px] xl:text-[66px] ${
         light ? "text-white" : "text-black"
       } ${className}`}
     >
       {children}
     </h2>
+  );
+}
+
+function SectionIntro({
+  eyebrow,
+  description,
+  heading,
+  light = false,
+}: {
+  eyebrow: ReactNode;
+  description: string;
+  heading: ReactNode;
+  light?: boolean;
+}) {
+  return (
+    <div className="grid gap-10 lg:grid-cols-[0.31fr_0.69fr] lg:gap-16 xl:gap-24">
+      <div>
+        <p
+          className={`text-[13px] font-semibold uppercase tracking-[0.16em] ${
+            light ? "text-[#d6eaff]" : "text-[#104B9C]"
+          }`}
+        >
+          {eyebrow}
+        </p>
+        <p
+          className={`mt-5 max-w-[320px] text-[16px] leading-[1.55] md:text-[17px] ${
+            light ? "text-white/62" : "text-black/56"
+          }`}
+        >
+          {description}
+        </p>
+      </div>
+
+      <SectionHeading light={light}>{heading}</SectionHeading>
+    </div>
   );
 }
 
@@ -320,7 +354,7 @@ function FaqItem({ question, answer }: { question: string; answer: string }) {
         onClick={() => setOpen((current) => !current)}
         className="flex w-full items-center justify-between gap-8 py-7 text-left"
       >
-        <span className="text-[19px] font-medium text-white transition-colors duration-300 hover:text-[#d6eaff] md:text-[21px]">
+        <span className="text-[18px] font-medium leading-[1.35] text-white transition-colors duration-300 hover:text-[#d6eaff] md:text-[21px]">
           {question}
         </span>
 
@@ -382,9 +416,8 @@ export default function IndustriesPage() {
                 Industries We Serve
               </p>
 
-              <h1 className="max-w-[760px] text-[50px] font-light leading-[0.94] tracking-[-0.068em] text-black md:text-[72px] xl:text-[96px]">
-                Workforce solutions for every industry.
-                operations.
+              <h1 className="max-w-[760px] text-[46px] font-light leading-[0.98] tracking-[-0.06em] text-black sm:text-[56px] md:text-[68px] xl:text-[86px]">
+                Workforce solutions built for industry operations.
               </h1>
 
               <p className="mt-9 max-w-[620px] text-[20px] leading-[1.42] text-black/65 md:text-[22px]">
@@ -394,7 +427,6 @@ export default function IndustriesPage() {
               </p>
 
               <div className="flex flex-wrap items-center gap-x-8 gap-y-2">
-
                 <a
                   href="#industry-navigator"
                   className="mt-8 border-b border-black pb-1 text-[15px] font-semibold text-black transition-colors hover:border-white"
@@ -482,22 +514,17 @@ export default function IndustriesPage() {
         {/* Industry Navigator */}
         <section
           id="industry-navigator"
-          className="relative mx-2 mb-3 scroll-mt-28 overflow-hidden rounded-[26px] bg-white px-[6vw] py-24 shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5 lg:px-[9vw] lg:py-28"
+          className="relative mx-2 mb-3 scroll-mt-28 overflow-hidden rounded-[26px] bg-white px-[6vw] py-20 shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5 lg:px-[9vw] lg:py-24"
         >
-          <div className="grid gap-16 lg:grid-cols-[0.3fr_0.7fr] lg:gap-24">
-            <div>
-              <p className="font-semibold text-[#104B9C]">Industry Navigator</p>
-              <p className="mt-6 max-w-[290px] text-[17px] leading-[1.45] text-black/55">
-                Select an industry to explore workforce roles, staffing
-                priorities, and suitable operating environments.
-              </p>
-            </div>
-
-            <SectionHeading>
-              Manpower services planned around how your industry actually
-              operates.
-            </SectionHeading>
-          </div>
+          <SectionIntro
+  eyebrow={<span className="text-[24px]">Industry Navigator</span>}
+  description="Select an industry to explore workforce roles, staffing priorities, and suitable operating environments."
+  heading={
+    <>
+      Manpower services planned around how your industry actually operates.
+    </>
+  }
+/>
 
           <div className="mt-20 overflow-hidden rounded-[12px] border border-[#104B9C]/15 bg-[#f7fbff] shadow-[0_30px_90px_rgba(16,75,156,0.10)]">
             <div className="grid border-b border-[#104B9C]/12 sm:grid-cols-2 xl:grid-cols-4">
@@ -640,20 +667,17 @@ export default function IndustriesPage() {
         </section>
 
         {/* Operational Priorities */}
-        <section className="relative mx-2 mb-3 overflow-hidden rounded-[26px] bg-[#eef2f5] px-[6vw] py-24 text-black shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5 lg:px-[9vw] lg:py-28">
-          <div className="grid items-end gap-16 xl:grid-cols-[0.54fr_0.46fr] xl:gap-24">
-            <SectionHeading>
-              Reliable operations begin with workforce that understands the
-              environment.
-            </SectionHeading>
-
-            <p className="max-w-[540px] text-[20px] leading-[1.45] text-black/60">
-              Every industry has different responsibilities, but smooth
-              operations consistently depend on hygiene, discipline,
-              professional conduct, attendance, and reliable workforce
-              availability.
-            </p>
-          </div>
+        <section className="relative mx-2 mb-3 overflow-hidden rounded-[26px] bg-[#eef2f5] px-[6vw] py-24 text-black shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5 lg:px-[9vw] lg:py-24">
+          <SectionIntro
+  eyebrow={<span className="text-[24px]">Operational Priorities</span>}
+  description="Every industry has different responsibilities, but smooth operations consistently depend on hygiene, discipline, professional conduct, attendance, and reliable workforce availability."
+  heading={
+    <>
+      Reliable operations begin with workforce that understands the
+      environment.
+    </>
+  }
+/>
 
           <div className="mt-20 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
             {operatingPriorities.map((item, index) => (
@@ -685,11 +709,11 @@ export default function IndustriesPage() {
                 </div>
 
                 <div className="mt-24">
-                  <h3 className="text-[31px] font-light leading-[1.02] tracking-[-0.05em]">
+                  <h3 className="text-[28px] font-light leading-[1.08] md:text-[30px] tracking-[-0.05em]">
                     {item.title}
                   </h3>
                   <p
-                    className={`mt-7 text-[17px] leading-[1.45] ${
+                    className={`mt-7 text-[16px] leading-[1.55] ${
                       index === 1 || index === 3
                         ? "text-white/70"
                         : "text-black/58"
@@ -704,21 +728,16 @@ export default function IndustriesPage() {
         </section>
 
         {/* Coverage Matrix */}
-        <section className="relative mx-2 mb-3 overflow-hidden rounded-[26px] bg-white px-[6vw] py-24 text-black shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5 lg:px-[9vw] lg:py-28">
-          <div className="grid gap-16 lg:grid-cols-[0.32fr_0.68fr] lg:gap-24">
-            <div>
-              <p className="font-semibold text-[#104B9C]">Workforce Coverage</p>
-              <p className="mt-6 max-w-[310px] text-[17px] leading-[1.45] text-black/55">
-                A practical overview of common manpower and facility support
-                categories available across the industries we serve.
-              </p>
-            </div>
-
-            <SectionHeading>
-              One workforce partner for multiple industries and operational
-              roles.
-            </SectionHeading>
-          </div>
+        <section className="relative mx-2 mb-3 overflow-hidden rounded-[26px] bg-white px-[6vw] py-24 text-black shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5 lg:px-[9vw] lg:py-24">
+          <SectionIntro
+  eyebrow={<span className="text-[24px]">Workforce Coverage</span>}
+  description="A practical overview of common manpower and facility support categories available across the industries we serve."
+  heading={
+    <>
+      One workforce partner for multiple industries and operational roles.
+    </>
+  }
+/>
 
           <div className="mt-20 overflow-x-auto rounded-[10px] border border-[#104B9C]/15 bg-[#f7fbff]">
             <div className="min-w-[980px]">
@@ -791,7 +810,7 @@ export default function IndustriesPage() {
                 <p className="text-[13px] font-semibold uppercase tracking-[0.16em] text-[#d6eaff]">
                   Flexible Across Industries
                 </p>
-                <h2 className="mt-7 text-[42px] font-light leading-[0.98] tracking-[-0.06em] md:text-[58px]">
+                <h2 className="mt-6 text-[38px] font-light leading-[1.02] tracking-[-0.055em] sm:text-[44px] md:text-[54px]">
                   Your workforce plan should match your workplace.
                 </h2>
                 <p className="mt-8 text-[19px] leading-[1.45] text-white/70">
@@ -809,53 +828,45 @@ export default function IndustriesPage() {
         </section>
 
         {/* Deployment Process */}
-        <section className="relative mx-2 mb-3 overflow-hidden rounded-[26px] bg-[#D9EAFD] px-[6vw] py-24 text-black shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5 lg:px-[9vw] lg:py-28">
-          <div className="grid gap-16 xl:grid-cols-[0.37fr_0.63fr] xl:gap-24">
-            <div className="xl:sticky xl:top-32 xl:self-start">
-              <p className="font-semibold text-[#104B9C]">
-                Industry Deployment
-              </p>
-              <h2 className="mt-8 max-w-[520px] text-[44px] font-light leading-[1] tracking-[-0.06em] md:text-[60px]">
-                A workforce deployment process built around site reality.
-              </h2>
-              <p className="mt-8 max-w-[470px] text-[18px] leading-[1.48] text-black/58">
-                We first understand the workplace, role expectations, shifts,
-                and operating conditions, then define the workforce mix and
-                deployment structure required for dependable daily support.
-              </p>
-            </div>
+        <section className="relative mx-2 mb-3 overflow-hidden rounded-[26px] bg-[#D9EAFD] px-[6vw] py-24 text-black shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5 lg:px-[9vw] lg:py-24">
+          <SectionIntro
+  eyebrow={<span className="text-[24px]">Industry Deployment</span>}
+  description="We first understand the workplace, role expectations, shifts, and operating conditions, then define the workforce mix and deployment structure required for dependable daily support."
+  heading="A workforce deployment process built around site reality."
+/>
 
-            <div className="space-y-5">
-              {deploymentSteps.map((item, index) => (
-                <article
-                  key={item.step}
-                  className="group grid gap-7 rounded-[9px] border border-[#104B9C]/12 bg-white p-7 transition-all duration-300 hover:-translate-x-2 hover:shadow-[0_24px_70px_rgba(16,75,156,0.12)] md:grid-cols-[0.14fr_0.34fr_0.52fr] md:items-start md:p-9"
-                >
-                  <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#104B9C] text-[13px] font-bold text-white">
-                    {item.step}
-                  </span>
-                  <h3 className="text-[28px] font-light leading-[1.05] tracking-[-0.045em] text-black transition-colors group-hover:text-[#104B9C] md:text-[32px]">
-                    {item.title}
-                  </h3>
-                  <p className="text-[17px] leading-[1.46] text-black/58">
-                    {item.text}
-                  </p>
-                </article>
-              ))}
-            </div>
+          <div className="mt-16 space-y-5 lg:ml-[31%] lg:pl-16 xl:mt-20 xl:pl-24">
+            {deploymentSteps.map((item, index) => (
+              <article
+                key={item.step}
+                className="group grid gap-7 rounded-[9px] border border-[#104B9C]/12 bg-white p-7 transition-all duration-300 hover:-translate-x-2 hover:shadow-[0_24px_70px_rgba(16,75,156,0.12)] md:grid-cols-[0.14fr_0.34fr_0.52fr] md:items-start md:p-9"
+              >
+                <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#104B9C] text-[13px] font-bold text-white">
+                  {item.step}
+                </span>
+                <h3 className="text-[28px] font-light leading-[1.05] tracking-[-0.045em] text-black transition-colors group-hover:text-[#104B9C] md:text-[32px]">
+                  {item.title}
+                </h3>
+                <p className="text-[17px] leading-[1.46] text-black/58">
+                  {item.text}
+                </p>
+              </article>
+            ))}
           </div>
         </section>
 
         {/* Advantages */}
-        <section className="relative mx-2 mb-3 overflow-hidden rounded-[26px] bg-white px-[6vw] py-24 text-black shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5 lg:px-[9vw] lg:py-28">
+        <section className="relative mx-2 mb-3 overflow-hidden rounded-[26px] bg-white px-[6vw] py-24 text-black shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5 lg:px-[9vw] lg:py-24">
           <div className="grid items-center gap-16 lg:grid-cols-[0.56fr_0.44fr] lg:gap-20">
             <div>
-              <p className="font-semibold text-[#104B9C]">Why Platinum</p>
-              <SectionHeading className="mt-8 max-w-[760px]">
+              <p className="text-[24px] font-semibold uppercase tracking-[0.16em] text-[#104B9C]">
+                Why Platinum
+              </p>
+              <SectionHeading className="mt-6 max-w-[760px]">
                 Industry-focused manpower backed by practical coordination.
               </SectionHeading>
 
-              <div className="mt-14 grid gap-3 sm:grid-cols-2">
+              <div className="mt-12 grid gap-3 sm:grid-cols-2">
                 {serviceAdvantages.map((item, index) => (
                   <div
                     key={item}
@@ -895,40 +906,35 @@ export default function IndustriesPage() {
         </section>
 
         {/* FAQ */}
-        <section className="relative mx-2 mb-3 overflow-hidden rounded-[26px] bg-[#104B9C] px-[6vw] py-24 text-white shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5 lg:px-[9vw] lg:py-28">
-          <div className="grid gap-16 lg:grid-cols-[0.33fr_0.67fr] lg:gap-24">
-            <div>
-              <p className="font-semibold text-[#d6eaff]">Industry Questions</p>
-              <p className="mt-6 max-w-[310px] text-[17px] leading-[1.45] text-white/58">
-                Key information to review before planning manpower,
-                housekeeping, staffing, or facility support for your workplace.
-              </p>
-            </div>
+        <section className="relative mx-2 mb-3 overflow-hidden rounded-[26px] bg-[#104B9C] px-[6vw] py-24 text-white shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5 lg:px-[9vw] lg:py-24">
+          <div>
+            <SectionIntro
+  eyebrow={<span className="text-[24px]">Industry Questions</span>}
+  description="Key information to review before planning manpower, housekeeping, staffing, or facility support for your workplace."
+  heading="Frequently asked questions."
+  light
+/>
 
-            <div>
-              <SectionHeading light>Frequently asked questions.</SectionHeading>
-
-              <div className="mt-14">
-                {faqs.map((faq) => (
-                  <FaqItem
-                    key={faq.question}
-                    question={faq.question}
-                    answer={faq.answer}
-                  />
-                ))}
-              </div>
+            <div className="mt-14 lg:ml-[31%] lg:pl-16 xl:pl-24">
+              {faqs.map((faq) => (
+                <FaqItem
+                  key={faq.question}
+                  question={faq.question}
+                  answer={faq.answer}
+                />
+              ))}
             </div>
           </div>
         </section>
 
         {/* CTA */}
-        <section className="relative mx-2 mb-3 overflow-hidden rounded-[26px] bg-[#D9EAFD] px-[6vw] py-24 text-black shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5 lg:px-[9vw] lg:py-28">
+        <section className="relative mx-2 mb-3 overflow-hidden rounded-[26px] bg-[#D9EAFD] px-[6vw] py-24 text-black shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5 lg:px-[9vw] lg:py-24">
           <div className="pointer-events-none absolute -bottom-56 -right-32 h-[620px] w-[620px] rounded-full border border-[#104B9C]/10" />
           <div className="pointer-events-none absolute -bottom-24 right-20 h-[380px] w-[380px] rounded-full border border-[#104B9C]/10" />
 
           <div className="relative grid items-center gap-16 lg:grid-cols-[0.64fr_0.36fr] lg:gap-20">
             <div>
-              <p className="mb-8 font-semibold text-[#104B9C]">
+              <p className="mb-6 text-[20px] font-semibold uppercase tracking-[0.16em] text-[#104B9C]">
                 Plan Your Industry Workforce Requirement
               </p>
               <SectionHeading className="max-w-[900px]">

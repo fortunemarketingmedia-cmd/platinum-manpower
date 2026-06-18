@@ -681,7 +681,7 @@ export default function ContactPage() {
         <div className="grid items-stretch gap-6 lg:grid-cols-[0.9fr_1.1fr]">
           <div className="flex flex-col justify-between rounded-[10px] bg-white p-9 shadow-[0_25px_70px_rgba(16,75,156,0.10)] md:p-12">
             <div>
-              <p className="text-[14px] font-semibold uppercase tracking-[0.14em] text-[#104B9C]">
+              <p className="text-[24px] font-semibold uppercase tracking-[0.14em] text-[#104B9C]">
                 Head Office
               </p>
               <h2 className="mt-7 text-[42px] font-light leading-[1] tracking-[-0.06em] md:text-[58px]">

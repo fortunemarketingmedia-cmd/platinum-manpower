@@ -473,7 +473,7 @@ export default function Page() {
         />
 
         <Reveal>
-          <p className="max-w-[280px] font-semibold text-[#104B9C]">
+          <p className="max-w-[280px] text-[24px] font-semibold text-[#104B9C]">
             About Platinum
           </p>
         </Reveal>
@@ -551,23 +551,37 @@ export default function Page() {
           className="absolute -right-40 -top-32 h-[460px] w-[460px] rounded-full border border-white/10"
         />
 
-        <div className="relative grid gap-20 lg:grid-cols-[1fr_0.78fr] lg:gap-28">
-          <ClipReveal>
-            <SectionHeading light>Our Services</SectionHeading>
-          </ClipReveal>
+        <div className="relative grid gap-10 lg:grid-cols-[0.32fr_0.68fr] lg:gap-20">
+  <Reveal direction="right">
+    <div>
+      <p className="text-[24px] font-semibold text-[#d6eaff]">
+        Our Services
+      </p>
 
-          <Reveal direction="left" delay={0.08}>
-            <p className="max-w-[520px] text-[20px] leading-[1.24] text-white/75">
-              Reliable workforce, staffing, and facility management solutions
-              designed to support modern business operations across Maharashtra,
-              from contract staffing and payroll to healthcare and hospitality teams.
-            </p>
+      <p className="mt-5 max-w-[320px] text-[16px] leading-[1.5] text-white/65 md:text-[17px]">
+        Reliable workforce, staffing, and facility management solutions
+        designed to support modern business operations across Maharashtra.
+      </p>
+    </div>
+  </Reveal>
 
-            <Button href="/services" dark>
-              Explore Services
-            </Button>
-          </Reveal>
-        </div>
+  <ClipReveal delay={0.08}>
+    <div>
+      <SectionHeading light>
+        Complete workforce solutions for modern business operations.
+      </SectionHeading>
+
+      <p className="mt-7 max-w-[700px] text-[18px] leading-[1.5] text-white/72 md:text-[20px]">
+        From contract staffing and payroll management to healthcare,
+        hospitality, housekeeping, and facility support teams.
+      </p>
+
+      <Button href="/services" dark>
+        Explore Services
+      </Button>
+    </div>
+  </ClipReveal>
+</div>
 
         <StaggerGroup
           className="relative mt-24 grid gap-5 md:grid-cols-2 xl:grid-cols-5"
@@ -612,10 +626,8 @@ export default function Page() {
 
         <div className="relative grid gap-20 lg:grid-cols-[0.32fr_0.68fr]">
           <Reveal direction="right">
-            <p className="font-semibold">
+            <p className="font-semibold text-[24px]">
               Our Staffing Approach
-              <br />
-              Structured. Efficient. Reliable.
             </p>
           </Reveal>
 
@@ -671,10 +683,8 @@ export default function Page() {
 
         <div className="relative mb-20 grid gap-20 lg:grid-cols-[0.7fr_1.3fr]">
           <Reveal direction="right">
-            <p className="font-semibold">
+            <p className="font-semibold text-[24px]">
               Why Choose Platinum?
-              <br />
-              Reliable. Verified. Professionally Managed.
             </p>
           </Reveal>
 
@@ -722,19 +732,34 @@ export default function Page() {
           id="industries"
           className="relative mx-2 mb-3 overflow-hidden rounded-[26px] bg-white px-[9vw] py-28 text-black shadow-[0_32px_100px_rgba(2,18,43,0.24)] scroll-mt-24 sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5"
         >
-        <div className="grid gap-20 lg:grid-cols-[1fr_0.78fr] lg:gap-28">
-          <ClipReveal>
-            <SectionHeading>Industries We Serve</SectionHeading>
-          </ClipReveal>
+        <div className="grid gap-10 lg:grid-cols-[0.32fr_0.68fr] lg:gap-20">
+  <Reveal direction="right">
+    <div>
+      <p className="text-[24px] font-semibold text-[#104B9C]">
+        Industries We Serve
+      </p>
 
-          <Reveal direction="left" delay={0.08}>
-            <p className="max-w-[520px] text-[20px] leading-[1.24] text-[#4f4f4f]">
-              Reliable manpower, staffing, and facility support for industries
-              where discipline, operational continuity, professionalism, and
-              service standards matter every day.
-            </p>
-          </Reveal>
-        </div>
+      <p className="mt-5 max-w-[320px] text-[16px] leading-[1.5] text-[#4f4f4f] md:text-[17px]">
+        Reliable manpower, staffing, and facility support for industries where
+        discipline, professionalism, and operational continuity matter.
+      </p>
+    </div>
+  </Reveal>
+
+  <ClipReveal delay={0.08}>
+    <div>
+      <SectionHeading>
+        Workforce support designed around the needs of every industry.
+      </SectionHeading>
+
+      <p className="mt-7 max-w-[700px] text-[18px] leading-[1.5] text-[#4f4f4f] md:text-[20px]">
+        From hospitals and hotels to shopping malls and airports, we provide
+        dependable teams that support service standards and smooth daily
+        operations.
+      </p>
+    </div>
+  </ClipReveal>
+</div>
 
         <StaggerGroup
           className="mt-24 grid gap-5 lg:grid-cols-2"
@@ -851,7 +876,7 @@ export default function Page() {
         >
         <div className="grid gap-20 lg:grid-cols-[0.32fr_0.68fr]">
           <Reveal direction="right">
-            <p className="font-semibold text-[#104B9C]">
+            <p className="font-semibold text-[24px] text-[#104B9C]">
               Our Team
               <br />
               People Behind Platinum
@@ -927,7 +952,7 @@ export default function Page() {
 
         <div className="relative grid items-start gap-20 lg:grid-cols-[0.38fr_0.62fr]">
           <Reveal direction="right">
-            <p className="mb-10 font-semibold text-[#d6eaff]">
+            <p className="mb-10 font-semibold text-[24px] text-[#d6eaff]">
               Contact Platinum
             </p>
 
