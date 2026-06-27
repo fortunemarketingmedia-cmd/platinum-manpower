@@ -176,28 +176,28 @@ const operatingPriorities = [
 
 const coverageMatrix = [
   {
-    role: "Housekeeping",
+    role: "Housekeeping Staff",
     coverage: [true, true, true, true],
   },
   {
-    role: "Customer Assistance",
-    coverage: [false, true, true, true],
+    role: "Hospital Support Staff",
+    coverage: [true, false, false, true],
   },
   {
-    role: "Healthcare Support",
+    role: "Nursing Staff",
     coverage: [true, false, false, false],
   },
   {
-    role: "Hospitality Support",
-    coverage: [false, true, false, true],
+    role: "Hospitality Staff",
+    coverage: [false, true, true, false],
   },
   {
-    role: "Facility Helpers",
+    role: "Security Personnel",
     coverage: [true, true, true, true],
   },
   {
-    role: "Skilled / Operational Staff",
-    coverage: [true, true, true, true],
+    role: "Office Support Staff",
+    coverage: [false, false, true, true],
   },
 ];
 
@@ -728,69 +728,108 @@ export default function IndustriesPage() {
         </section>
 
         {/* Coverage Matrix */}
-        <section className="relative mx-2 mb-3 overflow-hidden rounded-[26px] bg-white px-[6vw] py-24 text-black shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5 lg:px-[9vw] lg:py-24">
-          <SectionIntro
-  eyebrow={<span className="text-[24px]">Workforce Coverage</span>}
-  description="A practical overview of common manpower and facility support categories available across the industries we serve."
-  heading={
-    <>
-      One workforce partner for multiple industries and operational roles.
-    </>
-  }
-/>
+<section className="relative mx-2 mb-3 overflow-hidden rounded-[26px] bg-white px-[6vw] py-24 text-black shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5 lg:px-[9vw] lg:py-24">
+  <SectionIntro
+    eyebrow={<span className="text-[24px]">Workforce Coverage</span>}
+    description="A practical overview of common manpower and facility support categories available across the industries we serve."
+    heading={
+      <>
+        One workforce partner for multiple industries and operational roles.
+      </>
+    }
+  />
 
-          <div className="mt-20 overflow-x-auto rounded-[10px] border border-[#104B9C]/15 bg-[#f7fbff]">
-            <div className="min-w-[980px]">
-              <div className="grid grid-cols-[1.5fr_repeat(4,1fr)] bg-[#104B9C] text-white">
-                <div className="p-5 text-[13px] font-semibold uppercase tracking-[0.14em] text-[#d6eaff]">
-                  Workforce Category
-                </div>
-                {industries.map((industry) => (
-                  <div
-                    key={industry.shortTitle}
-                    className="border-l border-white/12 p-5 text-center text-[14px] font-semibold"
-                  >
-                    {industry.shortTitle}
-                  </div>
-                ))}
-              </div>
+  <div className="mt-20 overflow-x-auto rounded-[10px] border border-[#104B9C]/15 bg-[#f7fbff]">
+    <div className="min-w-[980px]">
+      {/* Table Header */}
+      <div className="grid grid-cols-[1.5fr_repeat(4,1fr)] bg-[#104B9C] text-white">
+        <div className="p-5 text-[13px] font-semibold uppercase tracking-[0.14em] text-[#d6eaff]">
+          Workforce Category
+        </div>
 
-              {coverageMatrix.map((row, rowIndex) => (
-                <div
-                  key={row.role}
-                  className={`grid grid-cols-[1.5fr_repeat(4,1fr)] border-b border-[#104B9C]/10 last:border-b-0 ${
-                    rowIndex % 2 === 0 ? "bg-white" : "bg-[#eef5fc]"
-                  }`}
-                >
-                  <div className="p-5 text-[16px] font-medium text-black">
-                    {row.role}
-                  </div>
-                  {row.coverage.map((available, index) => (
-                    <div
-                      key={`${row.role}-${industries[index].shortTitle}`}
-                      className="flex items-center justify-center border-l border-[#104B9C]/10 p-5"
-                    >
-                      <span
-                        className={`flex h-8 w-8 items-center justify-center rounded-full text-[14px] font-semibold ${
-                          available
-                            ? "bg-[#104B9C] text-white"
-                            : "border border-black/10 bg-white text-black/25"
-                        }`}
-                      >
-                        {available ? "✓" : "–"}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              ))}
-            </div>
+        {industries.map((industry) => (
+          <div
+            key={industry.shortTitle}
+            className="border-l border-white/15 p-5 text-center text-[14px] font-semibold"
+          >
+            {industry.shortTitle}
+          </div>
+        ))}
+      </div>
+
+      {/* Table Rows */}
+      {coverageMatrix.map((row, rowIndex) => (
+        <div
+          key={row.role}
+          className={`grid grid-cols-[1.5fr_repeat(4,1fr)] border-b border-[#104B9C]/10 last:border-b-0 ${
+            rowIndex % 2 === 0 ? "bg-white" : "bg-[#eef5fc]"
+          }`}
+        >
+          <div className="flex items-center p-5 text-[16px] font-medium text-black">
+            {row.role}
           </div>
 
-          <p className="mt-5 text-[14px] leading-[1.4] text-black/45">
-            Workforce availability and exact role coverage are confirmed after
-            reviewing the site, location, shift, quantity, and service scope.
-          </p>
-        </section>
+          {row.coverage.map((available, index) => {
+            const isAvailable = available === true;
+
+            return (
+              <div
+                key={`${row.role}-${industries[index]?.shortTitle || index}`}
+                className="flex items-center justify-center border-l border-[#104B9C]/10 p-5"
+              >
+                <span
+                  title={isAvailable ? "Available" : "Not available"}
+                  aria-label={isAvailable ? "Available" : "Not available"}
+                  className={`flex h-8 w-8 items-center justify-center rounded-full ${
+                    isAvailable
+                      ? "bg-[#104B9C] text-white"
+                      : "border border-black/10 bg-white text-black/25"
+                  }`}
+                >
+                  {isAvailable ? (
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      className="h-4 w-4"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M5 12.5l4.2 4.2L19 7"
+                        stroke="currentColor"
+                        strokeWidth="2.4"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  ) : (
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      className="h-4 w-4"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M6 12h12"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                      />
+                    </svg>
+                  )}
+                </span>
+              </div>
+            );
+          })}
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <p className="mt-5 text-[14px] leading-[1.4] text-black/45">
+    Workforce availability and exact role coverage are confirmed after
+    reviewing the site, location, shift, quantity, and service scope.
+  </p>
+</section>
 
         {/* Visual Break */}
         <section className="relative mx-2 mb-3 overflow-hidden rounded-[26px] bg-[#104B9C] px-[6vw] py-16 text-white shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5 lg:px-[9vw] lg:py-20">
