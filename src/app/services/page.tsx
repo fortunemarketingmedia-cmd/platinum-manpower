@@ -9,13 +9,22 @@ import Footer from "@/components/Footer";
 import { ScrollProgress } from "@/components/motion/MotionEffects";
 
 const assets = {
+  professional: "/images/services/professional-workforce.webp",
   staffGroup: "/images/platinum-staff-group.png",
   workforce: "/images/workforce-team.png",
+  image1: "/images/services/image-1.webp",
+  image2: "/images/services/image-2.webp",
+  Healthcare: "/images//services/Healthcare.webp",
+  hotel: "/images/services/hospitality-staff.webp",
+  mall: "/images/services/mall-staff.webp",
+  office: "/images/services/office-staff.webp",
   hospital: "/images/hospital-staff.png",
-  hotel: "/images/hotel-staff.png",
-  mall: "/images/mall-staff.png",
-  airport: "/images/airport-staff.png",
+  airport: "/images/services/airport-staff.webp",
   contactTeam: "/images/contact-team.png",
+  workflow: "/images/services/workflow.webp",
+  housekeeping: "/images/services/housekeeping-staff.webp",
+  hospital_staff: "/images/services/Hospital-staff.webp",
+  commercial: "/images/services/commercial-staff.webp",
 };
 
 const services = [
@@ -23,7 +32,7 @@ const services = [
     number: "01",
     shortTitle: "Skilled Manpower",
     title: "Skilled Workforce Solutions",
-    image: assets.workforce,
+    image: assets.image1,
     eyebrow: "Service 01",
     intro: "Professionally managed manpower for technical, operational, and role-specific business requirements.",
     description: "We assess every requirement carefully, including role type, workplace environment, shift schedules, experience level, and workforce quantity, to ensure dependable staffing aligned with your operational needs.",
@@ -35,7 +44,7 @@ const services = [
     number: "02",
     shortTitle: "Unskilled Manpower",
     title: "Unskilled Workforce Solutions",
-    image: assets.staffGroup,
+    image: assets.image2,
     eyebrow: "Service 02",
     intro: "Reliable manpower support for routine operations, daily workforce requirements, and operational assistance.",
     description: "We carefully assess staffing needs, shift timing, workload expectations, and workplace conditions to provide dependable manpower for uninterrupted business operations.",
@@ -47,7 +56,7 @@ const services = [
     number: "03",
     shortTitle: "Healthcare Staffing",
     title: "Healthcare Staffing Solutions",
-    image: assets.hospital,
+    image: assets.Healthcare  ,
     eyebrow: "Service 03",
     intro: "Professional healthcare workforce support for hospitals, clinics, diagnostic centres, and patient-care environments.",
     description: "We help healthcare institutions maintain operational continuity with trained support staff tailored to role-specific requirements where discipline, hygiene, and reliability are essential.",
@@ -71,7 +80,7 @@ const services = [
     number: "05",
     shortTitle: "Housekeeping Services",
     title: "Housekeeping & Facility Support",
-    image: assets.mall,
+    image: assets.housekeeping,
     eyebrow: "Service 05",
     intro: "Reliable housekeeping and facility workforce solutions for clean, organized, and efficient workplaces.",
     description: "We provide trained housekeeping staff and support personnel to maintain cleanliness, hygiene, workplace standards, and smooth daily operations across commercial and institutional environments.",
@@ -110,8 +119,8 @@ const industries = [
   { title: "Hotels", image: assets.hotel, text: "Housekeeping, room attendants, kitchen support, and hospitality workforce for smooth guest experiences." },
   { title: "Shopping Malls", image: assets.mall, text: "Housekeeping, customer assistance, facility support, and maintenance workforce for high-footfall environments." },
   { title: "Airports", image: assets.airport, text: "Operational staff, facility support, customer assistance, and managed workforce for fast-paced environments." },
-  { title: "Offices", image: assets.staffGroup, text: "Pantry staff, office support, housekeeping, and administrative workforce for professional workspaces." },
-  { title: "Commercial Spaces", image: assets.workforce, text: "Scalable housekeeping, operational staff, maintenance support, and flexible manpower for daily continuity." },
+  { title: "Offices", image: assets.office, text: "Pantry staff, office support, housekeeping, and administrative workforce for professional workspaces." },
+  { title: "Commercial Spaces", image: assets.commercial, text: "Scalable housekeeping, operational staff, maintenance support, and flexible manpower for daily continuity." },
 ];
 
 const faqs = [
@@ -269,7 +278,7 @@ export default function ServicesPage() {
           <div className="grid min-h-[600px] gap-4 md:grid-cols-[1.15fr_0.85fr]">
             <div className="group relative min-h-[520px] overflow-hidden rounded-[10px] bg-[#104B9C] md:min-h-[600px]">
               <img
-                src={assets.workforce}
+                src={assets.professional}
                 alt="Platinum professional workforce"
                 className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.025]"
               />
@@ -287,7 +296,7 @@ export default function ServicesPage() {
             <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-1">
               <div className="relative min-h-[250px] overflow-hidden rounded-[10px]">
                 <img
-                  src={assets.hospital}
+                  src={assets.Healthcare}
                   alt="Healthcare support staff"
                   className="h-full w-full object-cover"
                 />
@@ -342,7 +351,7 @@ export default function ServicesPage() {
       {/* Service Explorer */}
       <section
         id="service-explorer"
-        className="relative mx-2 mb-3 scroll-mt-28 overflow-hidden rounded-[26px] bg-[#f4f7fa] px-[6vw] py-24 shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5 lg:px-[9vw] lg:py-28"
+        className="relative mx-2 mb-3 scroll-mt-28 overflow-hidden rounded-[26px] bg-[#f4f7fa] px-[6vw] py-16 shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5 lg:px-[9vw] lg:py-20"
       >
         <div className="grid gap-16 lg:grid-cols-[0.32fr_0.68fr] lg:gap-24">
           <div>
@@ -354,7 +363,7 @@ export default function ServicesPage() {
           </SectionHeading>
         </div>
 
-        <div className="mt-20 grid overflow-hidden rounded-[12px] border border-[#104B9C]/15 bg-white shadow-[0_30px_90px_rgba(16,75,156,0.10)] xl:grid-cols-[0.36fr_0.64fr]">
+        <div className="mt-14 grid overflow-hidden rounded-[12px] border border-[#104B9C]/15 bg-white shadow-[0_30px_90px_rgba(16,75,156,0.10)] xl:grid-cols-[0.36fr_0.64fr]">
           <div className="border-b border-black/10 bg-[#eaf2fb] xl:border-b-0 xl:border-r">
             {services.map((service, index) => {
               const isActive = activeService === index;
@@ -394,9 +403,20 @@ export default function ServicesPage() {
                 </button>
               );
             })}
+            <div className="mt-9 rounded-[6px] border border-[#104B9C]/15 bg-[#f7fbff] p-5">
+  <p className="text-[12px] font-semibold uppercase tracking-[0.14em] text-[#104B9C]">
+    Suitable For
+  </p>
+  <p className="mt-2 text-[16px] font-medium leading-[1.4] text-black">
+    {selectedService.idealFor}
+  </p>
+</div>
+<div className="mt-6 flex items-center justify-center">
+<ActionButton href="/contact">Enquire for This Service</ActionButton>
+</div>
           </div>
 
-          <div className="grid min-h-[720px] lg:grid-cols-[0.92fr_1.08fr]">
+          <div className="grid min-h-[620px] lg:grid-cols-[0.92fr_1.08fr]">
             <div className="relative min-h-[420px] overflow-hidden bg-[#104B9C] lg:min-h-full">
               <img
                 key={selectedService.image}
@@ -416,7 +436,7 @@ export default function ServicesPage() {
               </div>
             </div>
 
-            <div className="p-7 md:p-10 xl:p-12">
+           <div className="p-6 md:p-8 xl:p-10"> 
               <div className="flex items-center justify-between gap-6">
                 <span className="text-[13px] font-semibold uppercase tracking-[0.16em] text-[#104B9C]">
                   Service {selectedService.number}
@@ -424,7 +444,7 @@ export default function ServicesPage() {
                 <span className="h-px flex-1 bg-[#104B9C]/15" />
               </div>
 
-              <h3 className="mt-8 text-[40px] font-light leading-[0.98] tracking-[-0.058em] text-black md:text-[52px]">
+              <h3 className="mt-8 text-[40px] font-light leading-[0.98] tracking-[-0.058em] text-black md:text-[40px]">
                 {selectedService.title}
               </h3>
 
@@ -469,17 +489,6 @@ export default function ServicesPage() {
                   </ul>
                 </div>
               </div>
-
-              <div className="mt-9 rounded-[6px] border border-[#104B9C]/15 bg-[#f7fbff] p-5">
-                <p className="text-[12px] font-semibold uppercase tracking-[0.14em] text-[#104B9C]">
-                  Suitable For
-                </p>
-                <p className="mt-2 text-[16px] font-medium leading-[1.4] text-black">
-                  {selectedService.idealFor}
-                </p>
-              </div>
-
-              <ActionButton href="/contact">Enquire for This Service</ActionButton>
             </div>
           </div>
         </div>
@@ -565,7 +574,7 @@ export default function ServicesPage() {
 
           <article className="group relative min-h-[420px] overflow-hidden rounded-[9px] bg-[#104B9C] lg:col-span-2">
             <img
-              src={assets.contactTeam}
+              src={assets.workflow}
               alt="Workforce coordination team"
               className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.025]"
             />

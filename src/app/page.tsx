@@ -27,7 +27,7 @@ const assets = {
   staffGroup: "/images/platinum-staff-group.png",
   hospital: "/images/Healthcare-Support.png",
   hopital2: "/images/Healthcare-Support-2.png",
-  hotel: "/images/Hospitality-Staff.png",
+  hotel: "/images/Hospitality-Staff.webp",
   mall: "/images/Shopping-mall.png",
   airport: "/images/airport.png",
   workforce: "/images/workforce-team.webp",

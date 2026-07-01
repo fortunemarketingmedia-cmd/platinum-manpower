@@ -25,11 +25,14 @@ const assets = {
   hero: "/images/hero-about.webp",
   staffGroup: "/images/platinum-staff-group.png",
   workforce: "/images/about/skilled-staff.webp",
+  commercial: "/images/about/commercial.webp",
   hospital: "/images/about/hospital-staff.webp",
-  hotel: "/images/hotel-staff.png",
+  hotel: "/images/about/hotel.webp",
   mall: "/images/about/housekeeping.webp",
   airport: "/images/airport-staff.png",
+  contact: "/images/about/workforce.webp",
   contactTeam: "/images/contact-team.png",
+
 };
 
 const keyStats = [
@@ -177,7 +180,7 @@ const industries = [
   },
   {
     title: "Commercial Spaces",
-    image: assets.workforce,
+    image: assets.commercial,
     text: "Scalable manpower and facility support for commercial properties, retail environments, warehouses, and operational business spaces.",
     points: [
       "Facility support",
