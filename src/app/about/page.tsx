@@ -22,12 +22,12 @@ import {
 } from "@/components/motion/MotionEffects";
 
 const assets = {
-  hero: "/images/hero-banner.png",
+  hero: "/images/hero-about.webp",
   staffGroup: "/images/platinum-staff-group.png",
-  workforce: "/images/workforce-team.png",
-  hospital: "/images/hospital-staff.png",
+  workforce: "/images/about/skilled-staff.webp",
+  hospital: "/images/about/hospital-staff.webp",
   hotel: "/images/hotel-staff.png",
-  mall: "/images/mall-staff.png",
+  mall: "/images/about/housekeeping.webp",
   airport: "/images/airport-staff.png",
   contactTeam: "/images/contact-team.png",
 };

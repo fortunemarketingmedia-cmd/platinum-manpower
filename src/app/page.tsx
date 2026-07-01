@@ -351,7 +351,7 @@ export default function Page() {
   return (
     <main className="relative isolate min-h-screen overflow-x-hidden bg-[#082d5c] font-sans text-[#524f4b]">
       <Navbar />
-
+    <ScrollProgress />
       {/* Fixed page background. All rounded section cards scroll above this layer. */}
       <div
         aria-hidden="true"

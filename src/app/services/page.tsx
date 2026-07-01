@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useState, type ReactNode } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { ScrollProgress } from "@/components/motion/MotionEffects";
 
 const assets = {
   staffGroup: "/images/platinum-staff-group.png",
@@ -219,7 +220,7 @@ export default function ServicesPage() {
   return (
     <main className="relative isolate min-h-screen overflow-x-clip bg-[#082d5c] font-sans text-[#4f4f4f]">
       <Navbar />
-
+<ScrollProgress />
       {/* Fixed navy canvas. Rounded section cards scroll above this layer. */}
       <div
         aria-hidden="true"
