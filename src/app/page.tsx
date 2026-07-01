@@ -22,14 +22,15 @@ import {
 } from "@/components/motion/MotionEffects";
 
 const assets = {
-  heroBanner: "/images/hero-banner.png",
+  heroBanner: "/images/hero-banner.webp",
   heroTeam: "/images/platinum-hero-team.png",
   staffGroup: "/images/platinum-staff-group.png",
-  hospital: "/images/hospital-staff.png",
-  hotel: "/images/hotel-staff.png",
-  mall: "/images/mall-staff.png",
-  airport: "/images/airport-staff.png",
-  workforce: "/images/workforce-team.png",
+  hospital: "/images/Healthcare-Support.png",
+  hopital2: "/images/Healthcare-Support-2.png",
+  hotel: "/images/Hospitality-Staff.png",
+  mall: "/images/Shopping-mall.png",
+  airport: "/images/airport.png",
+  workforce: "/images/workforce-team.webp",
   contact: "/images/contact-team.png",
 };
 
@@ -207,7 +208,7 @@ function Button({
   dark?: boolean;
 }) {
   return (
-    <Magnetic className="mt-7 w-fit" strength={14}>
+    <Magnetic className="mt-7 w-fit" strength={6}>
       <a
         href={href}
         className={`group inline-flex items-stretch font-semibold outline-none ${
@@ -263,7 +264,7 @@ function AboutCarousel() {
   }, []);
 
   return (
-    <div className="relative h-[420px] overflow-hidden rounded-[10px] bg-[#104B9C] shadow-[0_30px_80px_rgba(16,75,156,0.20)] lg:h-[460px]">
+    <div className="relative h-[420px] overflow-visible rounded-[10px] bg-[#104B9C] shadow-[0_30px_80px_rgba(16,75,156,0.20)] lg:h-[460px]">
       <AnimatePresence mode="wait">
         <motion.div
           key={activeSlide.title}
@@ -348,14 +349,13 @@ function AboutCarousel() {
 
 export default function Page() {
   return (
-    <main className="relative isolate min-h-screen overflow-x-clip bg-[#082d5c] font-sans text-[#524f4b]">
+    <main className="relative isolate min-h-screen overflow-x-hidden bg-[#082d5c] font-sans text-[#524f4b]">
       <Navbar />
-      <ScrollProgress />
 
       {/* Fixed page background. All rounded section cards scroll above this layer. */}
       <div
         aria-hidden="true"
-        className="pointer-events-none fixed inset-0 z-0 overflow-hidden bg-[#082d5c]"
+        className="pointer-events-none fixed inset-0 z-0 overflow-visible bg-[#082d5c]"
       >
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_16%_14%,rgba(214,234,255,0.18),transparent_28%),radial-gradient(circle_at_88%_34%,rgba(255,255,255,0.10),transparent_24%),linear-gradient(145deg,#082d5c_0%,#0b3c78_48%,#061f43_100%)]" />
         <div className="absolute -left-40 top-[12%] h-[520px] w-[520px] rounded-full border border-white/10" />
@@ -365,660 +365,689 @@ export default function Page() {
 
       <div className="relative z-10 pb-2 pt-2 sm:pb-3 sm:pt-3 lg:pb-5 lg:pt-5">
         {/* Hero Banner */}
-        <section className="relative mx-2 min-h-[calc(100svh-1rem)] w-auto overflow-hidden rounded-[26px] bg-[#104B9C] shadow-[0_32px_100px_rgba(2,18,43,0.32)] sm:mx-3 sm:min-h-[calc(100svh-1.5rem)] md:rounded-[34px] lg:mx-5 lg:min-h-[calc(100svh-2.5rem)]">
-        <motion.img
-          src={assets.heroBanner}
-          alt="Platinum Manpower banner"
-          className="absolute inset-0 h-full w-full object-cover"
-          initial={{ scale: 1.08 }}
-          animate={{ scale: 1 }}
-          transition={{
-            duration: 1.8,
-            ease: [0.22, 1, 0.36, 1],
-          }}
-        />
-
-        <motion.div
-          className="absolute inset-0 bg-gradient-to-t from-[#104B9C]/80 via-[#104B9C]/10 to-transparent"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.2 }}
-        />
-
-        <FloatingShape
-          duration={9}
-          distance={18}
-          className="absolute -right-32 top-[13%] h-[420px] w-[420px] rounded-full border border-white/20"
-        />
-
-        <FloatingShape
-          duration={7}
-          distance={12}
-          delay={0.7}
-          className="absolute -right-16 top-[19%] h-[290px] w-[290px] rounded-full border border-white/15"
-        />
-
-        <div className="absolute bottom-[7vw] left-[9vw] z-10 max-w-[620px]">
-          <motion.p
-            className="text-[22px] leading-[1.2] text-white drop-shadow-md md:text-[26px]"
-            initial={{ opacity: 0, y: 48 }}
-            animate={{ opacity: 1, y: 0 }}
+        <section className="relative mx-2 min-h-[calc(100svh-1rem)] overflow-hidden rounded-[26px] bg-[#104B9C] shadow-[0_32px_100px_rgba(2,18,43,0.32)] sm:mx-3 sm:min-h-[calc(100svh-1.5rem)] md:rounded-[34px] lg:mx-5 lg:min-h-[calc(100svh-2.5rem)]">
+          {/* Background Image */}
+          <motion.img
+            src={assets.heroBanner}
+            alt="Platinum Manpower banner"
+            className="absolute inset-0 h-full w-full object-cover object-[72%_center]"
+            initial={{ scale: 1.08 }}
+            animate={{ scale: 1 }}
             transition={{
-              delay: 0.35,
-              duration: 0.9,
+              duration: 1.8,
               ease: [0.22, 1, 0.36, 1],
             }}
-          >
-            Professionally managed manpower, staffing, facility management,
-            payroll, and HR solutions for hospitals, hotels, corporate offices,
-            commercial spaces, airports, and industrial operations across Maharashtra.
-          </motion.p>
+          />
 
+          {/* Main Dark Overlay */}
           <motion.div
-            initial={{ opacity: 0, y: 32 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              delay: 0.55,
-              duration: 0.75,
-              ease: [0.22, 1, 0.36, 1],
-            }}
-          >
-            <Magnetic className="mt-8 w-fit" strength={16}>
-              <a
-                href="/contact"
-                className="group inline-flex items-center gap-4 rounded-[4px] bg-[#d6eaff] px-7 py-3.5 text-[15px] font-semibold text-black transition-all duration-500 hover:bg-white hover:px-9"
-              >
-                Request Workforce
-                <span className="transition-transform duration-500 group-hover:translate-x-2">
-                  →
-                </span>
-              </a>
-            </Magnetic>
-          </motion.div>
-        </div>
+            className="absolute inset-0 bg-[linear-gradient(90deg,rgba(4,22,48,0.95)_0%,rgba(5,35,74,0.88)_22%,rgba(9,61,120,0.55)_45%,rgba(9,61,120,0.18)_65%,rgba(9,61,120,0)_100%)]"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1.2 }}
+          />
 
-        <motion.div
-          aria-hidden="true"
-          className="absolute bottom-7 right-[9vw] z-10 hidden items-center gap-3 text-white/70 md:flex"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1 }}
-        >
-          <span className="text-[11px] font-semibold uppercase tracking-[0.18em]">
-            Scroll
-          </span>
-          <span className="relative h-14 w-px overflow-hidden bg-white/25">
-            <motion.span
-              className="absolute left-0 top-0 h-5 w-px bg-white"
-              animate={{ y: [-20, 56] }}
+          {/* Bottom Overlay */}
+          <motion.div
+            className="absolute inset-0 bg-gradient-to-t from-[#082d5c]/70 via-transparent to-[#082d5c]/10"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1.4 }}
+          />
+
+          {/* Glow */}
+          <div className="absolute left-[4vw] top-1/2 h-[520px] w-[520px] -translate-y-1/2 rounded-full bg-[#104B9C]/40 blur-[150px]" />
+
+          <FloatingShape
+            duration={9}
+            distance={18}
+            className="absolute -right-32 top-[13%] h-[420px] w-[420px] rounded-full border border-white/15"
+          />
+
+          <FloatingShape
+            duration={7}
+            distance={12}
+            delay={0.7}
+            className="absolute -right-16 top-[19%] h-[290px] w-[290px] rounded-full border border-white/10"
+          />
+
+          {/* Hero Content */}
+          <div className="absolute left-[7vw] top-1/2 z-20 max-w-[820px] -translate-y-1/2">
+            
+
+            <motion.div
+              className="mt-6 mb-8 h-[3px] w-20 rounded-full bg-[#4ea3ff]"
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
               transition={{
-                duration: 1.7,
-                repeat: Infinity,
-                ease: "easeInOut",
+                delay: 0.35,
+                duration: 0.6,
               }}
+              style={{ transformOrigin: "left" }}
             />
-          </span>
-        </motion.div>
+
+            <motion.h1
+              className="max-w-[650px] text-[35px] font-semibold leading-[0.95] tracking-[-0.065em] text-white drop-shadow-[0_10px_30px_rgba(0,0,0,0.35)] md:text-[76px] xl:text-[70px]"
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                delay: 0.35,
+                duration: 0.9,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+            >
+              Building Reliable
+              <br />
+              Workforce For
+              <br />
+              Modern 
+              <br/>
+              Businesses.
+            </motion.h1>
+
+            <motion.p
+              className="mt-8 max-w-[650px] text-[20px] leading-[1.55] text-white/90"
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                delay: 0.55,
+                duration: 0.8,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+            >
+              Professionally managed manpower, staffing, facility management,
+              payroll, and HR solutions for hospitals, hotels, corporate
+              offices, commercial spaces, airports, and industrial operations
+              across Maharashtra
+            </motion.p>
+
+            <motion.div
+              className="mt-14"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                delay: 0.75,
+                duration: 0.8,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+            >
+              <Magnetic strength={8}>
+                <a
+                  href="/contact"
+                  className="group inline-flex items-center gap-4 rounded-[8px] bg-white px-8 py-4 text-[16px] font-semibold text-[#082d5c] shadow-[0_18px_40px_rgba(0,0,0,.25)] transition-all duration-500 hover:bg-[#eef6ff]"
+                >
+                  Request Workforce
+                  <span className="transition-transform duration-500 group-hover:translate-x-2">
+                    →
+                  </span>
+                </a>
+              </Magnetic>
+            </motion.div>
+          </div>
         </section>
 
         {/* About */}
         <section
           id="about"
-          className="relative mx-2 mb-3 mt-3 overflow-hidden rounded-[26px] bg-white px-[9vw] py-28 text-black shadow-[0_32px_100px_rgba(2,18,43,0.24)] scroll-mt-24 sm:mx-3 sm:mb-4 sm:mt-4 md:rounded-[34px] lg:mx-5"
+          className="relative mx-2 mb-3 mt-3 overflow-visible rounded-[26px] bg-white px-[9vw] py-28 text-black shadow-[0_32px_100px_rgba(2,18,43,0.24)] scroll-mt-24 sm:mx-3 sm:mb-4 sm:mt-4 md:rounded-[34px] lg:mx-5"
         >
-        <FloatingShape
-          duration={10}
-          distance={14}
-          className="absolute -left-36 top-28 h-72 w-72 rounded-full bg-[#104B9C]/[0.035]"
-        />
+          <FloatingShape
+            duration={10}
+            distance={14}
+            className="absolute -left-36 top-28 h-72 w-72 rounded-full bg-[#104B9C]/[0.035]"
+          />
 
-        <Reveal>
-          <p className="max-w-[280px] text-[24px] font-semibold text-[#104B9C]">
-            About Platinum
-          </p>
-        </Reveal>
-
-        <div className="relative mt-16 grid items-start gap-20 lg:grid-cols-[0.92fr_1.08fr]">
-          <Reveal direction="right">
-            <SectionHeading>
-              Helping businesses build stronger operations with the right
-              workforce.
-            </SectionHeading>
-
-            <Button href="/contact">Contact Our Team</Button>
+          <Reveal>
+            <p className="max-w-[280px] text-[24px] font-semibold text-[#104B9C]">
+              About Platinum
+            </p>
           </Reveal>
 
-          <div className="grid gap-8">
-            <ScaleReveal delay={0.08}>
-              <AboutCarousel />
-            </ScaleReveal>
+          <div className="relative mt-16 grid items-start gap-20 lg:grid-cols-[0.92fr_1.08fr]">
+            <Reveal direction="right">
+              <SectionHeading>
+                Helping businesses build stronger operations with the right
+                workforce.
+              </SectionHeading>
 
-            <Reveal delay={0.12}>
-              <p className="max-w-[620px] text-[24px] leading-[1.22] text-[#4d4d4d]">
-                <strong>Platinum Manpower & Facility Management Services</strong>{" "}
-                delivers skilled and unskilled manpower, recruitment, contract
-                staffing, payroll management, HR outsourcing, and facility support
-                solutions tailored to modern business operations across Maharashtra.
-              </p>
+              <Button href="/contact">Contact Our Team</Button>
             </Reveal>
+
+            <div className="grid gap-8">
+              <ScaleReveal delay={0.08}>
+                <AboutCarousel />
+              </ScaleReveal>
+
+              <Reveal delay={0.12}>
+                <p className="max-w-[620px] text-[24px] leading-[1.22] text-[#4d4d4d]">
+                  <strong>
+                    Platinum Manpower & Facility Management Services
+                  </strong>{" "}
+                  delivers skilled and unskilled manpower, recruitment, contract
+                  staffing, payroll management, HR outsourcing, and facility
+                  support solutions tailored to modern business operations
+                  across Maharashtra.
+                </p>
+              </Reveal>
+            </div>
           </div>
-        </div>
 
-        <StaggerGroup
-          className="relative mt-20 grid gap-5 lg:grid-cols-[0.9fr_1.1fr]"
-          stagger={0.14}
-        >
-          <StaggerItem>
-            <StretchCard className="h-full">
-              <div className="group h-full rounded-[8px] bg-[#104B9C] p-9 text-white shadow-[0_30px_80px_rgba(16,75,156,0.18)]">
-                <h3 className="mb-4 text-[34px] font-medium tracking-[-0.04em]">
-                  Our Commitment
-                </h3>
+          <StaggerGroup
+            className="relative mt-20 grid gap-5 lg:grid-cols-[0.9fr_1.1fr]"
+            stagger={0.14}
+          >
+            <StaggerItem>
+              <StretchCard className="h-full">
+                <div className="group h-full rounded-[8px] bg-[#104B9C] p-9 text-white shadow-[0_30px_80px_rgba(16,75,156,0.18)]">
+                  <h3 className="mb-4 text-[34px] font-medium tracking-[-0.04em]">
+                    Our Commitment
+                  </h3>
 
-                <p className="text-[22px] leading-[1.25] text-white/80">
-                  Reliable workforce. Smooth operations. Long-term business support.
-                </p>
+                  <p className="text-[22px] leading-[1.25] text-white/80">
+                    Reliable workforce. Smooth operations. Long-term business
+                    support.
+                  </p>
 
-                <div className="mt-10 h-px w-16 bg-white/40 transition-all duration-500 group-hover:w-full" />
-              </div>
-            </StretchCard>
-          </StaggerItem>
+                  <div className="mt-10 h-px w-16 bg-white/40 transition-all duration-500 group-hover:w-full" />
+                </div>
+              </StretchCard>
+            </StaggerItem>
 
-          <StaggerItem>
-            <StretchCard className="h-full">
-              <div className="group h-full rounded-[8px] border border-[#104B9C]/15 bg-[#f7fbff] p-9">
-                <p className="text-[20px] leading-[1.35] text-[#4f4f4f]">
-                  We understand workforce requirements, operational challenges,
-                  and staffing expectations to help businesses access the right
-                  people, at the right time, for the right responsibilities.
-                </p>
+            <StaggerItem>
+              <StretchCard className="h-full">
+                <div className="group h-full rounded-[8px] border border-[#104B9C]/15 bg-[#f7fbff] p-9">
+                  <p className="text-[20px] leading-[1.35] text-[#4f4f4f]">
+                    We understand workforce requirements, operational
+                    challenges, and staffing expectations to help businesses
+                    access the right people, at the right time, for the right
+                    responsibilities.
+                  </p>
 
-                <div className="mt-10 h-px w-16 bg-[#104B9C]/30 transition-all duration-500 group-hover:w-full" />
-              </div>
-            </StretchCard>
-          </StaggerItem>
-        </StaggerGroup>
-      </section>
+                  <div className="mt-10 h-px w-16 bg-[#104B9C]/30 transition-all duration-500 group-hover:w-full" />
+                </div>
+              </StretchCard>
+            </StaggerItem>
+          </StaggerGroup>
+        </section>
 
         {/* Services */}
         <section
           id="services"
-          className="relative mx-2 mb-3 overflow-hidden rounded-[26px] bg-[#104B9C] px-[9vw] py-28 text-white shadow-[0_32px_100px_rgba(2,18,43,0.24)] scroll-mt-24 sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5"
+          className="relative isolate z-10 mb-3 overflow-visible rounded-[26px] bg-[#104B9C] px-[9vw] py-28 text-white shadow-[0_32px_100px_rgba(2,18,43,0.24)] scroll-mt-24 sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5"
         >
-        <FloatingShape
-          duration={8}
-          distance={20}
-          className="absolute -right-40 -top-32 h-[460px] w-[460px] rounded-full border border-white/10"
-        />
+          <FloatingShape
+            duration={8}
+            distance={20}
+            className="absolute -z-10 -top-32 h-[460px] w-[460px] rounded-full border border-white/10"
+          />
 
-        <div className="relative grid gap-10 lg:grid-cols-[0.32fr_0.68fr] lg:gap-20">
-  <Reveal direction="right">
-    <div>
-      <p className="text-[24px] font-semibold text-[#d6eaff]">
-        Our Services
-      </p>
+          <div className="relative z-10 grid gap-10 lg:grid-cols-[0.32fr_0.68fr] lg:gap-20">
+            <Reveal direction="right">
+              <div>
+                <p className="text-[24px] font-semibold text-[#d6eaff]">
+                  Our Services
+                </p>
 
-      <p className="mt-5 max-w-[320px] text-[16px] leading-[1.5] text-white/65 md:text-[17px]">
-        Reliable workforce, staffing, and facility management solutions
-        designed to support modern business operations across Maharashtra.
-      </p>
-    </div>
-  </Reveal>
+                <p className="mt-5 max-w-[320px] text-[16px] leading-[1.5] text-white/65 md:text-[17px]">
+                  Reliable workforce, staffing, and facility management
+                  solutions designed to support modern business operations
+                  across Maharashtra.
+                </p>
+              </div>
+            </Reveal>
 
-  <ClipReveal delay={0.08}>
-    <div>
-      <SectionHeading light>
-        Complete workforce solutions for modern business operations.
-      </SectionHeading>
+            <ClipReveal delay={0.08}>
+              <div>
+                <SectionHeading light>
+                  Complete workforce solutions for modern business operations.
+                </SectionHeading>
 
-      <p className="mt-7 max-w-[700px] text-[18px] leading-[1.5] text-white/72 md:text-[20px]">
-        From contract staffing and payroll management to healthcare,
-        hospitality, housekeeping, and facility support teams.
-      </p>
+                <p className="mt-7 max-w-[700px] text-[18px] leading-[1.5] text-white/72 md:text-[20px]">
+                  From contract staffing and payroll management to healthcare,
+                  hospitality, housekeeping, and facility support teams.
+                </p>
 
-      <Button href="/services" dark>
-        Explore Services
-      </Button>
-    </div>
-  </ClipReveal>
-</div>
+                <Button href="/services" dark>
+                  Explore Services
+                </Button>
+              </div>
+            </ClipReveal>
+          </div>
 
-        <StaggerGroup
-          className="relative mt-24 grid gap-5 md:grid-cols-2 xl:grid-cols-5"
-          delayChildren={0.1}
-          stagger={0.08}
-        >
-          {services.map((service, index) => (
-            <StaggerItem key={service.title} className="h-full">
-              <StretchCard className="h-full">
-                <article className="group flex min-h-[330px] h-full flex-col justify-between overflow-hidden rounded-[8px] border border-white/15 bg-white p-7 text-black shadow-[0_30px_80px_rgba(0,0,0,0.12)]">
-                  <div>
-                    <div className="mb-8 flex h-12 w-12 items-center justify-center rounded-full bg-[#104B9C] text-sm font-bold text-white transition-all duration-500 group-hover:rotate-[-10deg] group-hover:scale-110">
-                      {String(index + 1).padStart(2, "0")}
+          <StaggerGroup
+            className="relative mt-24 grid gap-8 md:grid-cols-2 xl:grid-cols-5"
+            delayChildren={0.1}
+            stagger={0.08}
+          >
+            {services.map((service, index) => (
+              <StaggerItem key={service.title} className="h-full">
+                <StretchCard className="relative z-20 h-full">
+                  <article className="relative group flex min-h-[330px] h-full flex-col justify-between overflow-visible rounded-[8px] border border-white/15 bg-white p-7 text-black shadow-[0_30px_80px_rgba(0,0,0,0.12)]">
+                    <div>
+                      <div className="mb-8 flex h-12 w-12 items-center justify-center rounded-full bg-[#104B9C] text-sm font-bold text-white transition-all duration-500 group-hover:rotate-[-10deg] group-hover:scale-110">
+                        {String(index + 1).padStart(2, "0")}
+                      </div>
+
+                      <h3 className="text-[24px] font-semibold leading-[1.1] tracking-[-0.04em] transition-colors duration-300 group-hover:text-[#104B9C]">
+                        {service.title}
+                      </h3>
                     </div>
 
-                    <h3 className="text-[24px] font-semibold leading-[1.1] tracking-[-0.04em] transition-colors duration-300 group-hover:text-[#104B9C]">
-                      {service.title}
-                    </h3>
-                  </div>
+                    <div>
+                      <p className="mt-8 text-[16px] leading-[1.35] text-[#4f4f4f]">
+                        {service.text}
+                      </p>
 
-                  <div>
-                    <p className="mt-8 text-[16px] leading-[1.35] text-[#4f4f4f]">
-                      {service.text}
-                    </p>
-
-                    <div className="mt-7 h-[2px] w-10 bg-[#104B9C]/30 transition-all duration-500 group-hover:w-full group-hover:bg-[#104B9C]" />
-                  </div>
-                </article>
-              </StretchCard>
-            </StaggerItem>
-          ))}
-        </StaggerGroup>
-      </section>
+                      <div className="mt-7 h-[2px] w-10 bg-[#104B9C]/30 transition-all duration-500 group-hover:w-full group-hover:bg-[#104B9C]" />
+                    </div>
+                  </article>
+                </StretchCard>
+              </StaggerItem>
+            ))}
+          </StaggerGroup>
+        </section>
 
         {/* Staffing Approach */}
-        <section className="relative mx-2 mb-3 overflow-hidden rounded-[26px] bg-white px-[9vw] py-28 text-[#104B9C] shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5">
-        <FloatingShape
-          duration={9}
-          distance={16}
-          className="absolute -bottom-28 -left-28 h-80 w-80 rounded-full bg-[#104B9C]/[0.035]"
-        />
+        <section className="relative mx-2 mb-3 overflow-visible rounded-[26px] bg-white px-[9vw] py-28 text-[#104B9C] shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5">
+          <FloatingShape
+            duration={9}
+            distance={16}
+            className="absolute -bottom-28 -left-28 h-80 w-80 rounded-full bg-[#104B9C]/[0.035]"
+          />
 
-        <div className="relative grid gap-20 lg:grid-cols-[0.32fr_0.68fr]">
-          <Reveal direction="right">
-            <p className="font-semibold text-[24px]">
-              Our Staffing Approach
-            </p>
-          </Reveal>
+          <div className="relative grid gap-20 lg:grid-cols-[0.32fr_0.68fr]">
+            <Reveal direction="right">
+              <p className="font-semibold text-[24px]">Our Staffing Approach</p>
+            </Reveal>
 
-          <ClipReveal delay={0.06}>
-            <SectionHeading>
-              A streamlined staffing process built for smooth workforce
-              deployment and uninterrupted operations.
-            </SectionHeading>
-          </ClipReveal>
-        </div>
+            <ClipReveal delay={0.06}>
+              <SectionHeading>
+                A streamlined staffing process built for smooth workforce
+                deployment and uninterrupted operations.
+              </SectionHeading>
+            </ClipReveal>
+          </div>
 
-        <StaggerGroup
-          className="relative mt-24 grid gap-5 md:grid-cols-2 xl:grid-cols-4"
-          stagger={0.12}
-        >
-          {approach.map((item, index) => (
-            <StaggerItem key={item.step} className="h-full">
-              <StretchCard className="h-full">
-                <article className="group relative h-full overflow-hidden rounded-[8px] border border-[#104B9C]/15 bg-[#f7fbff] p-8">
-                  <span className="mb-14 flex h-14 w-14 items-center justify-center rounded-full bg-[#104B9C] text-sm font-bold text-white transition-all duration-500 group-hover:scale-110">
-                    {item.step}
-                  </span>
-
-                  <h3 className="text-[28px] font-semibold leading-[1.08] tracking-[-0.05em] text-black">
-                    {item.title}
-                  </h3>
-
-                  <p className="mt-8 text-[17px] leading-[1.35] text-[#4f4f4f]">
-                    {item.text}
-                  </p>
-
-                  {index < approach.length - 1 ? (
-                    <span className="absolute right-6 top-9 hidden text-[25px] text-[#104B9C]/25 transition-transform duration-500 group-hover:translate-x-2 xl:block">
-                      →
+          <StaggerGroup
+            className="relative mt-24 grid gap-5 md:grid-cols-2 xl:grid-cols-4"
+            stagger={0.12}
+          >
+            {approach.map((item, index) => (
+              <StaggerItem key={item.step} className="h-full">
+                <StretchCard className="h-full">
+                  <article className="group relative h-full overflow-visible rounded-[8px] border border-[#104B9C]/15 bg-[#f7fbff] p-8">
+                    <span className="mb-14 flex h-14 w-14 items-center justify-center rounded-full bg-[#104B9C] text-sm font-bold text-white transition-all duration-500 group-hover:scale-110">
+                      {item.step}
                     </span>
-                  ) : null}
 
-                  <span className="absolute bottom-0 left-0 h-[4px] w-0 bg-[#104B9C] transition-all duration-500 group-hover:w-full" />
-                </article>
-              </StretchCard>
-            </StaggerItem>
-          ))}
-        </StaggerGroup>
-      </section>
-
-        {/* Why Choose */}
-        <section className="relative mx-2 mb-3 overflow-hidden rounded-[26px] bg-[#104B9C] px-[9vw] py-28 text-white shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5">
-        <FloatingShape
-          duration={11}
-          distance={22}
-          className="absolute -right-32 bottom-10 h-[360px] w-[360px] rounded-full border border-white/10"
-        />
-
-        <div className="relative mb-20 grid gap-20 lg:grid-cols-[0.7fr_1.3fr]">
-          <Reveal direction="right">
-            <p className="font-semibold text-[24px]">
-              Why Choose Platinum?
-            </p>
-          </Reveal>
-
-          <ClipReveal delay={0.08}>
-            <SectionHeading light>
-              Workforce solutions built around reliability, continuity, and
-              real business needs.
-            </SectionHeading>
-          </ClipReveal>
-        </div>
-
-        <StaggerGroup
-          className="relative grid gap-5 md:grid-cols-2 xl:grid-cols-3"
-          stagger={0.09}
-        >
-          {whyChoose.map((item, index) => (
-            <StaggerItem key={item.title} className="h-full">
-              <StretchCard className="h-full" activeScale={1.012}>
-                <article className="group flex min-h-[280px] h-full flex-col justify-between overflow-hidden rounded-[8px] border border-white/15 bg-white/10 p-8 backdrop-blur-sm transition-colors duration-500 hover:bg-white hover:text-black">
-                  <div>
-                    <p className="mb-12 flex items-center gap-3 text-lg">
-                      <span className="h-3 w-3 rounded-full bg-[#d6eaff] transition-all duration-500 group-hover:scale-[1.8] group-hover:bg-[#104B9C]" />
-                      {String(index + 1).padStart(2, "0")}
-                    </p>
-
-                    <h3 className="text-[30px] font-light leading-[1.08] tracking-[-0.05em]">
+                    <h3 className="text-[28px] font-semibold leading-[1.08] tracking-[-0.05em] text-black">
                       {item.title}
                     </h3>
-                  </div>
 
-                  <p className="mt-10 text-[18px] leading-[1.32] opacity-75">
-                    {item.text}
-                  </p>
+                    <p className="mt-8 text-[17px] leading-[1.35] text-[#4f4f4f]">
+                      {item.text}
+                    </p>
 
-                  <span className="absolute bottom-0 left-0 h-[4px] w-0 bg-[#d6eaff] transition-all duration-500 group-hover:w-full group-hover:bg-[#104B9C]" />
-                </article>
-              </StretchCard>
-            </StaggerItem>
-          ))}
-        </StaggerGroup>
-      </section>
+                    {index < approach.length - 1 ? (
+                      <span className="absolute right-6 top-9 hidden text-[25px] text-[#104B9C]/25 transition-transform duration-500 group-hover:translate-x-2 xl:block">
+                        →
+                      </span>
+                    ) : null}
+
+                    <span className="absolute bottom-0 left-0 h-[4px] w-0 bg-[#104B9C] transition-all duration-500 group-hover:w-full" />
+                  </article>
+                </StretchCard>
+              </StaggerItem>
+            ))}
+          </StaggerGroup>
+        </section>
+
+        {/* Why Choose */}
+        <section className="relative mx-2 mb-3 overflow-visible rounded-[26px] bg-[#104B9C] px-[9vw] py-28 text-white shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5">
+          <FloatingShape
+            duration={11}
+            distance={22}
+            className="absolute -right-32 bottom-10 h-[360px] w-[360px] rounded-full border border-white/10"
+          />
+
+          <div className="relative mb-20 grid gap-20 lg:grid-cols-[0.7fr_1.3fr]">
+            <Reveal direction="right">
+              <p className="font-semibold text-[24px]">Why Choose Platinum?</p>
+            </Reveal>
+
+            <ClipReveal delay={0.08}>
+              <SectionHeading light>
+                Workforce solutions built around reliability, continuity, and
+                real business needs.
+              </SectionHeading>
+            </ClipReveal>
+          </div>
+
+          <StaggerGroup
+            className="relative grid gap-5 md:grid-cols-2 xl:grid-cols-3"
+            stagger={0.09}
+          >
+            {whyChoose.map((item, index) => (
+              <StaggerItem key={item.title} className="h-full">
+                <StretchCard className="h-full" activeScale={1.012}>
+                  <article className="group flex min-h-[280px] h-full flex-col justify-between overflow-visible rounded-[8px] border border-white/15 bg-white/10 p-8 backdrop-blur-sm transition-colors duration-500 hover:bg-white hover:text-black">
+                    <div>
+                      <p className="mb-12 flex items-center gap-3 text-lg">
+                        <span className="h-3 w-3 rounded-full bg-[#d6eaff] transition-all duration-500 group-hover:scale-[1.8] group-hover:bg-[#104B9C]" />
+                        {String(index + 1).padStart(2, "0")}
+                      </p>
+
+                      <h3 className="text-[30px] font-light leading-[1.08] tracking-[-0.05em]">
+                        {item.title}
+                      </h3>
+                    </div>
+
+                    <p className="mt-10 text-[18px] leading-[1.32] opacity-75">
+                      {item.text}
+                    </p>
+
+                    <span className="absolute bottom-0 left-0 h-[4px] w-0 bg-[#d6eaff] transition-all duration-500 group-hover:w-full group-hover:bg-[#104B9C]" />
+                  </article>
+                </StretchCard>
+              </StaggerItem>
+            ))}
+          </StaggerGroup>
+        </section>
 
         {/* Industries */}
         <section
           id="industries"
-          className="relative mx-2 mb-3 overflow-hidden rounded-[26px] bg-white px-[9vw] py-28 text-black shadow-[0_32px_100px_rgba(2,18,43,0.24)] scroll-mt-24 sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5"
+          className="relative mx-2 mb-3 overflow-visible rounded-[26px] bg-white px-[9vw] py-28 text-black shadow-[0_32px_100px_rgba(2,18,43,0.24)] scroll-mt-24 sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5"
         >
-        <div className="grid gap-10 lg:grid-cols-[0.32fr_0.68fr] lg:gap-20">
-  <Reveal direction="right">
-    <div>
-      <p className="text-[24px] font-semibold text-[#104B9C]">
-        Industries We Serve
-      </p>
-
-      <p className="mt-5 max-w-[320px] text-[16px] leading-[1.5] text-[#4f4f4f] md:text-[17px]">
-        Reliable manpower, staffing, and facility support for industries where
-        discipline, professionalism, and operational continuity matter.
-      </p>
-    </div>
-  </Reveal>
-
-  <ClipReveal delay={0.08}>
-    <div>
-      <SectionHeading>
-        Workforce support designed around the needs of every industry.
-      </SectionHeading>
-
-      <p className="mt-7 max-w-[700px] text-[18px] leading-[1.5] text-[#4f4f4f] md:text-[20px]">
-        From hospitals and hotels to shopping malls and airports, we provide
-        dependable teams that support service standards and smooth daily
-        operations.
-      </p>
-    </div>
-  </ClipReveal>
-</div>
-
-        <StaggerGroup
-          className="mt-24 grid gap-5 lg:grid-cols-2"
-          delayChildren={0.08}
-          stagger={0.12}
-        >
-          {industries.map((industry) => (
-            <StaggerItem key={industry.title} className="h-full">
-              <StretchCard className="h-full" activeScale={1.008}>
-                <article className="group grid h-full overflow-hidden rounded-[8px] border border-[#104B9C]/10 bg-[#f7fbff] shadow-[0_24px_70px_rgba(16,75,156,0.10)] lg:grid-cols-[0.92fr_1.08fr]">
-                  <div className="relative min-h-[360px] overflow-hidden">
-                    <motion.img
-                      src={industry.image}
-                      alt={industry.title + " manpower support"}
-                      className="absolute inset-0 h-full w-full object-cover"
-                      whileHover={{ scale: 1.07 }}
-                      transition={{
-                        duration: 0.75,
-                        ease: [0.22, 1, 0.36, 1],
-                      }}
-                    />
-
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#061b38]/25 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                  </div>
-
-                  <div className="p-8">
-                    <h3 className="text-[42px] font-light leading-[1] tracking-[-0.06em] text-black transition-colors duration-300 group-hover:text-[#104B9C]">
-                      {industry.title}
-                    </h3>
-
-                    <div className="my-6 h-[3px] w-16 bg-[#104B9C] transition-all duration-500 group-hover:w-full" />
-
-                    <p className="text-[18px] font-medium leading-[1.34] text-[#1f2937]">
-                      {industry.text}
-                    </p>
-
-                    <ul className="mt-8 grid gap-3 text-[17px] text-[#4f4f4f]">
-                      {industry.points.map((point, pointIndex) => (
-                        <motion.li
-                          key={point}
-                          className="flex gap-3"
-                          initial={{ opacity: 0, x: 12 }}
-                          whileInView={{ opacity: 1, x: 0 }}
-                          viewport={{ once: true }}
-                          transition={{
-                            delay: pointIndex * 0.06,
-                            duration: 0.45,
-                          }}
-                        >
-                          <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#104B9C]" />
-                          <span>{point}</span>
-                        </motion.li>
-                      ))}
-                    </ul>
-                  </div>
-                </article>
-              </StretchCard>
-            </StaggerItem>
-          ))}
-        </StaggerGroup>
-      </section>
-
-        {/* Workforce Support */}
-        <section className="relative mx-2 mb-3 overflow-hidden rounded-[26px] bg-[#104B9C] px-[9vw] py-28 text-white shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5">
-        <FloatingShape
-          duration={8}
-          distance={18}
-          className="absolute -left-32 top-12 h-80 w-80 rounded-full border border-white/10"
-        />
-
-        <div className="relative grid items-center gap-20 lg:grid-cols-[0.4fr_0.6fr]">
-          <Reveal direction="right">
-            <SectionHeading light>
-              Workforce solutions designed for smooth daily operations.
-            </SectionHeading>
-
-            <p className="mt-12 max-w-[520px] text-[20px] leading-[1.28] text-white/75">
-              Whether you need healthcare staffing, housekeeping manpower,
-              hospitality teams, operational workforce, facility support, or
-              contract staffing, Platinum delivers professionally coordinated
-              solutions tailored to real business requirements across Maharashtra.
-            </p>
-
-            <Button href="/contact" dark>
-              Request Workforce
-            </Button>
-          </Reveal>
-
-          <ScaleReveal delay={0.1}>
-            <ParallaxMedia
-              src={assets.workforce}
-              alt="Verified workforce team"
-              distance={55}
-              className="h-[560px] rounded-[10px] shadow-[0_35px_90px_rgba(0,0,0,0.24)] md:h-[640px]"
-              overlayClassName="bg-gradient-to-t from-[#061b38]/20 to-transparent"
-            >
-              <div className="absolute bottom-6 right-6 z-10 rounded-[6px] border border-white/20 bg-white/10 px-5 py-4 text-white backdrop-blur-md">
-                <p className="text-[12px] font-semibold uppercase tracking-[0.14em] text-[#d6eaff]">
-                  Workforce Support
+          <div className="grid gap-10 lg:grid-cols-[0.32fr_0.68fr] lg:gap-20">
+            <Reveal direction="right">
+              <div>
+                <p className="text-[24px] font-semibold text-[#104B9C]">
+                  Industries We Serve
                 </p>
-                <p className="mt-1 text-[18px] font-medium">
-                  Reliable. Managed. Workforce-Ready.
+
+                <p className="mt-5 max-w-[320px] text-[16px] leading-[1.5] text-[#4f4f4f] md:text-[17px]">
+                  Reliable manpower, staffing, and facility support for
+                  industries where discipline, professionalism, and operational
+                  continuity matter.
                 </p>
               </div>
-            </ParallaxMedia>
-          </ScaleReveal>
-        </div>
-      </section>
+            </Reveal>
+
+            <ClipReveal delay={0.08}>
+              <div>
+                <SectionHeading>
+                  Workforce support designed around the needs of every industry.
+                </SectionHeading>
+
+                <p className="mt-7 max-w-[700px] text-[18px] leading-[1.5] text-[#4f4f4f] md:text-[20px]">
+                  From hospitals and hotels to shopping malls and airports, we
+                  provide dependable teams that support service standards and
+                  smooth daily operations.
+                </p>
+              </div>
+            </ClipReveal>
+          </div>
+
+          <StaggerGroup
+            className="mt-24 grid gap-5 lg:grid-cols-2"
+            delayChildren={0.08}
+            stagger={0.12}
+          >
+            {industries.map((industry) => (
+              <StaggerItem key={industry.title} className="h-full">
+                <StretchCard className="h-full" activeScale={1.008}>
+                  <article className="group grid h-full overflow-visible rounded-[8px] border border-[#104B9C]/10 bg-[#f7fbff] shadow-[0_24px_70px_rgba(16,75,156,0.10)] lg:grid-cols-[0.92fr_1.08fr]">
+                    <div className="relative min-h-[360px] overflow-visible">
+                      <motion.img
+                        src={industry.image}
+                        alt={industry.title + " manpower support"}
+                        className="absolute inset-0 h-full w-full object-cover"
+                        whileHover={{ scale: 1.07 }}
+                        transition={{
+                          duration: 0.75,
+                          ease: [0.22, 1, 0.36, 1],
+                        }}
+                      />
+
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#061b38]/25 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                    </div>
+
+                    <div className="p-8">
+                      <h3 className="text-[42px] font-light leading-[1] tracking-[-0.06em] text-black transition-colors duration-300 group-hover:text-[#104B9C]">
+                        {industry.title}
+                      </h3>
+
+                      <div className="my-6 h-[3px] w-16 bg-[#104B9C] transition-all duration-500 group-hover:w-full" />
+
+                      <p className="text-[18px] font-medium leading-[1.34] text-[#1f2937]">
+                        {industry.text}
+                      </p>
+
+                      <ul className="mt-8 grid gap-3 text-[17px] text-[#4f4f4f]">
+                        {industry.points.map((point, pointIndex) => (
+                          <motion.li
+                            key={point}
+                            className="flex gap-3"
+                            initial={{ opacity: 0, x: 12 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{
+                              delay: pointIndex * 0.06,
+                              duration: 0.45,
+                            }}
+                          >
+                            <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#104B9C]" />
+                            <span>{point}</span>
+                          </motion.li>
+                        ))}
+                      </ul>
+                    </div>
+                  </article>
+                </StretchCard>
+              </StaggerItem>
+            ))}
+          </StaggerGroup>
+        </section>
+
+        {/* Workforce Support */}
+        <section className="relative mx-2 mb-3 overflow-visible rounded-[26px] bg-[#104B9C] px-[9vw] py-28 text-white shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5">
+          <FloatingShape
+            duration={8}
+            distance={18}
+            className="absolute -left-32 top-12 h-80 w-80 rounded-full border border-white/10"
+          />
+
+          <div className="relative grid items-center gap-20 lg:grid-cols-[0.4fr_0.6fr]">
+            <Reveal direction="right">
+              <SectionHeading light>
+                Workforce solutions designed for smooth daily operations.
+              </SectionHeading>
+
+              <p className="mt-12 max-w-[520px] text-[20px] leading-[1.28] text-white/75">
+                Whether you need healthcare staffing, housekeeping manpower,
+                hospitality teams, operational workforce, facility support, or
+                contract staffing, Platinum delivers professionally coordinated
+                solutions tailored to real business requirements across
+                Maharashtra.
+              </p>
+
+              <Button href="/contact" dark>
+                Request Workforce
+              </Button>
+            </Reveal>
+
+            <ScaleReveal delay={0.1}>
+              <ParallaxMedia
+                src={assets.workforce}
+                alt="Verified workforce team"
+                distance={55}
+                className="h-[560px] rounded-[10px] shadow-[0_35px_90px_rgba(0,0,0,0.24)] md:h-[640px]"
+                overlayClassName="bg-gradient-to-t from-[#061b38]/20 to-transparent"
+              >
+                <div className="absolute bottom-6 right-6 z-10 rounded-[6px] border border-white/20 bg-white/10 px-5 py-4 text-white backdrop-blur-md">
+                  <p className="text-[12px] font-semibold uppercase tracking-[0.14em] text-[#d6eaff]">
+                    Workforce Support
+                  </p>
+                  <p className="mt-1 text-[18px] font-medium">
+                    Reliable. Managed. Workforce-Ready.
+                  </p>
+                </div>
+              </ParallaxMedia>
+            </ScaleReveal>
+          </div>
+        </section>
 
         {/* Company Team */}
         <section
           id="team"
-          className="relative mx-2 mb-3 overflow-hidden rounded-[26px] bg-white px-[9vw] py-28 text-black shadow-[0_32px_100px_rgba(2,18,43,0.24)] scroll-mt-24 sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5"
+          className="relative mx-2 mb-3 overflow-visible rounded-[26px] bg-white px-[9vw] py-28 text-black shadow-[0_32px_100px_rgba(2,18,43,0.24)] scroll-mt-24 sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5"
         >
-        <div className="grid gap-20 lg:grid-cols-[0.32fr_0.68fr]">
-          <Reveal direction="right">
-            <p className="font-semibold text-[24px] text-[#104B9C]">
-              Our Team
-              <br />
-              People Behind Platinum
-            </p>
-          </Reveal>
+          <div className="grid gap-20 lg:grid-cols-[0.32fr_0.68fr]">
+            <Reveal direction="right">
+              <p className="font-semibold text-[24px] text-[#104B9C]">
+                Our Team
+                <br />
+                People Behind Platinum
+              </p>
+            </Reveal>
 
-          <ClipReveal delay={0.08}>
-            <SectionHeading>
-              Dedicated professionals committed to reliable workforce
-              solutions, responsive coordination, and client support.
-            </SectionHeading>
-          </ClipReveal>
-        </div>
+            <ClipReveal delay={0.08}>
+              <SectionHeading>
+                Dedicated professionals committed to reliable workforce
+                solutions, responsive coordination, and client support.
+              </SectionHeading>
+            </ClipReveal>
+          </div>
 
-        <StaggerGroup
-          className="mt-24 grid gap-5 md:grid-cols-2"
-          delayChildren={0.08}
-          stagger={0.14}
-        >
-          {companyTeam.map((member) => (
-            <StaggerItem key={member.name} className="h-full">
-              <StretchCard className="h-full">
-                <article className="group relative h-full overflow-hidden rounded-[8px] border border-[#104B9C]/15 bg-[#f7fbff] p-10">
-                  <div className="mb-14 flex h-20 w-20 items-center justify-center rounded-full bg-[#104B9C] text-[24px] font-semibold text-white transition-all duration-500 group-hover:rotate-[-8deg] group-hover:scale-110">
-                    {member.initials}
-                  </div>
+          <StaggerGroup
+            className="mt-24 grid gap-5 md:grid-cols-2"
+            delayChildren={0.08}
+            stagger={0.14}
+          >
+            {companyTeam.map((member) => (
+              <StaggerItem key={member.name} className="h-full">
+                <StretchCard className="h-full">
+                  <article className="group relative h-full overflow-visible rounded-[8px] border border-[#104B9C]/15 bg-[#f7fbff] p-10">
+                    <div className="mb-14 flex h-20 w-20 items-center justify-center rounded-full bg-[#104B9C] text-[24px] font-semibold text-white transition-all duration-500 group-hover:rotate-[-8deg] group-hover:scale-110">
+                      {member.initials}
+                    </div>
 
-                  <h3 className="text-[42px] font-light uppercase leading-[1] tracking-[-0.06em] text-black transition-colors duration-300 group-hover:text-[#104B9C]">
-                    {member.name}
-                  </h3>
+                    <h3 className="text-[42px] font-light uppercase leading-[1] tracking-[-0.06em] text-black transition-colors duration-300 group-hover:text-[#104B9C]">
+                      {member.name}
+                    </h3>
 
-                  <p className="mt-3 text-[22px] font-medium text-[#104B9C]">
-                    {member.role}
-                  </p>
+                    <p className="mt-3 text-[22px] font-medium text-[#104B9C]">
+                      {member.role}
+                    </p>
 
-                  <div className="mt-10 space-y-5">
-                    <a
-                      href={
-                        "tel:+91" +
-                        member.phone.replaceAll(" ", "").split("|")[0]
-                      }
-                      className="block text-[24px] font-semibold text-black transition hover:text-[#104B9C]"
-                    >
-                      {member.phone}
-                    </a>
+                    <div className="mt-10 space-y-5">
+                      <a
+                        href={
+                          "tel:+91" +
+                          member.phone.replaceAll(" ", "").split("|")[0]
+                        }
+                        className="block text-[24px] font-semibold text-black transition hover:text-[#104B9C]"
+                      >
+                        {member.phone}
+                      </a>
 
-                    <a
-                      href={"mailto:" + member.email}
-                      className="block break-words text-[20px] font-medium text-[#4f4f4f] transition hover:text-[#104B9C]"
-                    >
-                      {member.email}
-                    </a>
-                  </div>
+                      <a
+                        href={"mailto:" + member.email}
+                        className="block break-words text-[20px] font-medium text-[#4f4f4f] transition hover:text-[#104B9C]"
+                      >
+                        {member.email}
+                      </a>
+                    </div>
 
-                  <span className="absolute bottom-0 left-0 h-[5px] w-0 bg-[#104B9C] transition-all duration-500 group-hover:w-full" />
-                </article>
-              </StretchCard>
-            </StaggerItem>
-          ))}
-        </StaggerGroup>
-      </section>
+                    <span className="absolute bottom-0 left-0 h-[5px] w-0 bg-[#104B9C] transition-all duration-500 group-hover:w-full" />
+                  </article>
+                </StretchCard>
+              </StaggerItem>
+            ))}
+          </StaggerGroup>
+        </section>
 
         {/* Contact */}
         <section
           id="contact"
-          className="relative mx-2 mb-3 overflow-hidden rounded-[26px] bg-[#104B9C] px-[9vw] py-28 text-white shadow-[0_32px_100px_rgba(2,18,43,0.24)] scroll-mt-24 sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5"
+          className="relative mx-2 mb-3 overflow-visible rounded-[26px] bg-[#104B9C] px-[9vw] py-28 text-white shadow-[0_32px_100px_rgba(2,18,43,0.24)] scroll-mt-24 sm:mx-3 sm:mb-4 md:rounded-[34px] lg:mx-5"
         >
-        <FloatingShape
-          duration={10}
-          distance={20}
-          className="absolute -right-24 top-10 h-80 w-80 rounded-full border border-white/10"
-        />
+          <FloatingShape
+            duration={10}
+            distance={20}
+            className="absolute -right-24 top-10 h-80 w-80 rounded-full border border-white/10"
+          />
 
-        <div className="relative grid items-start gap-20 lg:grid-cols-[0.38fr_0.62fr]">
-          <Reveal direction="right">
-            <p className="mb-10 font-semibold text-[24px] text-[#d6eaff]">
-              Contact Platinum
-            </p>
+          <div className="relative grid items-start gap-20 lg:grid-cols-[0.38fr_0.62fr]">
+            <Reveal direction="right">
+              <p className="mb-10 font-semibold text-[24px] text-[#d6eaff]">
+                Contact Platinum
+              </p>
 
-            <h2 className="max-w-[520px] text-[44px] font-light leading-[1.08] tracking-[-0.06em] md:text-[56px]">
-              Looking for reliable workforce solutions for your business?
-            </h2>
+              <h2 className="max-w-[520px] text-[44px] font-light leading-[1.08] tracking-[-0.06em] md:text-[56px]">
+                Looking for reliable workforce solutions for your business?
+              </h2>
 
-            <p className="mt-8 max-w-[440px] text-[20px] leading-[1.35] text-white/70">
-              Share your staffing requirement with our team. We will help you
-              identify the right workforce support for your operational needs.
-            </p>
+              <p className="mt-8 max-w-[440px] text-[20px] leading-[1.35] text-white/70">
+                Share your staffing requirement with our team. We will help you
+                identify the right workforce support for your operational needs.
+              </p>
 
-            <Button href="tel:+919325158710" dark>
-              Call Now
-            </Button>
-          </Reveal>
+              <Button href="tel:+919325158710" dark>
+                Call Now
+              </Button>
+            </Reveal>
 
-          <StaggerGroup className="grid gap-5" stagger={0.14}>
-            <StaggerItem>
-              <StretchCard>
-                <article className="group rounded-[8px] border border-white/15 bg-white/10 p-8 backdrop-blur-sm transition-colors duration-500 hover:bg-white/15">
-                  <h3 className="text-[30px] font-semibold leading-[1.08] tracking-[-0.04em] text-white">
-                    Contact Details
-                  </h3>
+            <StaggerGroup className="grid gap-5" stagger={0.14}>
+              <StaggerItem>
+                <StretchCard>
+                  <article className="group rounded-[8px] border border-white/15 bg-white/10 p-8 backdrop-blur-sm transition-colors duration-500 hover:bg-white/15">
+                    <h3 className="text-[30px] font-semibold leading-[1.08] tracking-[-0.04em] text-white">
+                      Contact Details
+                    </h3>
 
-                  <div className="mt-8 space-y-5">
-                    <a
-                      href="tel:+919325158710"
-                      className="block text-[24px] font-semibold text-white transition-all duration-300 hover:translate-x-2 hover:opacity-75"
-                    >
-                      93251 58710
-                    </a>
+                    <div className="mt-8 space-y-5">
+                      <a
+                        href="tel:+919325158710"
+                        className="block text-[24px] font-semibold text-white transition-all duration-300 hover:translate-x-2 hover:opacity-75"
+                      >
+                        93251 58710
+                      </a>
 
-                    <a
-                      href="mailto:contact@platinummanpowerservices.com"
-                      className="block break-words text-[18px] font-medium text-white/75 transition-all duration-300 hover:translate-x-2 hover:text-white sm:text-[20px]"
-                    >
-                      contact@platinummanpowerservices.com
-                    </a>
-                  </div>
-                </article>
-              </StretchCard>
-            </StaggerItem>
+                      <a
+                        href="mailto:contact@platinummanpowerservices.com"
+                        className="block break-words text-[18px] font-medium text-white/75 transition-all duration-300 hover:translate-x-2 hover:text-white sm:text-[20px]"
+                      >
+                        contact@platinummanpowerservices.com
+                      </a>
+                    </div>
+                  </article>
+                </StretchCard>
+              </StaggerItem>
 
-            <StaggerItem>
-              <StretchCard>
-                <article className="group rounded-[8px] border border-white/15 bg-white p-8 text-black">
-                  <h3 className="text-[24px] font-semibold transition-colors duration-300 group-hover:text-[#104B9C]">
-                    Office Address
-                  </h3>
+              <StaggerItem>
+                <StretchCard>
+                  <article className="group rounded-[8px] border border-white/15 bg-white p-8 text-black">
+                    <h3 className="text-[24px] font-semibold transition-colors duration-300 group-hover:text-[#104B9C]">
+                      Office Address
+                    </h3>
 
-                  <p className="mt-5 max-w-[640px] text-[20px] leading-[1.35] text-[#4f4f4f]">
-                    Platinum Manpower & Facility Management Services, Row House No. 2,
-                    Jai Maa Ashapura Society, Sinnar Phata, Nashik – 422101,
-                    Maharashtra
-                  </p>
+                    <p className="mt-5 max-w-[640px] text-[20px] leading-[1.35] text-[#4f4f4f]">
+                      Platinum Manpower & Facility Management Services, Row
+                      House No. 2, Jai Maa Ashapura Society, Sinnar Phata,
+                      Nashik – 422101, Maharashtra
+                    </p>
 
-                  <div className="mt-8 h-[2px] w-12 bg-[#104B9C]/30 transition-all duration-500 group-hover:w-full group-hover:bg-[#104B9C]" />
-                </article>
-              </StretchCard>
-            </StaggerItem>
-          </StaggerGroup>
-        </div>
+                    <div className="mt-8 h-[2px] w-12 bg-[#104B9C]/30 transition-all duration-500 group-hover:w-full group-hover:bg-[#104B9C]" />
+                  </article>
+                </StretchCard>
+              </StaggerItem>
+            </StaggerGroup>
+          </div>
         </section>
 
-        <div className="mx-2 overflow-hidden rounded-[26px] shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 md:rounded-[34px] lg:mx-5">
+        <div className="mx-2 overflow-visible rounded-[26px] shadow-[0_32px_100px_rgba(2,18,43,0.24)] sm:mx-3 md:rounded-[34px] lg:mx-5">
           <Footer />
         </div>
       </div>

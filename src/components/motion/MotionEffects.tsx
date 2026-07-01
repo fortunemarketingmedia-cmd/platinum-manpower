@@ -305,24 +305,23 @@ export function StretchCard({
 
   return (
     <motion.div
-      className={className}
-      whileHover={
-        reduceMotion
-          ? undefined
-          : {
-              y: -10,
-              scaleX: activeScale,
-              scaleY: 0.985,
-            }
+    className={`relative will-change-transform ${className}`}
+    style={{
+        transformOrigin: "center center",
+        zIndex: 1,
+    }}
+      whileHover={{
+    y: -10,
+    scale: 1.02,
+    zIndex: 20,
+}}
+whileTap={
+  reduceMotion
+    ? undefined
+    : {
+        scale: 0.98,
       }
-      whileTap={
-        reduceMotion
-          ? undefined
-          : {
-              scaleX: 0.985,
-              scaleY: 1.018,
-            }
-      }
+}
       transition={{
         type: "spring",
         stiffness: 320,
